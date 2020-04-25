@@ -1,0 +1,55 @@
+/*--------------------------------*/
+/* Addon Pack Call To Action Styles
+/*--------------------------------*/
+
+.ap-cta-wrapper{
+    background-color: #353535;
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 28px;
+    font-size: 16px;
+    color: #4d4d4d;
+    line-height: 27px;
+    margin: 0 auto;
+
+    .ap-cta-title{
+      color: #fff;
+      font-size: 36px;
+	    font-weight: 600;
+	    line-height: 36px;
+	    margin-bottom: 12px;
+	    text-transform: capitalize;
+      font-style: normal;
+    }
+
+    .ap-cta-content{
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .ap-cta-button {
+      text-align: center;
+      padding: 10px 30px;
+      text-decoration: none !important;
+      text-transform: uppercase;
+      border: 0px solid;
+      font-weight: 500;
+      border-radius: 3px;
+      position: relative;
+      display: inline-block;
+      background: #f9f9f9;
+      font-size: 16px;
+      margin-right: 10px;
+      margin-top: 10px;
+      z-index: 0;
+      overflow: hidden;
+  
+    .ap-cta-button-icon-right {
+      margin-right: 5px;
+    }
+    
+  }
+}
+
+

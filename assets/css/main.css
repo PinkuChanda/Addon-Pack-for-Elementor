@@ -1,0 +1,211 @@
+/* -------------------------------- */
+/* Addon Pack Dual Heading Styles
+/* -------------------------------- */
+.ap-dual-heading {
+  display: block;
+  margin-bottom: 50px; }
+  .ap-dual-heading .ap-dual-heading-title {
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 48px;
+    margin: 10px 0px; }
+  .ap-dual-heading .ap-sub-heading {
+    font-size: 16px;
+    display: block; }
+
+/*--------------------------------*/
+/* Addon Pack Button Styles
+/*--------------------------------*/
+.ap-button-wrapper {
+  display: flex; }
+  .ap-button-wrapper .ap-button {
+    flex: 0 0 auto;
+    min-width: 150px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    border-radius: 2px;
+    padding: 20px 30px;
+    font-size: 16px;
+    line-height: 1;
+    text-decoration: none !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale; }
+    .ap-button-wrapper .ap-button .ap-button-icon-left {
+      margin-right: 5px; }
+    .ap-button-wrapper .ap-button .ap-button-icon-right {
+      margin-left: 5px; }
+    .ap-button-wrapper .ap-button .ap-button:focus {
+      outline: none; }
+    .ap-button-wrapper .ap-button .ap-button-xs {
+      padding: 4px 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      border-radius: 3.2px; }
+    .ap-button-wrapper .ap-button .ap-button-sm {
+      padding: 4px 8px;
+      font-size: 12px; }
+    .ap-button-wrapper .ap-button .ap-button-md {
+      padding: 6px 12px;
+      font-size: 16px; }
+    .ap-button-wrapper .ap-button .ap-button-lg {
+      padding: 8px 16px;
+      font-size: 20px; }
+    .ap-button-wrapper .ap-button .ap-button-xl {
+      padding: 12px 24px;
+      font-size: 24px; }
+
+/*--------------------------------*/
+/* Addon Pack Call To Action Styles
+/*--------------------------------*/
+.ap-cta-wrapper {
+  background-color: #353535;
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 28px;
+  font-size: 16px;
+  color: #4d4d4d;
+  line-height: 27px;
+  margin: 0 auto; }
+  .ap-cta-wrapper .ap-cta-title {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 36px;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+    font-style: normal; }
+  .ap-cta-wrapper .ap-cta-content {
+    font-size: 16px;
+    color: #fff; }
+  .ap-cta-wrapper .ap-cta-button {
+    text-align: center;
+    padding: 10px 30px;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    border: 0px solid;
+    font-weight: 500;
+    border-radius: 3px;
+    position: relative;
+    display: inline-block;
+    background: #f9f9f9;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-top: 10px;
+    z-index: 0;
+    overflow: hidden; }
+    .ap-cta-wrapper .ap-cta-button .ap-cta-button-icon-right {
+      margin-right: 5px; }
+
+/* -------------------------------- */
+/* Addon Pack Testimonial Styles
+/* -------------------------------- */
+.ap-testimonial-wrapper {
+  padding: 1.5rem; }
+
+/* Default Style */
+.ap-testimonial-reviewer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
+.ap-testimonial-image-circle {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70px;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
+  max-width: 70px;
+  height: 70px; }
+
+.ap-testimonial-image-circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.ap-testimonial-image-square {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70px;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
+  max-width: 70px;
+  height: 70px; }
+
+.ap-testimonial-image-square img {
+  width: 100%;
+  height: 100%;
+  border-radius: 2%;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.ap-testimonial-reviewer-info {
+  margin-left: 15px; }
+
+.ap-testimonial-reviewer-info .ap-testimonial-name {
+  margin-bottom: .3rem;
+  font-size: 30px;
+  font-weight: 600;
+  color: #2f2f2f;
+  text-transform: capitalize;
+  line-height: 20px; }
+
+.ap-testimonial-reviewer-info .ap-testimonial-designation {
+  font-size: 20px;
+  color: #5d7aa7; }
+
+.ap-testimonial-reviewer-info .ap-testimonial-rating {
+  list-style: none !important;
+  display: flex;
+  padding: 0px;
+  margin: 0px; }
+
+.ap-testimonial-default-style .ap-testimonial-content {
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.06);
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+  font-size: 15px;
+  color: #918686;
+  line-height: 25px; }
+
+.ap-testimonial-classic-style .ap-testimonial-content {
+  padding: 20px 22px;
+  background: #1f487e;
+  font-size: 15px;
+  color: #fff;
+  line-height: 25px;
+  margin: 0;
+  position: relative;
+  margin-top: 20px; }
+
+.ap-testimonial-classic-style .ap-testimonial-content:before,
+.ap-testimonial-classic-style .ap-testimonial-content:after {
+  content: "";
+  border-width: 18px 0 0 18px;
+  border-style: solid;
+  border-color: #5d7aa7 transparent transparent;
+  position: absolute;
+  bottom: -18px;
+  left: 0; }
+
+.ap-testimonial-classic-style .ap-testimonial-content:after {
+  border-width: 18px 18px 0 0;
+  left: auto;
+  right: 0; }
+
+/*# sourceMappingURL=main.css.map */

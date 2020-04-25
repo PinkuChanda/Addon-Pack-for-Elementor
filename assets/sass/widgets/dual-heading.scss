@@ -1,0 +1,23 @@
+/* -------------------------------- */
+/* Addon Pack Dual Heading Styles
+/* -------------------------------- */
+.ap-dual-heading {
+
+    display: block;
+    margin-bottom: 50px;
+
+    .ap-dual-heading-title{
+      font-size: 36px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 48px;
+      margin: 10px 0px;
+    }
+
+    .ap-sub-heading {
+      font-size: 16px;
+      display: block;
+    }
+
+  }
+  

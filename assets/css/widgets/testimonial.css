@@ -1,0 +1,108 @@
+/* -------------------------------- */
+/* Addon Pack Testimonial Styles
+/* -------------------------------- */
+.ap-testimonial-wrapper {
+  padding: 1.5rem; }
+
+/* Default Style */
+.ap-testimonial-reviewer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
+.ap-testimonial-image-circle {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70px;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
+  max-width: 70px;
+  height: 70px; }
+
+.ap-testimonial-image-circle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.ap-testimonial-image-square {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70px;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
+  max-width: 70px;
+  height: 70px; }
+
+.ap-testimonial-image-square img {
+  width: 100%;
+  height: 100%;
+  border-radius: 2%;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.ap-testimonial-reviewer-info {
+  margin-left: 15px; }
+
+.ap-testimonial-reviewer-info .ap-testimonial-name {
+  margin-bottom: .3rem;
+  font-size: 30px;
+  font-weight: 600;
+  color: #2f2f2f;
+  text-transform: capitalize;
+  line-height: 20px; }
+
+.ap-testimonial-reviewer-info .ap-testimonial-designation {
+  font-size: 20px;
+  color: #5d7aa7; }
+
+.ap-testimonial-reviewer-info .ap-testimonial-rating {
+  list-style: none !important;
+  display: flex;
+  padding: 0px;
+  margin: 0px; }
+
+.ap-testimonial-default-style .ap-testimonial-content {
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.06);
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+  font-size: 15px;
+  color: #918686;
+  line-height: 25px; }
+
+.ap-testimonial-classic-style .ap-testimonial-content {
+  padding: 20px 22px;
+  background: #1f487e;
+  font-size: 15px;
+  color: #fff;
+  line-height: 25px;
+  margin: 0;
+  position: relative;
+  margin-top: 20px; }
+
+.ap-testimonial-classic-style .ap-testimonial-content:before,
+.ap-testimonial-classic-style .ap-testimonial-content:after {
+  content: "";
+  border-width: 18px 0 0 18px;
+  border-style: solid;
+  border-color: #5d7aa7 transparent transparent;
+  position: absolute;
+  bottom: -18px;
+  left: 0; }
+
+.ap-testimonial-classic-style .ap-testimonial-content:after {
+  border-width: 18px 18px 0 0;
+  left: auto;
+  right: 0; }
+
+/*# sourceMappingURL=testimonial.css.map */

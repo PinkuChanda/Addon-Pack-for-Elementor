@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sCAAsC;AACtC;sCACsC;AACtC,gBAAiB;EAEb,OAAO,EAAE,KAAK;EACd,aAAa,EAAE,IAAI;EAEnB,uCAAsB;IACpB,SAAS,EAAE,IAAI;IACf,WAAW,EAAE,GAAG;IAChB,cAAc,EAAE,SAAS;IACzB,WAAW,EAAE,IAAI;IACjB,MAAM,EAAE,QAAQ;EAGlB,gCAAgB;IACd,SAAS,EAAE,IAAI;IACf,OAAO,EAAE,KAAK",
+"sources": ["../../sass/widgets/dual-heading.scss"],
+"names": [],
+"file": "dual-heading.css"
+}
