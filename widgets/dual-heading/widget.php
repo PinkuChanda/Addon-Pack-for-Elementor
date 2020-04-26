@@ -354,32 +354,5 @@ class Dual_Heading extends Widget_Base {
 		
 	}
 
-	protected function _content_template() { ?>
-
-		<#
-			view.addRenderAttribute('ap_heading_one', 'class', 'title');
-			view.addInlineEditingAttributes( 'ap_heading_one', 'basic' );
-
-			view.addRenderAttribute('ap_heading_two', 'class', 'subtitle');
-			view.addInlineEditingAttributes( 'ap_heading_two', 'basic' );
-		#>
-
-	<div class="ap-dual-heading">
-		<div class="ap-dual-heading-title">
-			<span {{{ view.getRenderAttributeString( 'ap_heading_one' ) }}}>
-			{{ settings.ap_heading_one }}
-			</span> 
-			<span {{{ view.getRenderAttributeString( 'ap_heading_two' ) }}}>
-			{{ settings.ap_heading_two }}
-			</span>
-		</div>
-			<# if ( settings.ap_sub_heading ) { #>
-			<span class="ap-sub-heading">
-			{{ settings.ap_sub_heading }}
-			</span>
-			<# } #>
-		</div>
-
-		<?php
-    }
+	protected function _content_template() {}
 }
