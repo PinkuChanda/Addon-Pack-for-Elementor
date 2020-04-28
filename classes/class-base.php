@@ -87,6 +87,7 @@ class Base {
 
 	public function includes() {
 		require_once ( ADDON_PACK_DIR_PATH.'classes/class-assets-manager.php' );
+		require_once ( ADDON_PACK_DIR_PATH . 'includes/addon-pack-helper.php' );
 	}
 
 	public function init_widgets(){

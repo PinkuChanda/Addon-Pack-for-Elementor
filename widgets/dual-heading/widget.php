@@ -2,9 +2,10 @@
 namespace AddonPack\Elementor\Widget;
 
 use Elementor\Widget_Base;
+use AddonPack\Includes;
 use Elementor\Controls_Manager;
-use \Elementor\Group_Control_Border;
-use \Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
@@ -12,6 +13,12 @@ use Elementor\Group_Control_Background;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Dual_Heading extends Widget_Base {
+
+	protected $templateInstance;
+
+    public function getPostsInstance(){
+        return $this->templateInstance = Includes\AddonPack_Helper::getInstance();
+    }
 
 	public function get_name() {
 		return 'addon-pack-heading';
@@ -105,14 +112,14 @@ class Dual_Heading extends Widget_Base {
 			]
 		);
 	
-		$this->add_control('ap_dual_heading_existing_link',
+		$this->add_control('ap_dual_heading_existing_url',
 			[
 				'label'         => __('Existing Page', 'addon-pack'),
 				'type'          => Controls_Manager::SELECT2,
-				// 'options'       => $this->getTemplateInstance()->get_all_post(),
+				'options'       => $this->getPostsInstance()->get_all_posts(),
 				'condition'     => [
 					'ap_dual_heading_url_enable'         => 'yes',
-					'ap_dual_heading_link_selection'       => 'link',
+					'ap_dual_heading_link_selection'       => 'existing_url',
 				],
 				'multiple'      => false,
 				'label_block'   => true,
