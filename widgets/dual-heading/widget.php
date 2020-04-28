@@ -7,6 +7,7 @@ use \Elementor\Group_Control_Border;
 use \Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Background;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -42,7 +43,7 @@ class Dual_Heading extends Widget_Base {
 		);
 
 		$this->add_control(
-			'ap_heading_one',
+			'ap-heading-one',
 			[
 				'label' => __( 'Heading ( First Part )', 'addon-pack' ),
 				'type' => Controls_Manager::TEXT,
@@ -53,7 +54,7 @@ class Dual_Heading extends Widget_Base {
 		);
 
 		$this->add_control(
-			'ap_heading_two',
+			'ap-heading-two',
 			[
 				'label' => __( 'Heading ( Second Part )', 'addon-pack' ),
 				'type' => Controls_Manager::TEXT,
@@ -64,13 +65,109 @@ class Dual_Heading extends Widget_Base {
 		);
 
 		$this->add_control(
-			'ap_sub_heading',
+			'ap_dual_heading_url_enable',
+            [
+                'label'         => __('Heading URL', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+                'description'   => __('Enable or disable link','addon-pack'),
+            ]
+        );
+
+		$this->add_control('ap_dual_heading_link_selection', 
+			[
+				'label'         => __('Link Type', 'addon-pack'),
+				'type'          => Controls_Manager::SELECT,
+				'options'       => [
+					'custom_url'   => __('URL', 'addon-pack'),
+					'existing_url'  => __('Existing Page', 'addon-pack'),
+				],
+				'default'       => 'custom_url',
+				'label_block'   => true,
+				'condition'     => [
+					'ap_dual_heading_url_enable' => 'yes',
+				]
+			]
+		);
+	
+		$this->add_control('ap_dual_heading_url',
+			[
+				'label'         => __('Link', 'addon-pack'),
+				'type'          => Controls_Manager::URL,
+				'dynamic'       => [ 'active' => true ],
+				'default'       => [
+					'url'   => '#',
+				],
+				'label_block'   => true,
+				'condition'     => [
+					'ap_dual_heading_url_enable'     => 'yes',
+					'ap_dual_heading_link_selection' => 'custom_url'
+				]
+			]
+		);
+	
+		$this->add_control('ap_dual_heading_existing_link',
+			[
+				'label'         => __('Existing Page', 'addon-pack'),
+				'type'          => Controls_Manager::SELECT2,
+				// 'options'       => $this->getTemplateInstance()->get_all_post(),
+				'condition'     => [
+					'ap_dual_heading_url_enable'         => 'yes',
+					'ap_dual_heading_link_selection'       => 'link',
+				],
+				'multiple'      => false,
+				'label_block'   => true,
+			]
+		);
+
+		$this->add_control(
+			'ap_dual_heading_tag',
+			[
+				'label' => __( 'Heading HTML Tag', 'addon-pack' ),
+				'type' => Controls_Manager::SELECT,
+				'options'       => [
+					'h1'    => 'H1',
+					'h2'    => 'H2',
+					'h3'    => 'H3',
+					'h4'    => 'H4',
+					'h5'    => 'H5',
+					'h6'    => 'H6',
+					'p'     => 'p',
+					'span'  => 'span',
+				],
+				'default' => 'h3',
+				'label_block'   =>  true,
+			]
+		);
+
+		$this->add_control(
+			'ap-sub-heading',
 			[
 				'label' => esc_html__( 'Sub Heading', 'addon-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
 				'default' => esc_html__( 'Insert a meaningful sentence for determining headline', 'addon-pack'),
 				'placeholder' => __( 'Enter your sub heading', 'addon-pack' ),
+				'separator'     => 'before',
+			]
+		);
+
+		$this->add_control(
+			'ap_dual_sub_heading_tag',
+			[
+				'label' => __( 'Sub Heading HTML Tag', 'addon-pack' ),
+				'type' => Controls_Manager::SELECT,
+				'options'       => [
+					'h1'    => 'H1',
+					'h2'    => 'H2',
+					'h3'    => 'H3',
+					'h4'    => 'H4',
+					'h5'    => 'H5',
+					'h6'    => 'H6',
+					'p'     => 'p',
+					'span'  => 'span',
+				],
+				'default' => 'span',
+				'label_block'   =>  true,
 			]
 		);
 
@@ -110,22 +207,19 @@ class Dual_Heading extends Widget_Base {
 	
 	protected function register_heading_style_controls(){
 		$this->start_controls_section(
-			'ap_dual_heading_style',
+			'ap_dual_heading_general_style',
 			[
-				'label' => __( 'Dual Heading', 'addon-pack' ),
+				'label' => __( 'General Style', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
-		$this->add_control(
-			'ap_dual_heading_bg_color',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			[
-				'label' => esc_html__( 'Background Color', 'addon-pack' ),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .ap-dual-heading' => 'background-color: {{VALUE}};',
-				],
+				'name'      => 'ap_dual_heading_bg_color',
+				'types'     => [ 'classic', 'gradient' ],
+				'selector'  => '{{WRAPPER}} .ap-dual-heading',
 			]
 		);
 
@@ -227,18 +321,10 @@ class Dual_Heading extends Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-			'ap_color_and_typegraphy_style',
+			'ap_dual_heading_style',
 			[
-				'label' => __( 'Color & Typography', 'addon-pack' ),
+				'label' => __( 'Dual Heading', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->add_control(
-			'ap_dual_heading',
-			[
-				'label' => esc_html__( 'Heading', 'addon-pack' ),
-				'type' => Controls_Manager::HEADING,
 			]
 		);
 
@@ -249,7 +335,7 @@ class Dual_Heading extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#1abc9c',
 				'selectors' => [
-					'{{WRAPPER}} .ap_heading_one' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ap-heading-one' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -261,7 +347,7 @@ class Dual_Heading extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '#4d4d4d',
 				'selectors' => [
-					'{{WRAPPER}} .ap_heading_two' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ap-heading-two' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -275,18 +361,130 @@ class Dual_Heading extends Widget_Base {
 		);
 
 		$this->add_control(
-			'ap_sub_heading',
+			'ap_dual_heading_style_type',
 			[
-				'label' => esc_html__( 'Sub Heading ', 'addon-pack' ),
-				'type' => Controls_Manager::HEADING,
-				'separator' => 'before'
+				'label'   => __( 'Dual Heading Style', 'addon-pack' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'none'     => esc_html__('None', 'addon-pack'),
+					'line' => esc_html__('Line', 'addon-pack'),
+				],
+				'default' => 'none',
+				'separator' => 'before',
+				'label_block'   =>  true,
 			]
 		);
 
 		$this->add_control(
-			'ap_sub_heading_color',
+			'ap_dual_heading_style_color',
 			[
-				'label' => esc_html__( 'Color', 'addon-pack' ),
+				'label'     => __( 'Color', 'addon-pack' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ap-dual-heading-title .line:after' => 'background-color: {{VALUE}};',
+				],
+				'condition' => [
+					'ap_dual_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'ap_dual_heading_style_width',
+			[
+				'label' => __( 'Width', 'addon-pack' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 1,
+						'max'  => 220,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-dual-heading-title .line:after' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_dual_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'ap_dual_heading_style_height',
+			[
+				'label' => __( 'Height', 'addon-pack' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 1,
+						'max'  => 32,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-dual-heading-title .line:after' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_dual_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_control(
+			'ap_dual_heading_style_align',
+			[
+				'label'   => __( 'Style Position', 'addon-pack' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'bottom',
+				'options' => [
+					'left'       => __( 'Before', 'addon-pack' ),
+					'right'      => __( 'After', 'addon-pack' ),
+					'left-right' => __( 'After and Before', 'addon-pack' ),
+					'bottom'     => __( 'Bottom', 'addon-pack' ),
+				],
+				'condition' => [
+					'ap_dual_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'ap_dual_heading_style_indent',
+			[
+				'label'   => __( 'Style Spacing', 'addon-pack' ),
+				'type'    => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 65,
+					],
+				],
+				'default' => [
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-dual-heading-title .ap-line-align-left'    => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-dual-heading-title .ap-line-align-right'   => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-dual-heading-title .ap-line-align-bottom' => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_dual_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'ap_sub_heading_style',
+			[
+				'label' => __( 'Sub Heading', 'addon-pack' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'ap-sub-heading_color',
+			[
+				'label' => esc_html__( 'Text Color', 'addon-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#4d4d4d',
 				'selectors' => [
@@ -298,8 +496,119 @@ class Dual_Heading extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-            'name' => 'ap_sub_heading_typography',
+            'name' => 'ap-sub-heading_typography',
 				'selector' => '{{WRAPPER}} .ap-sub-heading',
+			]
+		);
+
+		$this->add_control(
+			'ap_sub_heading_style_type',
+			[
+				'label'   => __( 'Sub Heading Style', 'addon-pack' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'none'     => esc_html__('None', 'addon-pack'),
+					'line' => esc_html__('Line', 'addon-pack'),
+				],
+				'default' => 'none',
+				'separator' => 'before',
+				'label_block'   =>  true,
+			]
+		);
+
+		$this->add_control(
+			'ap_sub_heading_style_color',
+			[
+				'label'     => __( 'Color', 'addon-pack' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ap-sub-heading-dual .line:after' => 'background-color: {{VALUE}};',
+				],
+				'condition' => [
+					'ap_sub_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'ap_sub_heading_style_width',
+			[
+				'label' => __( 'Width', 'addon-pack' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 1,
+						'max'  => 220,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-sub-heading-dual .line:after' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_sub_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'ap_sub_heading_style_height',
+			[
+				'label' => __( 'Height', 'addon-pack' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min'  => 1,
+						'max'  => 32,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-sub-heading-dual .line:after' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_sub_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_control(
+			'ap_sub_heading_style_align',
+			[
+				'label'   => __( 'Style Position', 'addon-pack' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'bottom',
+				'options' => [
+					'left'       => __( 'Before', 'addon-pack' ),
+					'right'      => __( 'After', 'addon-pack' ),
+					'left-right' => __( 'After and Before', 'addon-pack' ),
+					'bottom'     => __( 'Bottom', 'addon-pack' ),
+				],
+				'condition' => [
+					'ap_sub_heading_style_type' => 'line',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'ap_sub_heading_style_indent',
+			[
+				'label'   => __( 'Style Spacing', 'addon-pack' ),
+				'type'    => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 65,
+					],
+				],
+				'default' => [
+					'size' => 5,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-sub-heading-dual .ap-line-align-left'    => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-sub-heading-dual .ap-line-align-right'   => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-sub-heading-dual .ap-line-align-bottom'  => 'margin-top: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_sub_heading_style_type' => 'line',
+				],
 			]
 		);
 
@@ -318,35 +627,70 @@ class Dual_Heading extends Widget_Base {
 
 		$settings = $this->get_settings_for_display();
 
+		$this->add_render_attribute( 'ap-heading-one', 'class', 'ap-heading-one' );
+		$this->add_inline_editing_attributes( 'ap-heading-one', 'advanced' );
 
-		$this->get_settings( 'ap_heading_one' );
-		$this->add_render_attribute( 'ap_heading_one', 'class', 'ap_heading_one' );
-		$this->add_inline_editing_attributes( 'ap_heading_one' );
+		$this->add_render_attribute( 'ap-heading-two', 'class', 'ap-heading-two' );
+		$this->add_inline_editing_attributes( 'ap-heading-two', 'advanced' );
 
-	    $this->get_settings( 'ap_heading_two' );
-		$this->add_render_attribute( 'ap_heading_two', 'class', 'ap_heading_two' );
-		$this->add_inline_editing_attributes( 'ap_heading_two' );
+        $ap_first_heading  = $settings['ap-heading-one'] . ' ';
+        $ap_second_heading = $settings['ap-heading-two'];
 
+		$ap_dual_heading_tag = $settings['ap_dual_heading_tag'];
+		$ap_dual_sub_heading_tag = $settings['ap_dual_sub_heading_tag'];
 
-		if ( empty( $settings['ap_sub_heading'] ) ) {
-			return;
+		$heading_style = '';
+
+		if ('line' === $settings['ap_dual_heading_style_type']) {
+			if ('left-right' === $settings['ap_dual_heading_style_align']) {
+				$heading_style = '<div class="line ap-line-align-left"></div><div class="line ap-line-align-right"></div>';
+			} elseif ('bottom' === $settings['ap_dual_heading_style_align']) {
+				$heading_style = '<div class="line ap-line-align-'.$settings['ap_dual_heading_style_align'].'"></div>';
+			} else {
+				$heading_style = '<div class="line ap-line-align-'.$settings['ap_dual_heading_style_align'].'"></div>';
+			}
 		}
+
+		$main_heading = '<' . $ap_dual_heading_tag . ' class="ap-dual-heading-title"><span class="ap-heading-one">'. $ap_first_heading . '</span><span class="ap-heading-two">'. $ap_second_heading . '</span> '.$heading_style.'</' . $ap_dual_heading_tag . '> ';
+
+		$sub_heading_style = '';
+
+		if ('line' === $settings['ap_sub_heading_style_type']) {
+			if ('left-right' === $settings['ap_sub_heading_style_align']) {
+				$sub_heading_style = '<div class="line ap-line-align-left"></div><div class="line ap-line-align-right"></div>';
+			} elseif ('bottom' === $settings['ap_sub_heading_style_align']) {
+				$sub_heading_style = '<div class="line ap-line-align-'.$settings['ap_sub_heading_style_align'].'"></div>';
+			} else {
+				$sub_heading_style = '<div class="line ap-line-align-'.$settings['ap_sub_heading_style_align'].'"></div>';
+			}
+		}
+
+		$sub_heading = '<' . $ap_dual_sub_heading_tag . ' class="ap-sub-heading-main"><span class="ap-sub-heading-dual">'. $settings['ap-sub-heading'] . $sub_heading_style. '</span></' . $ap_dual_sub_heading_tag . '> ';
+
+		$heading_link = '';
+        if( $settings['ap_dual_heading_url_enable'] == 'yes' && $settings['ap_dual_heading_link_selection'] == 'existing_url' ) {
+            $heading_link = get_permalink( $settings['ap_dual_heading_existing_url'] );
+        } elseif( $settings['ap_dual_heading_url_enable'] == 'yes' && $settings['ap_dual_heading_link_selection'] == 'custom_url' ) {
+            $heading_link = $settings['ap_dual_heading_url']['url'];
+        }
 
 		?>
 
 		<div class="ap-dual-heading">
-			<div class="ap-dual-heading-title">
-				<span <?php echo $this->get_render_attribute_string( 'ap_heading_one' ) ?>>
-				<?php echo $settings['ap_heading_one']; ?>
-				</span> 
-				<span <?php echo $this->get_render_attribute_string( 'ap_heading_two' ) ?>>
-				<?php echo $settings['ap_heading_two']; ?>
-				</span>
-			</div>
+
+			<?php if( ! empty( $heading_link ) ) : ?>
+				<a href="<?php echo esc_attr( $heading_link ); ?>" <?php if( ! empty( $settings['ap_dual_heading_url']['is_external'] ) ) : ?> target="_blank" <?php endif; ?><?php if( ! empty( $settings['ap_dual_heading_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+			<?php endif; ?>
 			
-			<span class="ap-sub-heading">
-				<?php echo $settings['ap_sub_heading']; ?>
-			</span>
+				<?php echo $main_heading; ?>
+
+			<?php if( ! empty( $heading_link ) ) : ?>
+				</a>
+			<?php endif; ?>
+
+			<?php if ( !empty( $settings['ap-sub-heading'] ) ) : ?>
+				<?php echo $sub_heading; ?>
+			<?php endif; ?>
 
 		</div>
 

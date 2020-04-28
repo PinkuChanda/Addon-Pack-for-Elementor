@@ -3,15 +3,35 @@
 /* -------------------------------- */
 .ap-dual-heading {
   display: block;
-  margin-bottom: 50px; }
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  .ap-dual-heading a {
+    text-decoration: none !important; }
   .ap-dual-heading .ap-dual-heading-title {
-    font-size: 36px;
     font-weight: 700;
     text-transform: uppercase;
-    line-height: 48px;
-    margin: 10px 0px; }
-  .ap-dual-heading .ap-sub-heading {
-    font-size: 16px;
-    display: block; }
+    margin: 10px 0px;
+    display: inline-block;
+    vertical-align: middle; }
+  .ap-dual-heading .ap-sub-heading-dual {
+    display: inline-block;
+    vertical-align: middle; }
+  .ap-dual-heading .ap-line-align-left {
+    float: left; }
+  .ap-dual-heading .ap-line-align-right {
+    float: right; }
+  .ap-dual-heading .ap-line-align-bottom {
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px; }
+  .ap-dual-heading .line:after {
+    content: "";
+    background-color: #1abc9c;
+    height: 2px;
+    width: 50px;
+    display: inline-block;
+    vertical-align: middle; }
 
 /*# sourceMappingURL=dual-heading.css.map */
