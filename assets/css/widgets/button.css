@@ -3,43 +3,40 @@
 /*--------------------------------*/
 .ap-button-wrapper {
   display: flex; }
+  .ap-button-wrapper a {
+    text-decoration: none !important; }
   .ap-button-wrapper .ap-button {
     flex: 0 0 auto;
-    min-width: 150px;
     text-align: center;
     vertical-align: middle;
     position: relative;
     z-index: 1;
     border-radius: 2px;
-    padding: 20px 30px;
-    font-size: 16px;
-    line-height: 1;
-    text-decoration: none !important;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale; }
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #FF007F;
+    color: #fff; }
     .ap-button-wrapper .ap-button .ap-button-icon-left {
       margin-right: 5px; }
     .ap-button-wrapper .ap-button .ap-button-icon-right {
       margin-left: 5px; }
     .ap-button-wrapper .ap-button .ap-button:focus {
       outline: none; }
-    .ap-button-wrapper .ap-button .ap-button-xs {
-      padding: 4px 8px;
-      font-size: 14px;
-      line-height: 1.5;
-      border-radius: 3.2px; }
-    .ap-button-wrapper .ap-button .ap-button-sm {
-      padding: 4px 8px;
-      font-size: 12px; }
-    .ap-button-wrapper .ap-button .ap-button-md {
-      padding: 6px 12px;
-      font-size: 16px; }
-    .ap-button-wrapper .ap-button .ap-button-lg {
-      padding: 8px 16px;
-      font-size: 20px; }
-    .ap-button-wrapper .ap-button .ap-button-xl {
-      padding: 12px 24px;
-      font-size: 24px; }
+  .ap-button-wrapper .ap-button-xs {
+    padding: 4px 8px;
+    font-size: 12px; }
+  .ap-button-wrapper .ap-button-sm {
+    padding: 6px 10px;
+    font-size: 14px; }
+  .ap-button-wrapper .ap-button-md {
+    padding: 8px 14px;
+    font-size: 16px; }
+  .ap-button-wrapper .ap-button-lg {
+    padding: 10px 16px;
+    font-size: 18px; }
+  .ap-button-wrapper .ap-button-xl {
+    padding: 12px 18px;
+    font-size: 24px; }
 
 /*# sourceMappingURL=button.css.map */
