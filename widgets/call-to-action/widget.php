@@ -2,6 +2,7 @@
 namespace AddonPack\Elementor\Widget;
 
 use Elementor\Widget_Base;
+use AddonPack\Includes;
 use Elementor\Controls_Manager;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
@@ -12,6 +13,12 @@ use Elementor\Group_Control_Box_Shadow;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Call_to_Action extends Widget_Base {
+
+	protected $templateInstance;
+
+    public function getPostsInstance(){
+        return $this->templateInstance = Includes\AddonPack_Helper::getInstance();
+    }
 
 	public function get_name() {
 		return 'ap-cta';
@@ -78,6 +85,65 @@ class Call_to_Action extends Widget_Base {
 					'active' => true,
 				],
 				'label_block' => true,
+				'separator'   => 'before',
+			]
+		);
+
+		$this->add_control(
+			'ap_cta_button_size',
+			[
+				'label'   => esc_html__( 'Button Size', 'addon-pack' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'md',
+				'options' => [
+					'xs' => esc_html__( 'Extra Small', 'addon-pack' ),
+					'sm' => esc_html__( 'Small', 'addon-pack' ),
+					'md' => esc_html__( 'Medium', 'addon-pack' ),
+					'lg' => esc_html__( 'Large', 'addon-pack' ),
+					'xl' => esc_html__( 'Extra Large', 'addon-pack' ),
+				],
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control('ap_cta_button_link_selection', 
+		[
+			'label'         => __('Link Type', 'addon-pack'),
+			'type'          => Controls_Manager::SELECT,
+			'options'       => [
+				'custom_url'   => __('URL', 'addon-pack'),
+				'existing_url'  => __('Existing Page', 'addon-pack'),
+			],
+			'default'       => 'custom_url',
+			'label_block'   => true,
+		]
+		);
+
+		$this->add_control('ap_cta_button_url',
+			[
+				'label'         => __('Link', 'addon-pack'),
+				'type'          => Controls_Manager::URL,
+				'dynamic'       => [ 'active' => true ],
+				'default'       => [
+					'url'   => '#',
+				],
+				'label_block'   => true,
+				'condition'     => [
+					'ap_cta_button_link_selection' => 'custom_url'
+				]
+			]
+		);
+
+		$this->add_control('ap_cta_button_existing_url',
+			[
+				'label'         => __('Existing Page', 'addon-pack'),
+				'type'          => Controls_Manager::SELECT2,
+				'options'       => $this->getPostsInstance()->get_all_posts(),
+				'condition'     => [
+					'ap_cta_button_link_selection'     => 'existing_url',
+				],
+				'multiple'      => false,
+				'label_block'   => true,
 			]
 		);
 		
@@ -127,23 +193,6 @@ class Call_to_Action extends Widget_Base {
 				],
 			]
 		);
-
-		$this->add_control(
-			'ap_cta_button_url',
-			[
-				'label' => __( 'Button Link', 'addon-pack' ),
-				'type' => Controls_Manager::URL,
-				'default' => [
-                    'url' => '#',
-                    'is_external' => 'true',
-                ],
-				'placeholder' => __( 'http://your-link.com', 'addon-pack' ),
-				'dynamic' => [
-					'active' => true,
-				],
-			]
-		);
-
 		
 		$this->add_responsive_control(
 			'ap_cta_align',
@@ -520,6 +569,9 @@ class Call_to_Action extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} .ap-cta-button .ap-cta-button-icon-right' => 'color: {{VALUE}};',
 				],
+				'condition' => [
+					'ap_cta_button_icon!' => ''
+				],
 			]
 		);
 
@@ -552,8 +604,7 @@ class Call_to_Action extends Widget_Base {
 			[
 				'name'      => 'ap_cta_button_hover_background',
 				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .ap-cta-button:after, 
-								{{WRAPPER}} .ap-cta-button:hover,',
+				'selector'  => '{{WRAPPER}} .ap-cta-button:hover',
 			]
 		);
 
@@ -563,7 +614,7 @@ class Call_to_Action extends Widget_Base {
 				'label'     => esc_html__( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-cta-button:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ap-cta-button:hover .ap-cta-button-text' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -575,7 +626,10 @@ class Call_to_Action extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#4d4d4d',
 				'selectors' => [
-					'{{WRAPPER}} .ap-cta-button:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ap-cta-button:hover i' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'ap_cta_button_icon!' => ''
 				],
 			]
 		);
@@ -621,19 +675,15 @@ class Call_to_Action extends Widget_Base {
 
 		$this->add_render_attribute( 'ap_cta_title', 'class', 'ap-cta-title' );
 		$this->add_render_attribute( 'ap_cta_content', 'class', 'ap-cta-content' );
+		$this->add_render_attribute( 'ap_cta_button', 'class', 'ap-cta-button');
+		$this->add_render_attribute( 'ap_cta_button', 'class', 'ap-cta-button-' . esc_attr($settings['ap_cta_button_size']) );
 
-		$this->add_render_attribute( 'ap_cta_button', [
-			'class'	=> 'ap-cta-button',
-			'href'	=> esc_attr($settings['ap_cta_button_url']['url'] ),
-		]);
-
-		if( $settings['ap_cta_button_url']['is_external'] ) {
-			$this->add_render_attribute( 'ap_cta_button', 'target', '_blank' );
-		}
-		
-		if( $settings['ap_cta_button_url']['nofollow'] ) {
-			$this->add_render_attribute( 'ap_cta_button', 'rel', 'nofollow' );
-		}
+		$button_link = '';
+        if($settings['ap_cta_button_link_selection'] == 'existing_url' ) {
+            $button_link = get_permalink( $settings['ap_cta_button_existing_url'] );
+        } elseif($settings['ap_cta_button_link_selection'] == 'custom_url' ) {
+            $button_link = $settings['ap_cta_button_url']['url'];
+        }
 
 	?>
 
@@ -648,12 +698,18 @@ class Call_to_Action extends Widget_Base {
 		<?php } ?>
 		<div class="d-flex align-items-center">
 		
-		<a <?php echo $this->get_render_attribute_string( 'ap_cta_button' ); ?>>
-				<span class="ap-cta-button-text"><?php echo $settings['ap_cta_button_text']; ?></span>
-				<?php if($ap_cta_button_icon): ?>
-						<i class="<?php echo esc_attr($settings['ap_cta_button_icon'] ); ?> ap-cta-button-icon-right" aria-hidden="true"></i> 
-				<?php endif; ?>
-		</a>
+		<?php if( ! empty( $button_link ) ) : ?>
+			<a href="<?php echo esc_attr( $button_link ); ?>" <?php echo $this->get_render_attribute_string( 'ap_cta_button' ); ?> <?php if( ! empty( $settings['ap_cta_button_url']['is_external'] ) ) : ?> target="_blank" <?php endif; ?><?php if( ! empty( $settings['ap_cta_button_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+		<?php endif; ?>
+
+			<span class="ap-cta-button-text"><?php echo $settings['ap_cta_button_text']; ?></span>
+			<?php if($ap_cta_button_icon): ?>
+					<i class="<?php echo esc_attr($settings['ap_cta_button_icon'] ); ?> ap-cta-button-icon-right" aria-hidden="true"></i> 
+			<?php endif; ?>
+
+		<?php if( ! empty( $button_link ) ) : ?>
+			</a>
+		<?php endif; ?>
 
 		</div>
 	</div>

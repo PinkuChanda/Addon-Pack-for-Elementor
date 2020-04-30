@@ -101,12 +101,10 @@
     color: #fff; }
   .ap-cta-wrapper .ap-cta-button {
     text-align: center;
-    padding: 10px 30px;
     text-decoration: none !important;
     text-transform: uppercase;
-    border: 0px solid;
     font-weight: 500;
-    border-radius: 3px;
+    border-radius: 2px;
     position: relative;
     display: inline-block;
     background: #f9f9f9;
@@ -117,6 +115,21 @@
     overflow: hidden; }
     .ap-cta-wrapper .ap-cta-button .ap-cta-button-icon-right {
       margin-right: 5px; }
+  .ap-cta-wrapper .ap-cta-button-xs {
+    padding: 4px 8px;
+    font-size: 12px; }
+  .ap-cta-wrapper .ap-cta-button-sm {
+    padding: 6px 10px;
+    font-size: 14px; }
+  .ap-cta-wrapper .ap-cta-button-md {
+    padding: 8px 14px;
+    font-size: 16px; }
+  .ap-cta-wrapper .ap-cta-button-lg {
+    padding: 10px 16px;
+    font-size: 18px; }
+  .ap-cta-wrapper .ap-cta-button-xl {
+    padding: 12px 18px;
+    font-size: 24px; }
 
 /* -------------------------------- */
 /* Addon Pack Testimonial Styles
