@@ -14,8 +14,7 @@
     display: inline-block;
     vertical-align: middle; }
   .ap-dual-heading .ap-sub-heading-dual {
-    display: inline-block;
-    vertical-align: middle; }
+    display: block; }
   .ap-dual-heading .ap-line-align-left {
     float: left; }
   .ap-dual-heading .ap-line-align-right {
@@ -26,7 +25,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 5px; }
-  .ap-dual-heading .line:after {
+  .ap-dual-heading .ap-line:after {
     content: "";
     background-color: #1abc9c;
     height: 2px;

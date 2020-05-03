@@ -20,8 +20,7 @@
     }
 
     .ap-sub-heading-dual {
-      display: inline-block;
-      vertical-align: middle;
+      display: block;
     }
 
     .ap-line-align-left{
@@ -39,7 +38,7 @@
       margin-top: 5px;
     }
 
-    .line:after{
+    .ap-line:after{
       content: "";
       background-color: #1abc9c;
       height: 2px;

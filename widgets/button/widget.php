@@ -94,12 +94,24 @@ class Button extends Widget_Base {
 				'type'          => Controls_Manager::SELECT2,
 				'options'       => $this->getPostsInstance()->get_all_posts(),
 				'condition'     => [
-					'ap_button_link_selection'     => 'existing_url',
+					'ap_button_link_selection'  => 'existing_url',
 				],
 				'multiple'      => false,
 				'label_block'   => true,
 			]
 		);
+
+		$this->add_control(
+			'ap_button_existing_url_target_blank',
+            [
+                'label'         => __('Open a new Tab', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+				'description'   => __('Enable or disable open with tab','addon-pack'),
+				'condition'     => [
+					'ap_button_link_selection'  => 'existing_url',
+				],
+            ]
+        );
 
 		$this->add_control(
 			'ap_button_size',
@@ -160,6 +172,7 @@ class Button extends Widget_Base {
 				],
 				'condition' => [
 					'ap_button_icon!' => '',
+					'ap_button_icon_align!' => 'none',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ap-button .ap-button-icon-right'  => 'margin-left: {{SIZE}}{{UNIT}};',
@@ -495,6 +508,7 @@ class Button extends Widget_Base {
 		$this->add_render_attribute( 'ap_button', 'class', 'ap-button');
 		$this->add_render_attribute( 'ap_button', 'class', esc_attr($settings['ap_button_text'] ));
 		$this->add_render_attribute( 'ap_button', 'class', 'ap-button-' . esc_attr($settings['ap_button_size']) );
+		$this->add_render_attribute( 'ap_button_existing_url_target_blank', 'target', '_blank' );
 
 		if ( $settings['ap_hover_animation'] ) {
 			$this->add_render_attribute( 'ap_button', 'class', 'elementor-animation-' . $settings['ap_hover_animation'] );
@@ -505,7 +519,7 @@ class Button extends Widget_Base {
 		<div class="ap-button-wrapper">
 
 			<?php if( ! empty( $button_link ) ) : ?>
-				<a href="<?php echo esc_attr( $button_link ); ?>" <?php if( ! empty( $settings['ap_button_url']['is_external'] ) ) : ?> target="_blank" <?php endif; ?><?php if( ! empty( $settings['ap_button_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+				<a href="<?php echo esc_attr( $button_link ); ?>" <?php echo $this->get_render_attribute_string( 'ap_button_existing_url_target_blank' ); ?> <?php if( ! empty( $settings['ap_button_url']['is_external'] ) ) : ?> target="_blank" <?php endif; ?><?php if( ! empty( $settings['ap_button_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
 			<?php endif; ?>
 
 				<div <?php echo $this->get_render_attribute_string( 'ap_button' ); ?>>

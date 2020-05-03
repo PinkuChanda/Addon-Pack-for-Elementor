@@ -38,6 +38,8 @@
     overflow: hidden; }
     .ap-cta-wrapper .ap-cta-button .ap-cta-button-icon-right {
       margin-right: 5px; }
+    .ap-cta-wrapper .ap-cta-button .ap-cta-button-text {
+      vertical-align: middle; }
   .ap-cta-wrapper .ap-cta-button-xs {
     padding: 4px 8px;
     font-size: 12px; }

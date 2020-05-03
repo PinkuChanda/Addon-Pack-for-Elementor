@@ -127,6 +127,18 @@ class Dual_Heading extends Widget_Base {
 		);
 
 		$this->add_control(
+			'ap_dual_heading_existing_url_target_blank',
+            [
+                'label'         => __('Open a new Tab', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+				'description'   => __('Enable or disable open with tab','addon-pack'),
+				'condition'     => [
+					'ap_dual_heading_link_selection'       => 'existing_url',
+				],
+            ]
+        );
+
+		$this->add_control(
 			'ap_dual_heading_tag',
 			[
 				'label' => __( 'Heading HTML Tag', 'addon-pack' ),
@@ -374,7 +386,7 @@ class Dual_Heading extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
 					'none'     => esc_html__('None', 'addon-pack'),
-					'line' => esc_html__('Line', 'addon-pack'),
+					'ap-line' => esc_html__('AP Line', 'addon-pack'),
 				],
 				'default' => 'none',
 				'separator' => 'before',
@@ -388,10 +400,10 @@ class Dual_Heading extends Widget_Base {
 				'label'     => __( 'Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-dual-heading-title .line:after' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .ap-dual-heading-title .ap-line:after' => 'background-color: {{VALUE}};',
 				],
 				'condition' => [
-					'ap_dual_heading_style_type' => 'line',
+					'ap_dual_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -408,10 +420,10 @@ class Dual_Heading extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-dual-heading-title .line:after' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-dual-heading-title .ap-line:after' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'ap_dual_heading_style_type' => 'line',
+					'ap_dual_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -428,10 +440,10 @@ class Dual_Heading extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-dual-heading-title .line:after' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-dual-heading-title .ap-line:after' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'ap_dual_heading_style_type' => 'line',
+					'ap_dual_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -449,7 +461,7 @@ class Dual_Heading extends Widget_Base {
 					'bottom'     => __( 'Bottom', 'addon-pack' ),
 				],
 				'condition' => [
-					'ap_dual_heading_style_type' => 'line',
+					'ap_dual_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -473,7 +485,7 @@ class Dual_Heading extends Widget_Base {
 					'{{WRAPPER}} .ap-dual-heading-title .ap-line-align-bottom' => 'margin-top: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'ap_dual_heading_style_type' => 'line',
+					'ap_dual_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -515,7 +527,7 @@ class Dual_Heading extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
 					'none'     => esc_html__('None', 'addon-pack'),
-					'line' => esc_html__('Line', 'addon-pack'),
+					'ap-line' => esc_html__('AP Line', 'addon-pack'),
 				],
 				'default' => 'none',
 				'separator' => 'before',
@@ -529,10 +541,10 @@ class Dual_Heading extends Widget_Base {
 				'label'     => __( 'Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-sub-heading-dual .line:after' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .ap-sub-heading-dual .ap-line:after' => 'background-color: {{VALUE}};',
 				],
 				'condition' => [
-					'ap_sub_heading_style_type' => 'line',
+					'ap_sub_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -549,10 +561,10 @@ class Dual_Heading extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-sub-heading-dual .line:after' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-sub-heading-dual .ap-line:after' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'ap_sub_heading_style_type' => 'line',
+					'ap_sub_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -569,10 +581,10 @@ class Dual_Heading extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-sub-heading-dual .line:after' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-sub-heading-dual .ap-line:after' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'ap_sub_heading_style_type' => 'line',
+					'ap_sub_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -590,7 +602,7 @@ class Dual_Heading extends Widget_Base {
 					'bottom'     => __( 'Bottom', 'addon-pack' ),
 				],
 				'condition' => [
-					'ap_sub_heading_style_type' => 'line',
+					'ap_sub_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -614,7 +626,7 @@ class Dual_Heading extends Widget_Base {
 					'{{WRAPPER}} .ap-sub-heading-dual .ap-line-align-bottom'  => 'margin-top: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
-					'ap_sub_heading_style_type' => 'line',
+					'ap_sub_heading_style_type' => 'ap-line',
 				],
 			]
 		);
@@ -640,6 +652,8 @@ class Dual_Heading extends Widget_Base {
 		$this->add_render_attribute( 'ap-heading-two', 'class', 'ap-heading-two' );
 		$this->add_inline_editing_attributes( 'ap-heading-two', 'advanced' );
 
+		$this->add_render_attribute( 'ap_dual_heading_existing_url_target_blank', 'target', '_blank' );
+
         $ap_first_heading  = $settings['ap-heading-one'] . ' ';
         $ap_second_heading = $settings['ap-heading-two'];
 
@@ -648,13 +662,13 @@ class Dual_Heading extends Widget_Base {
 
 		$heading_style = '';
 
-		if ('line' === $settings['ap_dual_heading_style_type']) {
+		if ('ap-line' === $settings['ap_dual_heading_style_type']) {
 			if ('left-right' === $settings['ap_dual_heading_style_align']) {
-				$heading_style = '<div class="line ap-line-align-left"></div><div class="line ap-line-align-right"></div>';
+				$heading_style = '<div class="ap-line ap-line-align-left"></div><div class="ap-line ap-line-align-right"></div>';
 			} elseif ('bottom' === $settings['ap_dual_heading_style_align']) {
-				$heading_style = '<div class="line ap-line-align-'.$settings['ap_dual_heading_style_align'].'"></div>';
+				$heading_style = '<div class="ap-line ap-line-align-'.$settings['ap_dual_heading_style_align'].'"></div>';
 			} else {
-				$heading_style = '<div class="line ap-line-align-'.$settings['ap_dual_heading_style_align'].'"></div>';
+				$heading_style = '<div class="ap-line ap-line-align-'.$settings['ap_dual_heading_style_align'].'"></div>';
 			}
 		}
 
@@ -662,13 +676,13 @@ class Dual_Heading extends Widget_Base {
 
 		$sub_heading_style = '';
 
-		if ('line' === $settings['ap_sub_heading_style_type']) {
+		if ('ap-line' === $settings['ap_sub_heading_style_type']) {
 			if ('left-right' === $settings['ap_sub_heading_style_align']) {
-				$sub_heading_style = '<div class="line ap-line-align-left"></div><div class="line ap-line-align-right"></div>';
+				$sub_heading_style = '<div class="ap-line ap-line-align-left"></div><div class="ap-line ap-line-align-right"></div>';
 			} elseif ('bottom' === $settings['ap_sub_heading_style_align']) {
-				$sub_heading_style = '<div class="line ap-line-align-'.$settings['ap_sub_heading_style_align'].'"></div>';
+				$sub_heading_style = '<div class="ap-line ap-line-align-'.$settings['ap_sub_heading_style_align'].'"></div>';
 			} else {
-				$sub_heading_style = '<div class="line ap-line-align-'.$settings['ap_sub_heading_style_align'].'"></div>';
+				$sub_heading_style = '<div class="ap-line ap-line-align-'.$settings['ap_sub_heading_style_align'].'"></div>';
 			}
 		}
 
@@ -686,7 +700,7 @@ class Dual_Heading extends Widget_Base {
 		<div class="ap-dual-heading">
 
 			<?php if( ! empty( $heading_link ) ) : ?>
-				<a href="<?php echo esc_attr( $heading_link ); ?>" <?php if( ! empty( $settings['ap_dual_heading_url']['is_external'] ) ) : ?> target="_blank" <?php endif; ?><?php if( ! empty( $settings['ap_dual_heading_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+				<a href="<?php echo esc_attr( $heading_link ); ?>" <?php echo $this->get_render_attribute_string( 'ap_dual_heading_existing_url_target_blank' ); ?> <?php if( ! empty( $settings['ap_dual_heading_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_dual_heading_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
 			<?php endif; ?>
 			
 				<?php echo $main_heading; ?>

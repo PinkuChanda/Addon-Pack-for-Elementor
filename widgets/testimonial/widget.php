@@ -38,6 +38,29 @@ class Testimonial extends Widget_Base {
 	}
 	
 	protected function register_general_controls(){
+
+		$this->start_controls_section(
+			'ap_testimonial_layouts',
+			[
+				'label' => __( 'Layouts', 'addon-pack' ),
+			]
+        );
+        
+        $this->add_control(
+            'ap_testimonial_style',
+            [
+               'label'       => __( 'Select Style', 'addon-pack'),
+               'type' => Controls_Manager::SELECT,
+               'default' => 'default-style',
+               'options' => [
+                   'default-style'  => __( 'Default', 'addon-pack'),
+                   'classic-style'  => __( 'Classic', 'addon-pack'),
+               ],
+            ]
+		);
+
+		$this->end_controls_section();
+		
 		$this->start_controls_section(
 			'ap_testimonial_settings',
 			[
@@ -73,6 +96,16 @@ class Testimonial extends Widget_Base {
 				'default' => __('Manager of Addon Pack', 'addon-pack'),
 				'label_block'   => true,
 			]
+		);
+		
+		$this->add_control(
+			'ap_testimonial_company',
+			[
+				'label' => __( 'Company', 'addon-pack' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => __('companyname.com', 'addon-pack'),
+				'label_block'   => true,
+			]
         );
         
         $this->add_control(
@@ -90,7 +123,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
             'ap_testimonial_rating_number',
             [
-                'label' => __( 'Ratting', 'happy-elementor-addons' ),
+                'label' => __( 'Ratting', 'addon-pack' ),
                 'type' => Controls_Manager::SLIDER,
                 'default' => [
                     'unit' => 'px',
@@ -106,35 +139,13 @@ class Testimonial extends Widget_Base {
                 ],
                 'dynamic' => [
                     'active' => true,
-                ]
+				],
+				'condition' => [
+                  'ap_testimonial_display_rating' => 'yes',
+              ],
             ]
         );
         
-        $this->add_responsive_control(
-			'ap_testimonial_align',
-			[
-				'label' => __( 'Alignment', 'addon-pack' ),
-				'type' => Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => __( 'Left', 'addon-pack' ),
-						'icon' => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'addon-pack' ),
-						'icon' => 'fa fa-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'addon-pack' ),
-						'icon' => 'fa fa-align-right',
-					],
-				],
-				'default'       => 'left',
-				'selectors' => [
-					'{{WRAPPER}} .ap-testimonial-wrapper' => 'text-align: {{VALUE}};',
-				],
-			]
-        );
         
         $this->end_controls_section();
 
@@ -148,7 +159,7 @@ class Testimonial extends Widget_Base {
         $this->add_control(
 			'ap_testimonial_enable_avatar',
 			[
-				'label' => esc_html__( 'Enable Avatar?', 'essential-addons-for-elementor-lite'),
+				'label' => esc_html__( 'Enable Avatar?', 'addon-pack'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -173,7 +184,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'ap_testimonial_image',
 			[
-				'label' => __( 'Testimonial Avatar', 'essential-addons-for-elementor-lite'),
+				'label' => __( 'Testimonial Avatar', 'addon-pack'),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -209,28 +220,30 @@ class Testimonial extends Widget_Base {
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
         );
-        
-        $this->add_control(
-            'ap_testimonial_style',
-            [
-               'label'       => __( 'Select Style', 'addon-pack'),
-               'type' => Controls_Manager::SELECT,
-               'default' => 'default-style',
-               'options' => [
-                   'default-style'  => __( 'Default', 'addon-pack'),
-                   'classic-style'  => __( 'Classic', 'addon-pack'),
-               ],
-            ]
-        );
 
         $this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'ap_testimonial_bg',
 				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .ap-testimonial-wrapper',
+				'selector'  => '{{WRAPPER}} .ap-testimonial-main-container',
 			]
-        );
+		);
+		
+		$this->add_control(
+			'ap_testimonial_shape_color',
+			[
+				'label'     => esc_html__( 'Shape Color', 'addon-pack' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ap-testimonial-main-container::after' => 'border-top: 44px solid {{VALUE}} ;',
+					// '{{WRAPPER}} .ap-reviewer-content .ap-reviewer-content-details' => 'border-bottom: 1px solid {{VALUE}} ;',
+					'{{WRAPPER}} .ap-reviewer-content .ap-reviewer-content-details::before' => 'background: {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-wrapper .ap-testimonial-main-container' => 'border-left: 3px solid {{VALUE}} ;',
+				],
+
+			]
+		);
         
         $this->add_control(
 			'ap_testimonial_border_style',
@@ -246,7 +259,7 @@ class Testimonial extends Widget_Base {
 					'groove' => esc_html__( 'Groove', 'addon-pack' ),
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-wrapper' => 'border-style: {{VALUE}};',
+					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-style: {{VALUE}};',
 				],
 			]
 		);
@@ -258,13 +271,13 @@ class Testimonial extends Widget_Base {
 				'type'  => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'default' => [
-					'top'    => 1,
-					'right'  => 1,
-					'bottom' => 1,
-					'left'   => 1,
+					'top'    => 0,
+					'right'  => 0,
+					'bottom' => 0,
+					'left'   => 3,
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-wrapper' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'ap_testimonial_border_style!' => 'none'
@@ -277,9 +290,9 @@ class Testimonial extends Widget_Base {
 			[
 				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
-				'default'   => '#ececec',
+				'default'   => '#1abc9c',
 				'selectors' => [
-					'{{WRAPPER}} .ap-testimonial-wrapper' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'ap_testimonial_border_style!' => 'none'
@@ -300,7 +313,7 @@ class Testimonial extends Widget_Base {
 					'left'   => 5,
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -309,7 +322,7 @@ class Testimonial extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'ap_testimonial_shadow',
-				'selector' => '{{WRAPPER}} .ap-testimonial-wrapper',
+				'selector' => '{{WRAPPER}} .ap-testimonial-main-container',
 			]
 		);
 
@@ -320,7 +333,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-testimonial-main-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
 		);
@@ -332,7 +345,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-testimonial-main-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -347,51 +360,11 @@ class Testimonial extends Widget_Base {
 			]
         );
 
-        $this->add_responsive_control(
-            'ap_testimonial_image_width',
-            [
-                'label' => __( 'Width', 'addon-pack' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 65,
-                        'max' => 200,
-                    ],
-				],
-                'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-image' => '-webkit-flex: 0 0 {{SIZE}}{{UNIT}}; -ms-flex: 0 0 {{SIZE}}{{UNIT}}; flex: 0 0 {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}}.ha-testimonial--left .ha-testimonial__reviewer-meta' => '-webkit-flex: 0 0 calc(100% - {{SIZE}}{{UNIT}}); -ms-flex: 0 0 calc(100% - {{SIZE}}{{UNIT}}); flex: 0 0 calc(100% - {{SIZE}}{{UNIT}}); max-width: calc(100% - {{SIZE}}{{UNIT}});',
-                    '{{WRAPPER}}.ha-testimonial--right .ha-testimonial__reviewer-meta' => '-webkit-flex: 0 0 calc(100% - {{SIZE}}{{UNIT}}); -ms-flex: 0 0 calc(100% - {{SIZE}}{{UNIT}}); flex: 0 0 calc(100% - {{SIZE}}{{UNIT}}); max-width: calc(100% - {{SIZE}}{{UNIT}});',
-                    '{{WRAPPER}}.ha-testimonial--left .ha-testimonial__content:after' => 'left: calc(({{SIZE}}{{UNIT}} / 2) - 18px);',
-                    '{{WRAPPER}}.ha-testimonial--right .ha-testimonial__content:after' => 'right: calc(({{SIZE}}{{UNIT}} / 2) - 18px);',
-                ],
-            ]
-        );
-
-		$this->add_responsive_control(
-            'ap_testimonial_image_height',
-            [
-                'label' => __( 'Height', 'addon-pack' ),
-                'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 20,
-                        'max' => 200,
-                    ],
-				],
-                'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-image' => 'height: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
                 'name' => 'ap_testimonial_image_border',
-                'selector' => '{{WRAPPER}} .ap-testimonial-image',
+                'selector' => '{{WRAPPER}} .ap-reviewer-thumbnail',
             ]
 		);
 
@@ -402,7 +375,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%' ],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-reviewer-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
 		);
@@ -411,7 +384,7 @@ class Testimonial extends Widget_Base {
             Group_Control_Box_Shadow::get_type(),
             [
                 'name' => 'ap_testimonial_image_box_shadow',
-                'selector' => '.ap-testimonial-image',
+                'selector' => '.ap-reviewer-thumbnail',
             ]
 		);
 		
@@ -425,84 +398,15 @@ class Testimonial extends Widget_Base {
 			]
         );
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'      => 'ap_testimonial_content_bg',
-				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .ap-testimonial-content',
-				'selector'  => '{{WRAPPER}}.ap-testimonial-classic-style .ap-testimonial-content:before',
-				'selector'  => '{{WRAPPER}}.ap-testimonial-classic-style .ap-testimonial-content:after',
-			]
-        );
-
 		$this->add_control(
             'ap_testimonial_content_color',
             [
                 'label' => __( 'Text Color', 'addon-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-content' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ap-reviewer-content-details' => 'color: {{VALUE}}',
                 ],
             ]
-		);
-
-		$this->add_control(
-			'ap_testimonial_content_border_style',
-			[
-				'label'   => esc_html__( 'Border Style', 'addon-pack' ),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'solid',
-				'options' => [
-					'none'   => esc_html__( 'None', 'addon-pack' ),
-					'solid'  => esc_html__( 'Solid', 'addon-pack' ),
-					'dotted' => esc_html__( 'Dotted', 'addon-pack' ),
-					'dashed' => esc_html__( 'Dashed', 'addon-pack' ),
-					'groove' => esc_html__( 'Groove', 'addon-pack' ),
-				],
-				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-content' => 'border-style: {{VALUE}};',
-				],
-				'condition' => [
-					'ap_testimonial_style' => 'default-style',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'ap_testimonial_content_border_size',
-			[
-				'label' => esc_html__( 'Border Size', 'addon-pack' ),
-				'type'  => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'default' => [
-					'top'    => 0,
-					'right'  => 0,
-					'bottom' => 0,
-					'left'   => 4,
-				],
-				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-content' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'ap_testimonial_style' => 'default-style',
-				],
-			]
-		);
-
-		$this->add_control(
-			'ap_testimonial_content_border_color',
-			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
-				'type'      => Controls_Manager::COLOR,
-				'default'   => '#d45113',
-				'selectors' => [
-					'{{WRAPPER}} .ap-testimonial-content' => 'border-color: {{VALUE}};',
-				],
-				'condition' => [
-					'ap_testimonial_style' => 'default-style',
-				],
-			]
 		);
 
 		$this->add_group_control(
@@ -510,7 +414,7 @@ class Testimonial extends Widget_Base {
             [
                 'name' => 'ap_testimonial_content_typography',
                 'label' => __( 'Typography', 'addon-pack' ),
-				'selector' => '{{WRAPPER}} .ap-testimonial-content',
+				'selector' => '{{WRAPPER}} .ap-reviewer-content-details',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
             ]
 		);
@@ -522,7 +426,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-reviewer-content-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
 		);
@@ -534,7 +438,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-content' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-reviewer-content-details' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -650,6 +554,61 @@ class Testimonial extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+        
+        $this->start_controls_section(
+			'ap_testimonial_company_style',
+			[
+				'label' => __( 'Company Style', 'addon-pack' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+            'ap_testimonial_company_color',
+            [
+                'label' => __( 'Text Color', 'addon-pack' ),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ap-testimonial-company' => 'color: {{VALUE}}',
+                ],
+            ]
+		);
+
+		$this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'ap_testimonial_company_typography',
+                'label' => __( 'Typography', 'addon-pack' ),
+				'selector' => '{{WRAPPER}} .ap-testimonial-company',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+            ]
+		);
+		
+		$this->add_responsive_control(
+            'ap_testimonial_company_padding',
+            [
+                'label' => esc_html__('Padding', 'addon-pack'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .ap-testimonial-company' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+		);
+		
+        $this->add_responsive_control(
+            'ap_testimonial_company_margin',
+            [
+                'label' => esc_html__('Margin', 'addon-pack'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .ap-testimonial-company' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+		);
+
+		$this->end_controls_section();
 		
 		$this->start_controls_section(
 			'ap_testimonial_rating_style',
@@ -662,7 +621,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
             'ap_testimonial_ratting_size',
             [
-                'label' => __( 'Size', 'happy-elementor-addons' ),
+                'label' => __( 'Size', 'addon-pack' ),
                 'type' => Controls_Manager::SLIDER,
 				'size_units' => ['px'],
 				'range' => [
@@ -671,10 +630,10 @@ class Testimonial extends Widget_Base {
 					],
 				],
 				'default' => [
-					'size' => 18,
+					'size' => 16,
 				],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-rating' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-reviewer-rating li i' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -682,11 +641,11 @@ class Testimonial extends Widget_Base {
         $this->add_control(
             'ap_testimonial_ratting_color',
             [
-                'label' => __( 'Rating Color', 'happy-elementor-addons' ),
+                'label' => __( 'Rating Color', 'addon-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#ffd203',
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-rating' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ap-reviewer-rating li i' => 'color: {{VALUE}};',
                 ],
             ]
 		);
@@ -706,114 +665,154 @@ class Testimonial extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	
-	protected function render() {
 
-        $settings = $this->get_settings_for_display();
+	protected function thumbnail_image(){ 
+		$settings = $this->get_settings();
+		if ( ! empty( $settings['ap_testimonial_image']['url'] ) && 'yes' == $settings['ap_testimonial_enable_avatar'] ) : ?>
+			<div class="ap-reviewer-thumbnail <?php if('circle' == $settings['ap_testimonial_avatar_style']): ?> ap-testimonial-image-circle <?php endif; ?> ">
+				<?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'ap_testimonial_image' ); ?>
+			</div>
+		<?php endif; 
+	}
 
-		$this->add_inline_editing_attributes( 'ap_testimonial_content', 'basic' );
-		$this->add_render_attribute( 'ap_testimonial_content', 'class', 'ap-testimonial-content' );
-
+	 protected function reviewer_name_and_title(){
+		$settings = $this->get_settings();
 		$this->add_inline_editing_attributes( 'ap_testimonial_name', 'basic' );
 		$this->add_render_attribute( 'ap_testimonial_name', 'class', 'ap-testimonial-name' );
 
 		$this->add_inline_editing_attributes( 'ap_testimonial_designation', 'basic' );
 		$this->add_render_attribute( 'ap_testimonial_designation', 'class', 'ap-testimonial-designation' );
 		
-		$rating_enable = $this->get_settings_for_display('ap_testimonial_display_rating');
+		$this->add_inline_editing_attributes( 'ap_testimonial_company', 'basic' );
+		$this->add_render_attribute( 'ap_testimonial_company', 'class', 'ap-testimonial-company' );
 		
+		?>
+
+		<h4 <?php $this->print_render_attribute_string( 'ap_testimonial_name' ); ?>><?php echo $settings['ap_testimonial_name']; ?></h4>
+		<h6 <?php $this->print_render_attribute_string( 'ap_testimonial_designation' ); ?>><?php echo $settings['ap_testimonial_designation']; ?> - <span <?php $this->print_render_attribute_string( 'ap_testimonial_company' ); ?>><?php echo $settings['ap_testimonial_company']; ?></span></h6>
+	
+	<?php
+
+	 }
+
+	protected function testimonial_content(){
+		$settings = $this->get_settings();
+		$this->add_inline_editing_attributes( 'ap_testimonial_content', 'basic' );
+		$this->add_render_attribute( 'ap_testimonial_content', 'class', 'ap-reviewer-content-details' );
+	?>
+
+	<div class="ap-reviewer-content">
+		<p <?php $this->print_render_attribute_string( 'ap_testimonial_content' ); ?>> 
+			<span class="ap-quotation-icon">
+				<i class="fa fa-quote-left"></i>
+			</span> 
+				<?php echo $settings['ap_testimonial_content'] ; ?>
+			<span class="ap-quotation-icon">
+				<i class="fa fa-quote-right"></i>
+			</span> 
+		</p>
+	</div>
+
+	<?php 	
+
+	 }
+
+	protected function rating(){
+
+		$settings = $this->get_settings();
+
 		$ratting = max( 0, $settings['ap_testimonial_rating_number']['size'] );
+	?>
+
+	<ul class="ap-reviewer-rating">
+		<?php 
+			for ( $i = 1; $i <= 5; ++$i ) :
+				if ( $i <= $ratting ) {
+					echo '<li><i class="fa fa-star" aria-hidden="true"></i></li>';
+				} else {
+					echo '<li><i class="fa fa-star-o" aria-hidden="true"></i></li>';
+				}
+			endfor;
+		?>
+	</ul>
+
+	<?php 
+		
+	}
+	
+	protected function render() {
+
+        $settings = $this->get_settings_for_display();
+		$rating_enable = $settings['ap_testimonial_display_rating'];
 
 		?>
 
 
         <div class="ap-testimonial-wrapper">
-            <?php if('default-style' == $settings['ap_testimonial_style']) : ?>
-                <div class="ap-testimonial-default-style">
+			<?php if('default-style' == $settings['ap_testimonial_style']) : ?>
 				
-					<div <?php $this->print_render_attribute_string( 'ap_testimonial_content' ); ?>>
-                        <?php echo ha_kses_basic( $settings['ap_testimonial_content'] ); ?>
-                    </div>
-				
-                    <div class="ap-testimonial-reviewer">
-                        <?php if ( ! empty( $settings['ap_testimonial_image']['url'] ) && 'yes' == $settings['ap_testimonial_enable_avatar'] ) : ?>
-						<div class="ap-testimonial-image ap-testimonial-image-circle <?php if('square' == $settings['ap_testimonial_avatar_style']): ?> ap-testimonial-image-square <?php endif; ?> ">
-                                <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'ap_testimonial_image' ); ?>
-                            </div>
-                        <?php endif; ?>
+				<div class="ap-testimonial-main-container">
+					<div class="ap-testimonial-default-style">
 
-                        <div class="ap-testimonial-reviewer-info">
-                            <div <?php $this->print_render_attribute_string( 'ap_testimonial_name' ); ?>><?php echo ha_kses_basic( $settings['ap_testimonial_name'] ); ?></div>
-                            <div <?php $this->print_render_attribute_string( 'ap_testimonial_designation' ); ?>><?php echo ha_kses_basic( $settings['ap_testimonial_designation'] ); ?></div>
-						
+						<div class="ap-reviewer-info">
+							
+							<?php $this->testimonial_content(); ?>
+
+							<?php $this->reviewer_name_and_title(); ?>
+					
 							<?php 
 								if ( $rating_enable == 'yes' ) :
 							?>
-							<ul class="ap-testimonial-rating">
-								<?php 
-									for ( $i = 1; $i <= 5; ++$i ) :
-										if ( $i <= $ratting ) {
-											echo '<i class="fa fa-star" aria-hidden="true"></i>';
-										} else {
-											echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
-										}
-									endfor;
-								?>
-							</ul>
-
+							<?php $this->rating(); ?>
 							<?php 
 								endif;
 							?>
-						
-						</div>
-                    </div>
 
+						</div>
+
+						<?php $this->thumbnail_image(); ?>
+					</div>
 				</div>
+
+			<?php endif; ?>
+
+			<?php if('classic-style' == $settings['ap_testimonial_style']) : ?>
+				
+				<div class="ap-testimonial-main-container">
+					<div class="ap-testimonial-classic-style">
+
+						<div class="ap-reviewer-info">
+							
+							<div class="ap-classic-reviewer-details">
+
+								<div class="ap-classic-reviewer-info">
+
+									<?php $this->reviewer_name_and_title(); ?>
+					
+									<?php 
+										if ( $rating_enable == 'yes' ) :
+									?>
+									<?php $this->rating(); ?>
+									<?php 
+										endif;
+									?>
+								</div>
+
+								<div class="ap-classic-reviewer-image">
+									<?php $this->thumbnail_image(); ?>
+								</div>
+
+							</div>
+
+							<?php $this->testimonial_content(); ?>
+							
+						</div>
+
+					</div>
+				</div>
+
 			<?php endif; ?>
 			
-			<?php if('classic-style' == $settings['ap_testimonial_style']) : ?>
-                <div class="ap-testimonial-classic-style">
-                    
-                    <div class="ap-testimonial-reviewer">
-                        <?php if ( ! empty( $settings['ap_testimonial_image']['url'] ) && 'yes' == $settings['ap_testimonial_enable_avatar'] ) : ?>
-						<div class="ap-testimonial-image ap-testimonial-image-circle <?php if('square' == $settings['ap_testimonial_avatar_style']): ?> ap-testimonial-image-square <?php endif; ?> ">
-                                <?php echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'ap_testimonial_image' ); ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <div class="ap-testimonial-reviewer-info">
-                            <div <?php $this->print_render_attribute_string( 'ap_testimonial_name' ); ?>><?php echo ha_kses_basic( $settings['ap_testimonial_name'] ); ?></div>
-                            <div <?php $this->print_render_attribute_string( 'ap_testimonial_designation' ); ?>><?php echo ha_kses_basic( $settings['ap_testimonial_designation'] ); ?></div>
-						
-							<?php 
-								if ( $rating_enable == 'yes' ) :
-							?>
-							<ul class="ap-testimonial-rating">
-								<?php 
-									for ( $i = 1; $i <= 5; ++$i ) :
-										if ( $i <= $ratting ) {
-											echo '<i class="fa fa-star" aria-hidden="true"></i>';
-										} else {
-											echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
-										}
-									endfor;
-								?>
-							</ul>
-
-							<?php 
-								endif;
-							?>
-						
-						</div>
-                    </div>
-
-					<div <?php $this->print_render_attribute_string( 'ap_testimonial_content' ); ?>>
-                        <?php echo ha_kses_basic( $settings['ap_testimonial_content'] ); ?>
-                    </div>
-
-				</div>
-				
-            <?php endif; ?>
         </div>
 
 <?php 
