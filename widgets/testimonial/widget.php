@@ -231,16 +231,37 @@ class Testimonial extends Widget_Base {
 		);
 		
 		$this->add_control(
-			'ap_testimonial_shape_color',
+			'ap_testimonial_shape_default_color',
 			[
-				'label'     => esc_html__( 'Shape Color', 'addon-pack' ),
+				'label'     => esc_html__( 'Style Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-testimonial-main-container::after' => 'border-top: 44px solid {{VALUE}} ;',
-					// '{{WRAPPER}} .ap-reviewer-content .ap-reviewer-content-details' => 'border-bottom: 1px solid {{VALUE}} ;',
-					'{{WRAPPER}} .ap-reviewer-content .ap-reviewer-content-details::before' => 'background: {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details' => 'border-bottom: 1px solid {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details::before' => 'background: {{VALUE}} ;',
 					'{{WRAPPER}} .ap-testimonial-wrapper .ap-testimonial-main-container' => 'border-left: 3px solid {{VALUE}} ;',
 				],
+				'condition' => [
+					'ap_testimonial_style' => 'default-style'
+				]
+
+			]
+		);
+
+		$this->add_control(
+			'ap_testimonial_shape_classic_color',
+			[
+				'label'     => esc_html__( 'Style Color', 'addon-pack' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .ap-testimonial-main-container::after' => 'border-top: 44px solid {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-classic-style .ap-reviewer-content .ap-reviewer-content-details' => 'border-top: 1px solid {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-classic-style .ap-reviewer-content .ap-reviewer-content-details::before' => 'background: {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-wrapper .ap-testimonial-main-container' => 'border-left: 3px solid {{VALUE}} ;',
+				],
+				'condition' => [
+					'ap_testimonial_style' => 'classic-style'
+				]
 
 			]
 		);
@@ -261,6 +282,7 @@ class Testimonial extends Widget_Base {
 				'selectors'  => [
 					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-style: {{VALUE}};',
 				],
+				'separator'  => 'before',
 			]
 		);
 

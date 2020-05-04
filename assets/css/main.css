@@ -284,7 +284,7 @@
     line-height: 1.7;
     padding: 7px 0px 0px 0px;
     margin: 5px 0px;
-    border-top: 1px solid #1abc9c !important;
+    border-top: 1px solid #1abc9c;
     border-bottom: 0px none;
     position: relative; }
     .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-reviewer-content .ap-reviewer-content-details .ap-quotation-icon i {
