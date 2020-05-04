@@ -1,0 +1,198 @@
+/* -------------------------------- */
+/* Addon Pack Info Box Styles
+/* -------------------------------- */
+
+
+.ap-infobox-wrapper {
+    .ap-infobox-design-1{
+        display: flex;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+    
+        flex-wrap: wrap;
+        flex-direction: column;
+        position: relative;
+        padding: 25px 15px; 
+    
+        -webkit-transition: all .24s ease-in-out;
+        transition: all .24s ease-in-out;
+    
+        border-color: #2a384c;
+        border-radius: 15px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, .4);
+        box-shadow: 0 4px 10px 0 rgba(55, 94, 246, .4);
+        border-top: 3px solid #1abc9c;
+    
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    
+        .ap-infobox-details h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0  10px; 
+            text-transform: capitalize;
+        }
+        .ap-infobox-details p{
+            font-size: 18px;
+            line-height: 26px; 
+            margin: 0;
+            font-weight: 500;
+        }
+        .ap-infobox-thumb{
+            margin-bottom: 15px;
+        }
+
+        .ap-infobox-thumb img{
+            -webkit-animation: pulse 400ms ease-in-out;
+            animation: pulse 400ms ease-in-out;
+        }
+
+        .ap-infobox-thumb i{
+            -webkit-animation: pulse 400ms ease-in-out;
+            animation: pulse 400ms ease-in-out;
+            font-size: 40px;
+            color: #4a35f1;
+        }
+
+        .ap-infobox-link a{
+            font-size: 18px;
+            color: #4a35f1;
+
+            i{
+                padding-left: 5px;
+                font-size: 20px;
+                margin-top: 12px;
+                position: absolute;
+            }
+        }
+    
+    }
+
+   
+    .ap-infobox-design-2{
+        display: flex;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+    
+        flex-wrap: wrap;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
+        padding: 25px 15px; 
+        border-radius: 10px;
+        
+        filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.07));
+        background-color: #ffffff;
+    
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-box-align: left;
+        -webkit-align-items: left;
+        -ms-flex-align: left;
+        align-items: left;
+        -webkit-box-pack: left;
+        -webkit-justify-content: left;
+        -ms-flex-pack: left;
+        justify-content: left;
+    
+        .ap-infobox-details h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0  12px; 
+            text-transform: capitalize;
+            text-align: left;
+        }
+        .ap-infobox-details p{
+            font-size: 18px;
+            line-height: 26px; 
+            margin: 0;
+            font-weight: 500;
+            text-align: left;
+        }
+        .ap-infobox-thumb{
+            margin-bottom: 15px;
+        }
+
+        .ap-infobox-thumb img{
+            -webkit-animation: pulse 400ms ease-in-out;
+            animation: pulse 400ms ease-in-out;
+        }
+
+        .ap-infobox-thumb i{
+            -webkit-animation: pulse 400ms ease-in-out;
+            animation: pulse 400ms ease-in-out;
+            font-size: 40px;
+            color: #4a35f1;
+        }
+
+        .ap-infobox-link a{
+            font-size: 18px;
+            color: #4a35f1;
+
+            i{
+                padding-left: 5px;
+                font-size: 14px;
+                margin-top: 16px;
+                position: absolute;
+            }
+        }
+    
+    }
+
+    .ap-infobox-design-2:before {
+        content: '';
+        position: absolute;
+        right: -65px;
+        width: 95px;
+        height: 95px;
+        top: -55px;
+        border-radius: 50px;
+        background-color: rgba(232, 5, 102, 0.90);
+        -webkit-transition: all .3s;
+        -o-transition: all .3s;
+        transition: all .3s;
+        z-index: -1;
+    }
+
+    .ap-infobox-design-2:hover:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        background-color: rgba(232, 5, 102, 0.90);
+    }
+
+    .ap-infobox-design-2:hover{
+        .ap-infobox-thumb i{
+            color: #ffffff;
+        }
+        .ap-infobox-details h4{
+            color: #ffffff;
+        }
+        .ap-infobox-details p{
+            color: #ffffff;
+        }
+        .ap-infobox-link a{
+            color: #ffffff;
+        }
+    }
+ 
+    
+}
