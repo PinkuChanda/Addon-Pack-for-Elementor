@@ -1,0 +1,121 @@
+/* -------------------------------- */
+/* Addon Pack Info Box Styles
+/* -------------------------------- */
+.ap-infobox-wrapper .ap-infobox-design-1 {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: relative;
+  padding: 25px 15px;
+  -webkit-transition: all .24s ease-in-out;
+  transition: all .24s ease-in-out;
+  border-color: #2a384c;
+  border-radius: 15px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 10px 0 rgba(55, 94, 246, 0.1);
+  box-shadow: 0 1px 10px 0 rgba(55, 94, 246, 0.1);
+  border-top: 3px solid #1abc9c; }
+  .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details {
+    text-align: center; }
+    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details h4 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0  10px;
+      text-transform: capitalize; }
+    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details p {
+      font-size: 18px;
+      line-height: 26px;
+      margin: 0;
+      font-weight: 500; }
+    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details a {
+      font-size: 18px;
+      color: #4a35f1; }
+      .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details a i {
+        font-size: 14px; }
+  .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-thumb {
+    margin-bottom: 15px;
+    text-align: center; }
+    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-thumb img {
+      -webkit-animation: pulse 400ms ease-in-out;
+      animation: pulse 400ms ease-in-out; }
+    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-thumb i {
+      -webkit-animation: pulse 400ms ease-in-out;
+      animation: pulse 400ms ease-in-out;
+      font-size: 40px;
+      color: #4a35f1; }
+.ap-infobox-wrapper .ap-infobox-design-1:hover {
+  -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, 0.4);
+  box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4); }
+.ap-infobox-wrapper .ap-infobox-design-2 {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  padding: 25px 15px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, 0.4);
+  box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4); }
+  .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details {
+    text-align: left; }
+    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details h4 {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0  12px;
+      text-transform: capitalize; }
+    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details p {
+      font-size: 18px;
+      line-height: 26px;
+      margin: 0;
+      font-weight: 500; }
+    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details a {
+      font-size: 18px;
+      color: #4a35f1; }
+      .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details a i {
+        font-size: 14px; }
+  .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-thumb {
+    margin-bottom: 15px;
+    text-align: left; }
+    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-thumb img {
+      -webkit-animation: pulse 400ms ease-in-out;
+      animation: pulse 400ms ease-in-out; }
+    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-thumb i {
+      -webkit-animation: pulse 400ms ease-in-out;
+      animation: pulse 400ms ease-in-out;
+      font-size: 40px;
+      color: #4a35f1; }
+.ap-infobox-wrapper .ap-infobox-design-2:before {
+  content: '';
+  position: absolute;
+  right: -65px;
+  width: 95px;
+  height: 95px;
+  top: -55px;
+  border-radius: 50px;
+  background-color: rgba(232, 5, 102, 0.9);
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  z-index: -1; }
+.ap-infobox-wrapper .ap-infobox-design-2:hover:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background-color: rgba(232, 5, 102, 0.9); }
+.ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-thumb i {
+  color: #ffffff; }
+.ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details h4, .ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details p, .ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details a {
+  color: #ffffff; }
+
+/*# sourceMappingURL=infobox.css.map */
