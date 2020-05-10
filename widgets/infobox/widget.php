@@ -45,7 +45,7 @@ class Infobox extends Widget_Base {
 	
 	protected function register_general_controls(){
 		$this->start_controls_section(
-			'ap_infobox_layouts',
+			'ap_infobox_layout',
 			[
 				'label' => __( 'Layouts', 'addon-pack' ),
 			]
@@ -60,7 +60,6 @@ class Infobox extends Widget_Base {
                'options' => [
                    'design-one'    => __( 'Design 1', 'addon-pack'),
                    'design-two'    => __( 'Design 2', 'addon-pack'),
-                   'design-three'  => __( 'Design 3', 'addon-pack'),
                ],
             ]
 		);
@@ -368,12 +367,13 @@ class Infobox extends Widget_Base {
 		$this->start_controls_section(
 			'ap_infobox_general_style',
 			[
-				'label' => __( 'General Style', 'addon-pack' ),
+				'label' => __( 'General', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
 
 		// Design 1 General Style
+
 
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
@@ -444,7 +444,6 @@ class Infobox extends Widget_Base {
 		);
 
 			// Design 2 General Style
-
 
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
@@ -521,8 +520,7 @@ class Infobox extends Widget_Base {
                 'label' => __( ' Shape & Hover Color', 'addon-pack' ),
                 'separator' => 'before'
             ]
-        );
-
+		);
 
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
@@ -1005,9 +1003,9 @@ class Infobox extends Widget_Base {
 
 		$ap_infobox_title = '<' . $ap_infobox_title_tag. ' class="ap-infobox-title" >'. $settings['ap_infobox_title'] . '</' . $ap_infobox_title_tag . '> ';
 
+		echo $ap_infobox_title;
+		
 		?>
-
-		<?php echo $ap_infobox_title; ?>
 		
 	 <?php 
 	 
@@ -1072,9 +1070,9 @@ class Infobox extends Widget_Base {
 
         <div class="ap-infobox-wrapper"> 
 
-		<?php if('design-one' == $settings['ap_infobox_style']) : ?>
+		<?php if('design-one' == $settings['ap_infobox_style']) { ?>
 			
-            <div class="ap-infobox-design-1"> 
+		<div class="ap-infobox-design-1"> 
 
 				<div class="ap-infobox-details">
 			
@@ -1086,10 +1084,9 @@ class Infobox extends Widget_Base {
 				</div>
 
 				
-			</div>
-		<?php endif; ?>
+		</div>
 		
-        <?php if('design-two' == $settings['ap_infobox_style']) : ?>
+        <?php } elseif('design-two' == $settings['ap_infobox_style']) { ?>
             <div class="ap-infobox-design-2"> 
                     
 				<div class="ap-infobox-details">
@@ -1101,8 +1098,9 @@ class Infobox extends Widget_Base {
 
 				</div>
 
-            </div>
-        <?php endif; ?>
+			</div>
+			
+		<?php } ?>
 
 		</div>
 

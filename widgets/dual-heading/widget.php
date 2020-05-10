@@ -228,7 +228,7 @@ class Dual_Heading extends Widget_Base {
 		$this->start_controls_section(
 			'ap_dual_heading_general_style',
 			[
-				'label' => __( 'General Style', 'addon-pack' ),
+				'label' => __( 'General', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -308,34 +308,6 @@ class Dual_Heading extends Widget_Base {
 				'selector' => '{{WRAPPER}} .ap-dual-heading-title',
 			]
 		);
-
-		$this->add_control(
-			'ap_blend_mode',
-			[
-				'label' => __( 'Blend Mode', 'addon-pack' ),
-				'type' => Controls_Manager::SELECT,
-				'options' => [
-					'' => __( 'Normal', 'addon-pack' ),
-					'multiply' => 'Multiply',
-					'screen' => 'Screen',
-					'overlay' => 'Overlay',
-					'darken' => 'Darken',
-					'lighten' => 'Lighten',
-					'color-dodge' => 'Color Dodge',
-					'saturation' => 'Saturation',
-					'color' => 'Color',
-					'difference' => 'Difference',
-					'exclusion' => 'Exclusion',
-					'hue' => 'Hue',
-					'luminosity' => 'Luminosity',
-				],
-				'selectors' => [
-					'{{WRAPPER}} .ap-dual-heading-title' => 'mix-blend-mode: {{VALUE}}',
-				],
-				'separator' => 'none',
-			]
-		);
-
 
 		$this->end_controls_section();
 
@@ -523,7 +495,7 @@ class Dual_Heading extends Widget_Base {
 		$this->add_control(
 			'ap_sub_heading_style_type',
 			[
-				'label'   => __( 'Sub Heading Style', 'addon-pack' ),
+				'label'   => __( 'Sub Heading', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
 					'none'     => esc_html__('None', 'addon-pack'),

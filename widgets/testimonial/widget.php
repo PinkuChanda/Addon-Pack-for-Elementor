@@ -40,7 +40,7 @@ class Testimonial extends Widget_Base {
 	protected function register_general_controls(){
 
 		$this->start_controls_section(
-			'ap_testimonial_layouts',
+			'ap_testimonial_layout',
 			[
 				'label' => __( 'Layouts', 'addon-pack' ),
 			]
@@ -216,7 +216,7 @@ class Testimonial extends Widget_Base {
         $this->start_controls_section(
 			'ap_testimonial_general_style',
 			[
-				'label' => __( 'General Style', 'addon-pack' ),
+				'label' => __( 'General', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
         );
@@ -328,12 +328,6 @@ class Testimonial extends Widget_Base {
 				'label'      => esc_html__( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
-				'default' => [
-					'top'    => 5,
-					'right'  => 5,
-					'bottom' => 5,
-					'left'   => 5,
-				],
 				'selectors'  => [
 					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -377,7 +371,7 @@ class Testimonial extends Widget_Base {
         $this->start_controls_section(
 			'ap_testimonial_image_style',
 			[
-				'label' => __( 'Image Style', 'addon-pack' ),
+				'label' => __( 'Image', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
         );
@@ -415,7 +409,7 @@ class Testimonial extends Widget_Base {
         $this->start_controls_section(
 			'ap_testimonial_content_style',
 			[
-				'label' => __( 'Content Style', 'addon-pack' ),
+				'label' => __( 'Content', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
         );
@@ -470,7 +464,7 @@ class Testimonial extends Widget_Base {
         $this->start_controls_section(
 			'ap_testimonial_name_style',
 			[
-				'label' => __( 'Name Style', 'addon-pack' ),
+				'label' => __( 'Name', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -507,25 +501,13 @@ class Testimonial extends Widget_Base {
                 ],
             ]
 		);
-		
-        $this->add_responsive_control(
-            'ap_testimonial_name_margin',
-            [
-                'label' => esc_html__('Margin', 'addon-pack'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-name' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
 
         $this->end_controls_section();
         
         $this->start_controls_section(
 			'ap_testimonial_designation_style',
 			[
-				'label' => __( 'Designation Style', 'addon-pack' ),
+				'label' => __( 'Designation', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -562,25 +544,13 @@ class Testimonial extends Widget_Base {
                 ],
             ]
 		);
-		
-        $this->add_responsive_control(
-            'ap_testimonial_designation_margin',
-            [
-                'label' => esc_html__('Margin', 'addon-pack'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-designation' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-		);
 
 		$this->end_controls_section();
         
         $this->start_controls_section(
 			'ap_testimonial_company_style',
 			[
-				'label' => __( 'Company Style', 'addon-pack' ),
+				'label' => __( 'Company', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -591,7 +561,7 @@ class Testimonial extends Widget_Base {
                 'label' => __( 'Text Color', 'addon-pack' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-company' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .ap-testimonial-designation .ap-testimonial-company' => 'color: {{VALUE}}',
                 ],
             ]
 		);
@@ -601,7 +571,7 @@ class Testimonial extends Widget_Base {
             [
                 'name' => 'ap_testimonial_company_typography',
                 'label' => __( 'Typography', 'addon-pack' ),
-				'selector' => '{{WRAPPER}} .ap-testimonial-company',
+				'selector' => '{{WRAPPER}} .ap-testimonial-designation .ap-testimonial-company',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
             ]
 		);
@@ -613,19 +583,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-company' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-		);
-		
-        $this->add_responsive_control(
-            'ap_testimonial_company_margin',
-            [
-                'label' => esc_html__('Margin', 'addon-pack'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-company' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-testimonial-designation .ap-testimonial-company' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
 		);
@@ -635,7 +593,7 @@ class Testimonial extends Widget_Base {
 		$this->start_controls_section(
 			'ap_testimonial_rating_style',
 			[
-				'label' => __( 'Rating Style', 'addon-pack' ),
+				'label' => __( 'Rating', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -668,6 +626,56 @@ class Testimonial extends Widget_Base {
 				'default' => '#ffd203',
                 'selectors' => [
                     '{{WRAPPER}} .ap-reviewer-rating li i' => 'color: {{VALUE}};',
+                ],
+            ]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'ap_testimonial_quotation_style',
+			[
+				'label' => __( 'Quotation', 'addon-pack' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+            'ap_testimonial_quotation_color',
+            [
+                'label' => __( 'Color', 'addon-pack' ),
+				'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ap-reviewer-content-details .ap-quotation-icon i' => 'color: {{VALUE}};',
+                ],
+            ]
+		);
+
+		$this->add_responsive_control(
+            'ap_testimonial_quotation_size',
+            [
+                'label' => __( 'Font Size', 'addon-pack' ),
+                'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px'],
+				'range' => [
+					'px' => [
+						'max' => 40,
+					],
+				],
+                'selectors' => [
+                    '{{WRAPPER}} .ap-reviewer-content-details .ap-quotation-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+		);
+		
+		$this->add_responsive_control(
+            'ap_testimonial_quotation_padding',
+            [
+                'label' => esc_html__('Padding', 'addon-pack'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .ap-reviewer-content-details .ap-quotation-icon i' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
 		);
@@ -765,13 +773,13 @@ class Testimonial extends Widget_Base {
 	protected function render() {
 
         $settings = $this->get_settings_for_display();
-		$rating_enable = $settings['ap_testimonial_display_rating'];
+		$rating_enable = $settings['ap_testimonial_display_rating'];		
 
 		?>
 
 
         <div class="ap-testimonial-wrapper">
-			<?php if('default-style' == $settings['ap_testimonial_style']) : ?>
+			<?php if('default-style' == $settings['ap_testimonial_style']) { ?>
 				
 				<div class="ap-testimonial-main-container">
 					<div class="ap-testimonial-default-style">
@@ -796,9 +804,7 @@ class Testimonial extends Widget_Base {
 					</div>
 				</div>
 
-			<?php endif; ?>
-
-			<?php if('classic-style' == $settings['ap_testimonial_style']) : ?>
+			<?php } elseif('classic-style' == $settings['ap_testimonial_style']) { ?>
 				
 				<div class="ap-testimonial-main-container">
 					<div class="ap-testimonial-classic-style">
@@ -833,7 +839,7 @@ class Testimonial extends Widget_Base {
 					</div>
 				</div>
 
-			<?php endif; ?>
+			<?php } ?>
 			
         </div>
 

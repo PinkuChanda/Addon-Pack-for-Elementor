@@ -233,7 +233,7 @@ class Call_to_Action extends Widget_Base {
 		$this->start_controls_section(
 			'ap_cta_general_style',
 			[
-				'label' => __( 'General Style', 'addon-pack' ),
+				'label' => __( 'General', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -351,7 +351,7 @@ class Call_to_Action extends Widget_Base {
 		$this->start_controls_section(
 			'ap_cta_title_style',
 			[
-				'label' => __( 'Title Style', 'addon-pack' ),
+				'label' => __( 'Title', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -405,7 +405,7 @@ class Call_to_Action extends Widget_Base {
 		$this->start_controls_section(
 			'ap_cta_content_style',
 			[
-				'label' => __( 'Content Style', 'addon-pack' ),
+				'label' => __( 'Content', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -459,7 +459,7 @@ class Call_to_Action extends Widget_Base {
 		$this->start_controls_section(
 			'ap_cta_button_style',
 			[
-				'label' => __( 'Button Style', 'addon-pack' ),
+				'label' => __( 'Button', 'addon-pack' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);

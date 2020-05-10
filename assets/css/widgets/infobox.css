@@ -117,5 +117,7 @@
   color: #ffffff; }
 .ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details h4, .ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details p, .ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details a {
   color: #ffffff; }
+.ap-infobox-wrapper .ap-infobox-disable {
+  display: none; }
 
 /*# sourceMappingURL=infobox.css.map */
