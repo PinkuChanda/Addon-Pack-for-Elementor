@@ -7,7 +7,6 @@ use Elementor\Utils;
 use Elementor\Control_Media;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Css_Filter;
@@ -64,6 +63,7 @@ class Card extends Widget_Base {
                    'design-one'      => __( 'Design 1', 'addon-pack'),
                    'design-two'      => __( 'Design 2', 'addon-pack'),
                    'design-three'    => __( 'Design 3', 'addon-pack'),
+                   'design-four'     => __( 'Design 4', 'addon-pack'),
                ],
             ]
 		);
@@ -99,7 +99,7 @@ class Card extends Widget_Base {
                 'default' => 'large',
                 'separator' => 'none',
             ]
-        );
+		);
 
         $this->add_control(
 			'ap_card_badge_enable',
@@ -156,12 +156,79 @@ class Card extends Widget_Base {
 			[
 				'label' => __( 'Description', 'addon-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
-				'default' => __('Enter a good one liner that supports the above heading and gives users a reason to click the read more below.', 'addon-pack'),
+				'default' => __('Enter a good one liner that supports the above heading and gives users a reason to click the Button below.', 'addon-pack'),
 				'dynamic' => [
 					'active' => true,
                 ],
                 'label_block' => true,
 			]
+		);
+		
+		$this->add_control(
+			'ap_card_title_url_enable',
+            [
+                'label'         => __('Title URL', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+                'description'   => __('Enable or disable title link','addon-pack'),
+            ]
+        );
+
+		$this->add_control('ap_card_title_link_selection', 
+			[
+				'label'         => __('Link Type', 'addon-pack'),
+				'type'          => Controls_Manager::SELECT,
+				'options'       => [
+					'custom_url'   => __('URL', 'addon-pack'),
+					'existing_url'  => __('Existing Page', 'addon-pack'),
+				],
+				'default'       => 'custom_url',
+				'label_block'   => true,
+				'condition'     => [
+					'ap_card_title_url_enable' => 'yes',
+				]
+			]
+		);
+	
+		$this->add_control('ap_card_title_url',
+			[
+				'label'         => __('Link', 'addon-pack'),
+				'type'          => Controls_Manager::URL,
+				'dynamic'       => [ 'active' => true ],
+				'default'       => [
+					'url'   => '#',
+				],
+				'label_block'   => true,
+				'condition'     => [
+					'ap_card_title_url_enable'     => 'yes',
+					'ap_card_title_link_selection' => 'custom_url'
+				]
+			]
+		);
+	
+		$this->add_control('ap_card_title_existing_url',
+			[
+				'label'         => __('Existing Page', 'addon-pack'),
+				'type'          => Controls_Manager::SELECT2,
+				'options'       => $this->getPostsInstance()->get_all_posts(),
+				'condition'     => [
+					'ap_card_title_url_enable'         => 'yes',
+					'ap_card_title_link_selection'     => 'existing_url',
+				],
+				'multiple'      => false,
+				'label_block'   => true,
+			]
+		);
+
+		$this->add_control(
+			'ap_card_title_existing_url_target_blank',
+            [
+                'label'         => __('Open a new Tab', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+				'description'   => __('Enable or disable open with tab','addon-pack'),
+				'condition'     => [
+					'ap_card_title_link_selection'     => 'existing_url',
+				],
+            ]
         );
 
         $this->add_control(
@@ -213,16 +280,16 @@ class Card extends Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-			'ap_card_read_more',
+			'ap_button',
 			[
-				'label' => __( 'Read More', 'addon-pack' ),
+				'label' => __( 'Button', 'addon-pack' ),
 			]
 		);
 		
 		$this->add_control(
-			'ap_card_button_enable',
+			'ap_button_enable',
             [
-                'label'         => __('Read More Button Enable', 'addon-pack'),
+                'label'         => __('Button Enable', 'addon-pack'),
                 'type'          => Controls_Manager::SWITCHER,
 				'description'   => __('Enable or disable button','addon-pack'),
 				'default'       =>  'yes',
@@ -230,23 +297,23 @@ class Card extends Widget_Base {
         );
 
         $this->add_control(
-			'ap_card_read_more_text',
+			'ap_button_text',
 			[
-				'label' => __( 'Read More Text', 'addon-pack' ),
+				'label' => __( 'Button Text', 'addon-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __('Service', 'addon-pack'),
+				'default' => __('Read More', 'addon-pack'),
 				'dynamic' => [
 					'active' => true,
 				],
 				'label_block' => true,
 				'condition'     => [
-					'ap_card_button_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				]
 			]
 		);
 
 		
-		$this->add_control('ap_card_read_more_link_selection', 
+		$this->add_control('ap_button_link_selection', 
 		[
 			'label'         => __('Link Type', 'addon-pack'),
 			'type'          => Controls_Manager::SELECT,
@@ -257,12 +324,12 @@ class Card extends Widget_Base {
 			'default'       => 'custom_url',
 			'label_block'   => true,
 			'condition'     => [
-				'ap_card_button_enable' => 'yes',
+				'ap_button_enable' => 'yes',
 			]
 		]
 		);
 
-		$this->add_control('ap_card_read_more_url',
+		$this->add_control('ap_button_url',
 			[
 				'label'         => __('Link', 'addon-pack'),
 				'type'          => Controls_Manager::URL,
@@ -272,20 +339,20 @@ class Card extends Widget_Base {
 				],
 				'label_block'   => true,
 				'condition'     => [
-					'ap_card_button_enable' => 'yes',
-					'ap_card_read_more_link_selection' => 'custom_url'
+					'ap_button_enable' => 'yes',
+					'ap_button_link_selection' => 'custom_url'
 				]
 			]
 		);
 
-		$this->add_control('ap_card_read_more_existing_url',
+		$this->add_control('ap_button_existing_url',
 			[
 				'label'         => __('Existing Page', 'addon-pack'),
 				'type'          => Controls_Manager::SELECT2,
 				'options'       => $this->getPostsInstance()->get_all_posts(),
 				'condition'     => [
-					'ap_card_button_enable' => 'yes',
-					'ap_card_read_more_link_selection'     => 'existing_url',
+					'ap_button_enable' => 'yes',
+					'ap_button_link_selection'     => 'existing_url',
 				],
 				'multiple'      => false,
 				'label_block'   => true,
@@ -293,66 +360,106 @@ class Card extends Widget_Base {
 		);
 
 		$this->add_control(
-            'ap_card_read_more_icon_heading',
+			'ap_button_existing_url_target_blank',
+            [
+                'label'         => __('Open a new Tab', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+				'description'   => __('Enable or disable open with tab','addon-pack'),
+				'condition'     => [
+					'ap_button_link_selection'   => 'existing_url',
+				],
+            ]
+        );
+
+		$this->add_control(
+			'ap_button_size',
+			[
+				'label'   => esc_html__( 'Button Size', 'addon-pack' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'md',
+				'options' => [
+					'xs' => esc_html__( 'Extra Small', 'addon-pack' ),
+					'sm' => esc_html__( 'Small', 'addon-pack' ),
+					'md' => esc_html__( 'Medium', 'addon-pack' ),
+					'lg' => esc_html__( 'Large', 'addon-pack' ),
+					'xl' => esc_html__( 'Extra Large', 'addon-pack' ),
+				],
+				'condition'     => [
+					'ap_button_enable' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+            'ap_button_icon_heading',
             [
                 'type' => Controls_Manager::HEADING,
                 'label' => __( 'Icon', 'addon-pack' ),
 				'separator' => 'before',
 				'condition' => [
-                    'ap_card_button_enable' => 'yes',
+                    'ap_button_enable' => 'yes',
 				],
             ]
 		);
 		
 		$this->add_control(
-			'ap_card_read_more_icon_enable',
+			'ap_button_icon_enable',
             [
                 'label'         => __('Icon Enable', 'addon-pack'),
                 'type'          => Controls_Manager::SWITCHER,
 				'description'   => __('Enable or disable Icon','addon-pack'),
 				'condition' => [
-                    'ap_card_button_enable' => 'yes',
+                    'ap_button_enable' => 'yes',
 				],
 				'default' => 'yes',
             ]
         );
 
 		$this->add_control(
-			'ap_card_read_more_icon',
+			'ap_button_icon',
 			[
 				'label'       => esc_html__( 'Icon', 'addon-pack' ),
 				'type'        => Controls_Manager::ICON,
 				'default' => 'fas fa-atom',
 				'label_block' => true,
 				'condition' => [
-					'ap_card_read_more_icon_enable' => 'yes',
-					'ap_card_button_enable' => 'yes',
+					'ap_button_icon_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
 			]
 		);
 		
 
 		$this->add_control(
-			'ap_card_read_more_icon_align',
-			[
-				'label'   => esc_html__( 'Icon Alignment', 'addon-pack' ),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'right',
-				'options' => [
-					'left'   => esc_html__( 'Left', 'addon-pack' ),
-					'right'  => esc_html__( 'Right', 'addon-pack' ),
-					'none'   => esc_html__( 'None', 'addon-pack' ),
+            'ap_button_icon_align',
+            [
+                'label' => __( 'Icon Position', 'addon-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Before', 'addon-pack' ),
+                        'icon' => 'eicon-h-align-left',
+					],
+					'none' => [
+                        'title' => __( 'None', 'addon-pack' ),
+                        'icon' => 'eicon-close-circle',
+                    ],
+                    'right' => [
+                        'title' => __( 'After', 'addon-pack' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'default' => 'left',
+                'condition' => [
+					'ap_button_icon_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
-				'condition' => [
-					'ap_card_read_more_icon_enable' => 'yes',
-					'ap_card_button_enable' => 'yes',
-				],
-				'label_block' => true,
-			]
-		);
+            ]
+        );
 
 		$this->add_control(
-			'ap_card_read_more_icon_spacing',
+			'ap_button_icon_spacing',
 			[
 				'label' => esc_html__( 'Icon Spacing', 'addon-pack' ),
 				'type'  => Controls_Manager::SLIDER,
@@ -365,10 +472,10 @@ class Card extends Widget_Base {
 					'size' => 5,
 				],
 				'condition' => [
-					'ap_card_read_more_icon!' => '',
-					'ap_card_read_more_icon_align!' => 'none',
-					'ap_card_read_more_icon_enable' => 'yes',
-					'ap_card_button_enable' => 'yes',
+					'ap_button_icon!' => '',
+					'ap_button_icon_align!' => 'none',
+					'ap_button_icon_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ap-card-body .ap-card-icon-right'  => 'margin-left: {{SIZE}}{{UNIT}};',
@@ -405,11 +512,11 @@ class Card extends Widget_Base {
 					],
 					'px' => [
 						'min' => 50,
-						'max' => 1000,
+						'max' => 1500,
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-card-img' => 'flex: 0 0 {{SIZE}}{{UNIT}}; max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-card-img' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -427,7 +534,7 @@ class Card extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-card-img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-card-img' => 'max-height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -777,7 +884,7 @@ class Card extends Widget_Base {
             [
                 'name' => 'ap_card_description_typography',
                 'label' => __( 'Typography', 'addon-pack' ),
-                'selector' => '{{WRAPPER}} .ha-card-text',
+                'selector' => '{{WRAPPER}} .ap-card-description',
                 'scheme' => Scheme_Typography::TYPOGRAPHY_3,
             ]
 		);
@@ -797,27 +904,27 @@ class Card extends Widget_Base {
 		$this->end_controls_section();
 		
 		$this->start_controls_section(
-			'ap_card_read_more_style',
+			'ap_button_style',
 			[
-				'label'     => __( 'Read More', 'addon-pack' ),
+				'label'     => __( 'Button', 'addon-pack' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'ap_card_button_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_readmore_style' );
+		$this->start_controls_tabs( 'tabs_button_style' );
 
 		$this->start_controls_tab(
-			'ap_card_read_more_normal',
+			'ap_button_normal',
 			[
 				'label' => __( 'Normal', 'addon-pack' ),
 			]
 		);
 
 		$this->add_control(
-			'ap_card_read_more_text_color',
+			'ap_button_text_color',
 			[
 				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
@@ -827,34 +934,36 @@ class Card extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'ap_button_background',
 			[
-				'name'      => 'ap_card_read_more_background',
-				'selector'  => '{{WRAPPER}} .ap-card-body a', 
-				'separator' => 'before', 
+				'label' => __( 'Background Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .ap-card-button' => 'background-color: {{VALUE}};',
+				],
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
-				'name'        => 'ap_card_read_more_border',
+				'name'        => 'ap_button_border',
 				'separator'   => 'before',
-				'default'     => '1px',
-				'selector'    => '{{WRAPPER}} .ap-card-body a'
+				'selector'    => '{{WRAPPER}} .ap-card-button'
 			]
 		);
 
 		$this->add_responsive_control(
-			'ap_card_read_more_radius',
+			'ap_button_radius',
 			[
 				'label'      => __( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'separator'  => 'after', 
 				'selectors'  => [
-					'{{WRAPPER}} .ap-card-body a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-card-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -862,19 +971,19 @@ class Card extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
-				'name'     => 'ap_card_read_more_shadow',
-				'selector' => '{{WRAPPER}} .ap-card-body a',
+				'name'     => 'ap_button_shadow',
+				'selector' => '{{WRAPPER}} .ap-card-button',
 			]
 		);
 
 		$this->add_responsive_control(
-			'ap_card_read_more_padding',
+			'ap_button_padding',
 			[
 				'label'      => __( 'Padding', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-card-body a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-card-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -882,7 +991,7 @@ class Card extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'ap_card_read_more_typography',
+				'name'     => 'ap_button_typography',
 				'selector' => '{{WRAPPER}} .ap-card-body .ap-card-btn-text',
 			]
 		);
@@ -890,57 +999,55 @@ class Card extends Widget_Base {
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
-			'ap_card_read_more_hover',
+			'ap_button_hover',
 			[
 				'label' => __( 'Hover', 'addon-pack' ),
 			]
 		);
 
 		$this->add_control(
-			'ap_card_read_more_hover_text_color',
+			'ap_button_hover_text_color',
 			[
 				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-card-body a:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .ap-card-body a:hover i' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'      => 'ap_card_read_more_hover_background',
-				'selector'  => '{{WRAPPER}} .ap-card-body a:hover',
-				'separator' => 'before',
+					'{{WRAPPER}} .ap-card-body .ap-card-button:hover .ap-card-body .ap-card-btn-text, {{WRAPPER}} .ap-card-body .ap-card-button:hover .ap-card-body .ap-card-btn-icon' => 'color: {{VALUE}};',				],
 			]
 		);
 
 		$this->add_control(
-			'ap_card_read_more_hover_border_color',
+			'ap_button_hover_background',
+			[
+				'label' => __( 'Background Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .ap-card-body .ap-card-button:hover' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'ap_button_hover_border_color',
 			[
 				'label'     => __( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-card-body a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .ap-card-button:hover' => 'border-color: {{VALUE}};',
 				],
-				'condition' => [
-					'readmore_border_border!' => ''
-				]
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
-				'name'     => 'ap_card_read_more_hover_shadow',
-				'selector' => '{{WRAPPER}} .ap-card-body a:hover',
+				'name'     => 'ap_button_hover_shadow',
+				'selector' => '{{WRAPPER}} .ap-card-button:hover',
 			]
 		);
 
 		$this->add_control(
-			'ap_card_read_more_hover_animation',
+			'ap_button_hover_animation',
 			[
 				'label' => __( 'Hover Animation', 'addon-pack' ),
 				'type' => Controls_Manager::HOVER_ANIMATION,
@@ -968,15 +1075,19 @@ class Card extends Widget_Base {
     protected function card_image(){ 
         $settings = $this->get_settings_for_display();
 
-		$badge_enable = $settings['ap_card_badge_enable'];
+		if ( ! empty( $settings['ap_card_image']['url'] ) ) {
+			$this->add_render_attribute( 'ap_card_image', 'src', $settings['ap_card_image']['url'] );
+			$this->add_render_attribute( 'ap_card_image', 'alt', Control_Media::get_image_alt( $settings['ap_card_image'] ) );
+			$this->add_render_attribute( 'ap_card_image', 'title', Control_Media::get_image_title( $settings['ap_card_image'] ) );
+			
+			if ( $settings['ap_card_image_hover_animation'] ) {
+				$this->add_render_attribute( 'ap_card_image', 'class', 'elementor-animation-' . $settings['ap_card_image_hover_animation'] );
+			}
 
-		$this->add_render_attribute( 'ap_card_image', 'class', 'elementor-animation-' . $settings['ap_card_image_hover_animation'] );
-        $this->add_render_attribute( 'ap_card_image', 'src', $settings['ap_card_image']['url'] );
-        $this->add_render_attribute( 'ap_card_image', 'alt', Control_Media::get_image_alt( $settings['ap_card_image'] ) );
-        $this->add_render_attribute( 'ap_card_image', 'title', Control_Media::get_image_title( $settings['ap_card_image'] ) );
-        
-        echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'ap_card_image' );
+			echo Group_Control_Image_Size::get_attachment_image_html( $settings, 'ap_card_image' );
+		}
 		 
+		$badge_enable = $settings['ap_card_badge_enable'];
         $this->add_render_attribute( 'ap_card_badge_text', 'class', 'ap-card-badge' );
 		$this->add_render_attribute(
             'ap_card_badge_text',
@@ -995,14 +1106,31 @@ class Card extends Widget_Base {
 
 		$this->add_inline_editing_attributes( 'ap_card_title', 'basic' );
 		$this->add_render_attribute( 'ap_card_title', 'class', 'ap-card-title' );
-		
+		$this->add_render_attribute( 'ap_card_title_existing_url_target_blank', 'target', '_blank' );
+
 		$ap_card_title_tag = $settings['ap_card_tag'];
 
 		$ap_card_title = '<' . $ap_card_title_tag. ' class="ap-card-title" >'. $settings['ap_card_title'] . '</' . $ap_card_title_tag . '> ';
+		
+		$ap_title_link = '';
+        if( $settings['ap_card_title_url_enable'] == 'yes' && $settings['ap_card_title_link_selection'] == 'existing_url' ) {
+            $ap_title_link = get_permalink( $settings['ap_card_title_existing_url'] );
+        } elseif( $settings['ap_card_title_url_enable'] == 'yes' && $settings['ap_card_title_link_selection'] == 'custom_url' ) {
+            $ap_title_link = $settings['ap_card_title_url']['url'];
+		}
+		
+		?>
 
-        echo $ap_card_title; 
+		<?php if( ! empty( $ap_title_link ) ) : ?>
+			<a href="<?php echo esc_attr( $ap_title_link ); ?>" <?php if($settings['ap_card_title_existing_url_target_blank'] == 'yes'): echo $this->get_render_attribute_string( 'ap_card_title_existing_url_target_blank' ); endif; ?> <?php if( ! empty( $settings['ap_card_title_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_card_title_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+		<?php endif; ?>
+		
+			<?php echo $ap_card_title; ?>
 
-        ?>
+		<?php if( ! empty( $ap_title_link ) ) : ?>
+			</a>
+		<?php endif; ?>
+
         
 	 <?php 
 	 
@@ -1024,45 +1152,54 @@ class Card extends Widget_Base {
 
     protected function card_link(){
 		$settings = $this->get_settings_for_display();
-		$readmore_icon_alignment = $settings['ap_card_read_more_icon_align'];
+		$readmore_icon_alignment = $settings['ap_button_icon_align'];
 
-		$this->add_render_attribute( 'ap_card_existing_url_target_blank', 'target', '_blank' );
+		if($settings['ap_button_enable'] == 'yes'){
+			$this->add_render_attribute( 'ap_button_existing_url_target_blank', 'target', '_blank' );
 
-		$card_link = '';
-        if( $settings['ap_card_button_enable'] == 'yes' && $settings['ap_card_read_more_link_selection'] == 'existing_url' ) {
-            $card_link = get_permalink( $settings['ap_card_read_more_existing_url'] );
-        } elseif( $settings['ap_card_button_enable'] == 'yes' && $settings['ap_card_read_more_link_selection'] == 'custom_url' ) {
-            $card_link = $settings['ap_card_read_more_url']['url'];
+			$this->add_render_attribute( 'ap_button_rander', 'class', 'ap-card-button');
+			$this->add_render_attribute( 'ap_button_rander', 'class', 'ap-button-' . esc_attr($settings['ap_button_size']) );
+
+			if ( $settings['ap_button_hover_animation'] ) {
+				$this->add_render_attribute( 'ap_button_rander', 'class', 'elementor-animation-' . $settings['ap_button_hover_animation'] );
+			} 
 		}
 
-		if ( $settings['ap_card_read_more_hover_animation'] ) {
-			$this->add_render_attribute( 'ap_card_hover_animation', 'class', 'elementor-animation-' . $settings['ap_card_read_more_hover_animation'] );
-		} ?>
+		$card_link = '';
+        if( $settings['ap_button_enable'] == 'yes' && $settings['ap_button_link_selection'] == 'existing_url' ) {
+            $card_link = get_permalink( $settings['ap_button_existing_url'] );
+        } elseif( $settings['ap_button_enable'] == 'yes' && $settings['ap_button_link_selection'] == 'custom_url' ) {
+            $card_link = $settings['ap_button_url']['url'];
+		}
 
-		<?php if( ! empty( $card_link ) ) : ?>
-			<a href="<?php echo esc_attr( $card_link ); ?>" class="ap-card-button" <?php echo $this->get_render_attribute_string( 'ap_card_hover_animation' ); ?> <?php echo $this->get_render_attribute_string( 'ap_card_existing_url_target_blank' ); ?> <?php if( ! empty( $settings['ap_card_read_more_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_card_read_more_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
-		<?php endif; ?>
+		?>
 
-		<?php if($readmore_icon_alignment == 'left'): ?>
-			<i class="ap-card-btn-icon <?php echo esc_attr($settings['ap_card_read_more_icon'] ); ?> ap-card-icon-left" aria-hidden="true"></i> 
-			<span class="ap-card-btn-text"><?php echo $settings['ap_card_read_more_text']; ?></span>					
-		<?php elseif($readmore_icon_alignment == 'right'): ?>
-			<span class="ap-card-btn-text"><?php echo $settings['ap_card_read_more_text']; ?></span>					
-			<i class="ap-card-btn-icon <?php echo esc_attr($settings['ap_card_read_more_icon'] ); ?> ap-card-icon-right" aria-hidden="true"></i> 
-		<?php else: ?>	
-			<span class="ap-card-btn-text"><?php echo $settings['ap_card_read_more_text']; ?></span>					
-        <?php endif; ?>
+			<?php if( ! empty( $card_link ) ) : ?>
+				<a href="<?php echo esc_attr( $card_link ); ?>" <?php echo $this->get_render_attribute_string( 'ap_button_existing_url_target_blank' ); ?> <?php if( ! empty( $settings['ap_button_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_button_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+			<?php endif; ?>
 
-		<?php if( ! empty( $card_link ) ) : ?>
+				<div <?php echo $this->get_render_attribute_string( 'ap_button_rander' ); ?>>
+
+					<?php if($readmore_icon_alignment == 'left'): ?>
+						<i class="ap-card-btn-icon <?php echo esc_attr($settings['ap_button_icon'] ); ?> ap-card-icon-left" aria-hidden="true"></i> 
+						<span class="ap-card-btn-text"><?php echo $settings['ap_button_text']; ?></span>					
+					<?php elseif($readmore_icon_alignment == 'right'): ?>
+						<span class="ap-card-btn-text"><?php echo $settings['ap_button_text']; ?></span>					
+						<i class="ap-card-btn-icon <?php echo esc_attr($settings['ap_button_icon'] ); ?> ap-card-icon-right" aria-hidden="true"></i> 
+					<?php else: ?>	
+						<span class="ap-card-btn-text"><?php echo $settings['ap_button_text']; ?></span>					
+					<?php endif; ?>
+
+				</div>
+
+			<?php if( ! empty( $card_link ) ) : ?>
 				</a>
-		<?php endif; ?>
-	
+			<?php endif; ?>
 	 
 	<?php }
 
 	protected function render() {
         $settings = $this->get_settings_for_display();
-		$is_image = ! empty( $settings['ap_card_image']['url'] );
         
         ?>
 
@@ -1072,11 +1209,9 @@ class Card extends Widget_Base {
     
                     <div class="ap-card">
 
-                        <?php if($is_image): ?>
                         <div class="ap-card-img">
                             <?php $this->card_image(); ?>
                         </div>
-                        <?php endif; ?>
                         
                         <div class="ap-card-body">
 
@@ -1096,11 +1231,9 @@ class Card extends Widget_Base {
     
                     <div class="ap-card">
 
-						<?php if($is_image): ?>
-							<div class="ap-card-img">
-								<?php $this->card_image(); ?>
-							</div>
-                        <?php endif; ?>
+						<div class="ap-card-img">
+							<?php $this->card_image(); ?>
+						</div>
                         
                         <div class="ap-card-body">
 
@@ -1121,11 +1254,9 @@ class Card extends Widget_Base {
     
                     <div class="ap-card">
 
-						<?php if($is_image): ?>
-							<div class="ap-card-img">
-								<?php $this->card_image(); ?>
-							</div>
-                        <?php endif; ?>
+						<div class="ap-card-img">
+							<?php $this->card_image(); ?>
+						</div>
                         
                         <div class="ap-card-body">
 
@@ -1139,9 +1270,31 @@ class Card extends Widget_Base {
 
                 </div>
 
-    <?php
-                        
-        } 
+        <?php } elseif('design-four' == $settings['ap_card_style']) { ?>
+
+			<div class="ap-card-design-4"> 
+    
+				<div class="ap-card">
+
+					<div class="ap-card-body">
+
+						<?php $this->card_title(); ?>
+						<?php $this->card_description(); ?>
+						<?php $this->card_link(); ?>
+
+					</div>
+
+					<div class="ap-card-img">
+						<?php $this->card_image(); ?>
+					</div>
+
+				</div>
+
+			</div>
+	 
+	<?php  
+	 
+		} 
 
     }
 

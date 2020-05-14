@@ -155,7 +155,7 @@ class Call_to_Action extends Widget_Base {
                 'label_on' => __('Show', 'addon-pack'),
                 'label_off' => __('Hide', 'addon-pack'),
                 'return_value' => 'yes',
-				'default' => 'yes',
+				'default' => 'no',
 				'separator'   => 'before',
             ]
         );
@@ -167,8 +167,9 @@ class Call_to_Action extends Widget_Base {
 				'type'        => Controls_Manager::ICON,
 				'label_block' => true,
 				'condition' => [
-                    'ap_cta_button_icon_active!' => '',
-                ],
+                    'ap_cta_button_icon_active' => 'yes',
+				],
+				'default' => 'fas fa-atom',
 			]
 		);
 
@@ -186,7 +187,7 @@ class Call_to_Action extends Widget_Base {
 						'size' => 8,
 					],
 				'condition' => [
-					'ap_cta_button_icon_active!' => '',
+                    'ap_cta_button_icon_active' => 'yes',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .ap-cta-button .ap-cta-button-icon-right'  => 'margin-left: {{SIZE}}{{UNIT}};',
@@ -570,7 +571,8 @@ class Call_to_Action extends Widget_Base {
 					'{{WRAPPER}} .ap-cta-button .ap-cta-button-icon-right' => 'color: {{VALUE}};',
 				],
 				'condition' => [
-					'ap_cta_button_icon!' => ''
+					'ap_cta_button_icon!' => '',
+					'ap_cta_button_icon_active' => 'yes',
 				],
 			]
 		);
@@ -629,7 +631,8 @@ class Call_to_Action extends Widget_Base {
 					'{{WRAPPER}} .ap-cta-button:hover i' => 'color: {{VALUE}};',
 				],
 				'condition' => [
-					'ap_cta_button_icon!' => ''
+					'ap_cta_button_icon!' => '',
+					'ap_cta_button_icon_active' => 'yes',
 				],
 			]
 		);

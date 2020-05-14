@@ -108,7 +108,45 @@ class Infobox extends Widget_Base {
                     'ap_infobox_icon_type' => 'ap_infobox_icon'
                 ]
             ]
-        );
+		);
+		
+		$this->add_control(
+			'ap_infobox_icon_view',
+			[
+				'label' => __( 'View', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'default' => __( 'Default', 'elementor' ),
+					'stacked' => __( 'Stacked', 'elementor' ),
+					'framed'  => __( 'Framed', 'elementor' ),
+					'classic' => __( 'Classic', 'elementor' ),
+				],
+				'condition' => [
+                    'ap_infobox_icon_type' => 'ap_infobox_icon'
+                ],
+				'default' => 'default',
+				'prefix_class' => 'ap-infobox-icon-view-',
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_icon_shape',
+			[
+				'label' => __( 'Shape', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'circle' => __( 'Circle', 'elementor' ),
+					'square' => __( 'Square', 'elementor' ),
+				],
+				'default' => 'circle',
+				'condition' => [
+					'ap_infobox_icon_view!' => 'default',
+					'ap_infobox_icon_view!' => 'classic',
+					'ap_infobox_icon_type' => 'ap_infobox_icon',
+				],
+				'prefix_class' => 'ap-infobox-icon-shape-',
+			]
+		);
 
         $this->add_control(
             'ap_infobox_image',
@@ -150,7 +188,75 @@ class Infobox extends Widget_Base {
                 ],
                 'label_block' => true,
 			]
+		);
+		
+		$this->add_control(
+			'ap_infobox_title_url_enable',
+            [
+                'label'         => __('Title URL', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+                'description'   => __('Enable or disable title link','addon-pack'),
+            ]
         );
+
+		$this->add_control('ap_infobox_title_link_selection', 
+			[
+				'label'         => __('Link Type', 'addon-pack'),
+				'type'          => Controls_Manager::SELECT,
+				'options'       => [
+					'custom_url'   => __('URL', 'addon-pack'),
+					'existing_url'  => __('Existing Page', 'addon-pack'),
+				],
+				'default'       => 'custom_url',
+				'label_block'   => true,
+				'condition'     => [
+					'ap_infobox_title_url_enable' => 'yes',
+				]
+			]
+		);
+	
+		$this->add_control('ap_infobox_title_url',
+			[
+				'label'         => __('Link', 'addon-pack'),
+				'type'          => Controls_Manager::URL,
+				'dynamic'       => [ 'active' => true ],
+				'default'       => [
+					'url'   => '#',
+				],
+				'label_block'   => true,
+				'condition'     => [
+					'ap_infobox_title_url_enable'     => 'yes',
+					'ap_infobox_title_link_selection' => 'custom_url'
+				]
+			]
+		);
+	
+		$this->add_control('ap_infobox_title_existing_url',
+			[
+				'label'         => __('Existing Page', 'addon-pack'),
+				'type'          => Controls_Manager::SELECT2,
+				'options'       => $this->getPostsInstance()->get_all_posts(),
+				'condition'     => [
+					'ap_infobox_title_url_enable'         => 'yes',
+					'ap_infobox_title_link_selection'     => 'existing_url',
+				],
+				'multiple'      => false,
+				'label_block'   => true,
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_title_existing_url_target_blank',
+            [
+                'label'         => __('Open a new Tab', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+				'description'   => __('Enable or disable open with tab','addon-pack'),
+				'condition'     => [
+					'ap_infobox_title_link_selection'     => 'existing_url',
+				],
+            ]
+        );
+
 
         $this->add_control(
 			'ap_infobox_tag',
@@ -192,26 +298,29 @@ class Infobox extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-details' => 'text-align: {{VALUE}};',
-					'{{WRAPPER}} .ap-infobox-thumb'   => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ap-infobox'       => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ap-infobox-thumb' => 'text-align: {{VALUE}};',
 				],
+				'condition'     => [
+					'ap_infobox_style' => 'design-one',
+				]
 			]
 		);
 
 
         $this->end_controls_section();
 
-        $this->start_controls_section(
-			'ap_infobox_read_more',
+		$this->start_controls_section(
+			'ap_button',
 			[
-				'label' => __( 'Read More', 'addon-pack' ),
+				'label' => __( 'Button', 'addon-pack' ),
 			]
 		);
 		
 		$this->add_control(
-			'ap_infobox_url_enable',
+			'ap_button_enable',
             [
-                'label'         => __('Read More Button Enable', 'addon-pack'),
+                'label'         => __('Button Enable', 'addon-pack'),
                 'type'          => Controls_Manager::SWITCHER,
 				'description'   => __('Enable or disable button','addon-pack'),
 				'default'       =>  'yes',
@@ -219,23 +328,23 @@ class Infobox extends Widget_Base {
         );
 
         $this->add_control(
-			'ap_infobox_read_more_text',
+			'ap_button_text',
 			[
-				'label' => __( 'Read More Text', 'addon-pack' ),
+				'label' => __( 'Button Text', 'addon-pack' ),
 				'type' => Controls_Manager::TEXT,
-				'default' => __('Service', 'addon-pack'),
+				'default' => __('Read More', 'addon-pack'),
 				'dynamic' => [
 					'active' => true,
 				],
 				'label_block' => true,
 				'condition'     => [
-					'ap_infobox_url_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				]
 			]
 		);
 
 		
-		$this->add_control('ap_infobox_read_more_link_selection', 
+		$this->add_control('ap_button_link_selection', 
 		[
 			'label'         => __('Link Type', 'addon-pack'),
 			'type'          => Controls_Manager::SELECT,
@@ -246,12 +355,12 @@ class Infobox extends Widget_Base {
 			'default'       => 'custom_url',
 			'label_block'   => true,
 			'condition'     => [
-				'ap_infobox_url_enable' => 'yes',
+				'ap_button_enable' => 'yes',
 			]
 		]
 		);
 
-		$this->add_control('ap_infobox_read_more_url',
+		$this->add_control('ap_button_url',
 			[
 				'label'         => __('Link', 'addon-pack'),
 				'type'          => Controls_Manager::URL,
@@ -261,20 +370,20 @@ class Infobox extends Widget_Base {
 				],
 				'label_block'   => true,
 				'condition'     => [
-					'ap_infobox_url_enable' => 'yes',
-					'ap_infobox_read_more_link_selection' => 'custom_url'
+					'ap_button_enable' => 'yes',
+					'ap_button_link_selection' => 'custom_url'
 				]
 			]
 		);
 
-		$this->add_control('ap_infobox_read_more_existing_url',
+		$this->add_control('ap_button_existing_url',
 			[
 				'label'         => __('Existing Page', 'addon-pack'),
 				'type'          => Controls_Manager::SELECT2,
 				'options'       => $this->getPostsInstance()->get_all_posts(),
 				'condition'     => [
-					'ap_infobox_url_enable' => 'yes',
-					'ap_infobox_read_more_link_selection'     => 'existing_url',
+					'ap_button_enable' => 'yes',
+					'ap_button_link_selection'     => 'existing_url',
 				],
 				'multiple'      => false,
 				'label_block'   => true,
@@ -282,58 +391,106 @@ class Infobox extends Widget_Base {
 		);
 
 		$this->add_control(
-            'ap_infobox_read_more_icon_heading',
+			'ap_button_existing_url_target_blank',
             [
-                'type' => Controls_Manager::HEADING,
-                'label' => __( 'Icon', 'addon-pack' ),
-                'separator' => 'before'
-            ]
-		);
-		
-		$this->add_control(
-			'ap_infobox_read_more_icon_enable',
-            [
-                'label'         => __('Icon Enable', 'addon-pack'),
+                'label'         => __('Open a new Tab', 'addon-pack'),
                 'type'          => Controls_Manager::SWITCHER,
-				'description'   => __('Enable or disable Icon','addon-pack'),
-				'default'       =>  'yes',
+				'description'   => __('Enable or disable open with tab','addon-pack'),
+				'condition'     => [
+					'ap_button_link_selection'   => 'existing_url',
+				],
             ]
         );
 
 		$this->add_control(
-			'ap_infobox_read_more_icon',
+			'ap_button_size',
+			[
+				'label'   => esc_html__( 'Button Size', 'addon-pack' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'md',
+				'options' => [
+					'xs' => esc_html__( 'Extra Small', 'addon-pack' ),
+					'sm' => esc_html__( 'Small', 'addon-pack' ),
+					'md' => esc_html__( 'Medium', 'addon-pack' ),
+					'lg' => esc_html__( 'Large', 'addon-pack' ),
+					'xl' => esc_html__( 'Extra Large', 'addon-pack' ),
+				],
+				'condition'     => [
+					'ap_button_enable' => 'yes',
+				],
+			]
+		);
+
+		$this->add_control(
+            'ap_button_icon_heading',
+            [
+                'type' => Controls_Manager::HEADING,
+                'label' => __( 'Icon', 'addon-pack' ),
+				'separator' => 'before',
+				'condition' => [
+                    'ap_button_enable' => 'yes',
+				],
+            ]
+		);
+		
+		$this->add_control(
+			'ap_button_icon_enable',
+            [
+                'label'         => __('Icon Enable', 'addon-pack'),
+                'type'          => Controls_Manager::SWITCHER,
+				'description'   => __('Enable or disable Icon','addon-pack'),
+				'condition' => [
+                    'ap_button_enable' => 'yes',
+				],
+				'default' => 'yes',
+            ]
+        );
+
+		$this->add_control(
+			'ap_button_icon',
 			[
 				'label'       => esc_html__( 'Icon', 'addon-pack' ),
 				'type'        => Controls_Manager::ICON,
 				'default' => 'fas fa-angle-right',
 				'label_block' => true,
 				'condition' => [
-					'ap_infobox_read_more_icon_enable' => 'yes',
+					'ap_button_icon_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
 			]
 		);
 		
 
 		$this->add_control(
-			'ap_infobox_read_more_icon_align',
-			[
-				'label'   => esc_html__( 'Icon Alignment', 'addon-pack' ),
-				'type'    => Controls_Manager::SELECT,
-				'default' => 'right',
-				'options' => [
-					'left'   => esc_html__( 'Left', 'addon-pack' ),
-					'right'  => esc_html__( 'Right', 'addon-pack' ),
-					'none'   => esc_html__( 'None', 'addon-pack' ),
+            'ap_button_icon_align',
+            [
+                'label' => __( 'Icon Position', 'addon-pack' ),
+                'type' => Controls_Manager::CHOOSE,
+                'label_block' => false,
+                'options' => [
+                    'left' => [
+                        'title' => __( 'Before', 'addon-pack' ),
+                        'icon' => 'eicon-h-align-left',
+					],
+					'none' => [
+                        'title' => __( 'None', 'addon-pack' ),
+                        'icon' => 'eicon-close-circle',
+                    ],
+                    'right' => [
+                        'title' => __( 'After', 'addon-pack' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'default' => 'right',
+                'condition' => [
+					'ap_button_icon_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
-				'condition' => [
-					'ap_infobox_read_more_icon_enable' => 'yes',
-				],
-				'label_block' => true,
-			]
-		);
+            ]
+        );
 
 		$this->add_control(
-			'ap_infobox_read_more_icon_spacing',
+			'ap_button_icon_spacing',
 			[
 				'label' => esc_html__( 'Icon Spacing', 'addon-pack' ),
 				'type'  => Controls_Manager::SLIDER,
@@ -346,12 +503,14 @@ class Infobox extends Widget_Base {
 					'size' => 5,
 				],
 				'condition' => [
-					'ap_infobox_read_more_icon!' => '',
-					'ap_infobox_read_more_icon_align!' => 'none',
+					'ap_button_icon!' => '',
+					'ap_button_icon_align!' => 'none',
+					'ap_button_icon_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-details .ap-infobox-icon-right'  => 'margin-left: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .ap-infobox-details .ap-infobox-icon-left'   => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-infobox-button .ap-button-icon-right'  => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .ap-infobox-button .ap-button-icon-left'   => 'margin-right: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -372,167 +531,57 @@ class Infobox extends Widget_Base {
 			]
 		);
 
-		// Design 1 General Style
-
+		// General Style
 
 		$this->add_group_control(
 			Group_Control_Background::get_type(),
 			[
-				'name'      => 'ap_infobox_design_1_bg',
+				'name'      => 'ap_infobox_bg',
 				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .ap-infobox-design-1',
-				'condition' => [
-					'ap_infobox_style' => 'design-one'
-				]
+				'selector'  => '{{WRAPPER}} .ap-infobox-design-1, {{WRAPPER}} .ap-infobox-design-2',
 			]
 		);
 
-		$this->add_control(
-			'ap_infobox_design_1_border_color',
-			[
-				'label'     => esc_html__( 'Border Top Color', 'addon-pack' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-design-1' => 'border-top: 3px solid {{VALUE}} ;',
-				],
-				'condition' => [
-					'ap_infobox_style' => 'design-one'
-				]
-
-			]
-		);
+		$this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'ap_infobox_border_color',
+				'selector' => '{{WRAPPER}} .ap-infobox-design-1, {{WRAPPER}} .ap-infobox-design-2',
+            ]
+        );
 
 		$this->add_responsive_control(
-			'ap_infobox_design_1_radius',
+			'ap_infobox_radius',
 			[
 				'label'      => esc_html__( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
 					'{{WRAPPER}} .ap-infobox-design-1' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-infobox-design-2' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
-				'condition' => [
-					'ap_infobox_style' => 'design-one'
-				]
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
-				'name'     => 'ap_infobox_design_1_shadow',
-				'selector' => '{{WRAPPER}} .ap-infobox-design-1',
-				'condition' => [
-					'ap_infobox_style' => 'design-one'
-				]
+				'name'     => 'ap_infobox_shadow',
+				'selector' => '{{WRAPPER}} .ap-infobox-design-1, {{WRAPPER}} .ap-infobox-design-2',
 			]
 		);
 
 		$this->add_responsive_control(
-            'ap_infobox_design_1_padding',
+            'ap_infobox_padding',
             [
                 'label' => esc_html__('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
                     '{{WRAPPER}} .ap-infobox-design-1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'ap_infobox_style' => 'design-one'
-				]
-            ]
-		);
-
-			// Design 2 General Style
-
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'      => 'ap_infobox_design_2_bg',
-				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .ap-infobox-design-2',
-				'condition' => [
-					'ap_infobox_style' => 'design-two'
-				]
-			]
-		);
-
-		$this->add_control(
-			'ap_infobox_design_2_border_color',
-			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-design-2' => 'border-color: {{VALUE}};',
-				],
-				'condition' => [
-					'ap_infobox_style' => 'design-two'
-				]
-
-			]
-		);
-
-		$this->add_responsive_control(
-			'ap_infobox_design_2_radius',
-			[
-				'label'      => esc_html__( 'Border Radius', 'addon-pack' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%' ],
-				'selectors'  => [
-					'{{WRAPPER}} .ap-infobox-design-2' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'ap_infobox_style' => 'design-two'
-				]
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name'     => 'ap_infobox_design_2_shadow',
-				'selector' => '{{WRAPPER}} .ap-infobox-design-2',
-				'condition' => [
-					'ap_infobox_style' => 'design-two'
-				]
-			]
-		);
-
-		$this->add_responsive_control(
-            'ap_infobox_design_2_padding',
-            [
-                'label' => esc_html__('Padding', 'addon-pack'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
                     '{{WRAPPER}} .ap-infobox-design-2' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
-				'condition' => [
-					'ap_infobox_style' => 'design-two'
-				]
             ]
-		);
-
-		$this->add_control(
-            'ap_infobox_design_2_hover_color',
-            [
-                'type' => Controls_Manager::HEADING,
-                'label' => __( ' Shape & Hover Color', 'addon-pack' ),
-                'separator' => 'before'
-            ]
-		);
-
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'      => 'ap_infobox_design_2_hover_bg',
-				'label'     => esc_html__( 'Hover Color', 'addon-pack' ),
-				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .ap-infobox-design-2:before',
-				'condition' => [
-					'ap_infobox_style' => 'design-two'
-				]
-			]
 		);
 
 		$this->end_controls_section();
@@ -546,27 +595,6 @@ class Infobox extends Widget_Base {
 		);
 
 		$this->add_responsive_control(
-            'ap_flexbox_icon_size',
-            [
-                'label' => __( 'Icon Size', 'addon-pack' ),
-                'type' => Controls_Manager::SLIDER,
-                'size_units' => [ 'px' ],
-                'range' => [
-                    'px' => [
-                        'min' => 20,
-                        'max' => 250,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .ap-infobox-thumb i' => 'font-size: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                     'ap_infobox_icon_type' => 'ap_infobox_icon'
-                ]
-            ]
-        );
-
-        $this->add_responsive_control(
             'ap_flexbox_image_width',
             [
                 'label' => __( 'Width', 'addon-pack' ),
@@ -610,53 +638,215 @@ class Infobox extends Widget_Base {
                     'ap_infobox_icon_type' => 'ap_infobox_image'
                 ]
             ]
-        );
+		);
+
+		$this->start_controls_tabs( 'icon_colors' );
+
+		$this->start_controls_tab(
+			'ap_infobox_icon_colors_normal',
+			[
+				'label' => __( 'Normal', 'addon-pack' ),
+			]
+		);
 
 		$this->add_control(
-            'ap_infobox_icon_bg_color',
-            [
-                'label' => __( 'Icon Background Color', 'addon-pack' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .ap-infobox-thumb i' => 'background-color: {{VALUE}};',
-                ],
-                'condition' => [
+			'ap_infobox_icon_primary_color',
+			[
+				'label' => __( 'Primary Color', 'addon-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}}.ap-infobox-icon-view-stacked .ap-infobox-icon' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-classic .ap-infobox-icon' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-framed .ap-infobox-icon, {{WRAPPER}}.ap-infobox-icon-view-default .ap-infobox-icon' => 'fill: {{VALUE}}; color: {{VALUE}}; border-color: {{VALUE}};',
+				],
+				'condition' => [
                     'ap_infobox_icon_type' => 'ap_infobox_icon'
                 ]
-            ]
-        );
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_icon_secondary_color',
+			[
+				'label' => __( 'Secondary Color', 'addon-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}}.ap-infobox-icon-view-framed .ap-infobox-icon' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-stacked .ap-infobox-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-classic .ap-infobox-icon' => 'fill: {{VALUE}}; color: {{VALUE}};',
+				],
+				'condition' => [
+					'ap_infobox_icon_type' => 'ap_infobox_icon',
+					'ap_infobox_icon_view!' => 'default',
+                ]
+				
+			]
+		);
 
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
-				'name' => 'ap_infobox_icon_border',
-				'label' => esc_html__( 'Border', 'addon-pack' ),
-				'selector' => '{{WRAPPER}} .ap-infobox-thumb img, {{WRAPPER}} .ap-infobox-thumb i',
+				'name' => 'ap_card_image_border',
+				'selector' => '{{WRAPPER}} .ap-infobox-thumb img',
+				'condition' => [
+					'ap_infobox_icon_type' => 'ap_infobox_image'
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'ap_infobox_icon_colors_hover',
+			[
+				'label' => __( 'Hover', 'addon-pack' ),
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_icon_hover_primary_color',
+			[
+				'label' => __( 'Primary Color', 'addon-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}}.ap-infobox-icon-view-stacked .ap-infobox-icon:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-classic .ap-infobox-icon:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-framed .ap-infobox-icon:hover, {{WRAPPER}}.ap-infobox-icon-view-default .ap-infobox-icon:hover' => 'fill: {{VALUE}}; color: {{VALUE}}; border-color: {{VALUE}};',
+				],
+				'condition' => [
+                    'ap_infobox_icon_type' => 'ap_infobox_icon'
+                ]
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_icon_hover_secondary_color',
+			[
+				'label' => __( 'Secondary Color', 'addon-pack' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}}.ap-infobox-icon-view-framed .ap-infobox-icon:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-stacked .ap-infobox-icon:hover' => 'fill: {{VALUE}}; color: {{VALUE}};',
+					'{{WRAPPER}}.ap-infobox-icon-view-classic .ap-infobox-icon:hover' => 'fill: {{VALUE}}; color: {{VALUE}};',
+				],
+				'condition' => [
+					'ap_infobox_icon_type' => 'ap_infobox_icon',
+					'ap_infobox_icon_view!' => 'default',
+                ]
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'ap_card_image_border_hover',
+				'selector' => '{{WRAPPER}} .ap-infobox-thumb img:hover',
+				'condition' => [
+					'ap_infobox_icon_type' => 'ap_infobox_image'
+				],
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_icon_hover_animation',
+			[
+				'label' => __( 'Hover Animation', 'addon-pack' ),
+				'type' => Controls_Manager::HOVER_ANIMATION,
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->add_responsive_control(
+			'ap_infobox_icon_space',
+			[
+				'label' => __( 'Spacing', 'addon-pack' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-infobox-thumb' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'(mobile){{WRAPPER}} .ap-infobox-thumb' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'ap_infobox_icon_size',
+			[
+				'label' => __( 'Size', 'addon-pack' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 6,
+						'max' => 300,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-infobox-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_infobox_icon_type' => 'ap_infobox_icon'
+				],
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_icon_rotate',
+			[
+				'label' => __( 'Rotate', 'addon-pack' ),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0,
+					'unit' => 'deg',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-infobox-icon' => 'transform: rotate({{SIZE}}{{UNIT}});',
+					'{{WRAPPER}} .ap-infobox-thumb img' => 'transform: rotate({{SIZE}}{{UNIT}});',
+				],
+			]
+		);
+
+		$this->add_control(
+			'ap_infobox_icon_border_width',
+			[
+				'label' => __( 'Border Width', 'addon-pack' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'selectors' => [
+					'{{WRAPPER}} .ap-infobox-icon' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-infobox-thumb img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'ap_infobox_icon_view' => 'framed',
+				],
 			]
 		);
 
 		$this->add_control(
 			'ap_infobox_icon_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'addon-pack' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'max' => 500,
-					],
-				],
+				'label' => __( 'Border Radius', 'addon-pack' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-thumb img' => 'border-radius: {{SIZE}}px;',
-					'{{WRAPPER}} .ap-infobox-thumb i' => 'border-radius: {{SIZE}}px;',
+					'{{WRAPPER}} .ap-infobox-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-infobox-thumb img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'ap_infobox_icon_box_shadow',
-				'selector' => '{{WRAPPER}} .ap-infobox-thumb img, {{WRAPPER}} .ap-infobox-thumb i',
+				'condition' => [
+					'ap-infobox-icon-view!' => 'default',
+					'ap_infobox_icon_type' => 'ap_infobox_image'
+				],
 			]
 		);
 
@@ -798,64 +988,66 @@ class Infobox extends Widget_Base {
 		$this->end_controls_section();
 		
 		$this->start_controls_section(
-			'ap_infobox_read_more_style',
+			'ap_button_style',
 			[
-				'label'     => __( 'Read More', 'addon-pack' ),
+				'label'     => __( 'Button', 'addon-pack' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'ap_infobox_url_enable' => 'yes',
+					'ap_button_enable' => 'yes',
 				],
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_readmore_style' );
+		$this->start_controls_tabs( 'tabs_button_style' );
 
 		$this->start_controls_tab(
-			'ap_infobox_read_more_normal',
+			'ap_button_normal',
 			[
 				'label' => __( 'Normal', 'addon-pack' ),
 			]
 		);
 
 		$this->add_control(
-			'ap_infobox_read_more_text_color',
+			'ap_button_text_color',
 			[
 				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-details a, {{WRAPPER}} .ap-infobox-details a i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ap-infobox .ap-btn-text, {{WRAPPER}} .ap-infobox .ap-btn-icon' => 'color: {{VALUE}};',
 				],
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
+		$this->add_control(
+			'ap_button_background',
 			[
-				'name'      => 'ap_infobox_read_more_background',
-				'selector'  => '{{WRAPPER}} .ap-infobox-details a', 
-				'separator' => 'before', 
+				'label' => __( 'Background Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .ap-infobox-button' => 'background-color: {{VALUE}};',
+				],
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
-				'name'        => 'ap_infobox_read_more_border',
+				'name'        => 'ap_button_border',
 				'separator'   => 'before',
-				'default'     => '1px',
-				'selector'    => '{{WRAPPER}} .ap-infobox-details a'
+				'selector'    => '{{WRAPPER}} .ap-infobox-button'
 			]
 		);
 
 		$this->add_responsive_control(
-			'ap_infobox_read_more_radius',
+			'ap_button_radius',
 			[
 				'label'      => __( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'separator'  => 'after', 
 				'selectors'  => [
-					'{{WRAPPER}} .ap-infobox-details a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-infobox-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -863,19 +1055,19 @@ class Infobox extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
-				'name'     => 'ap_infobox_read_more_shadow',
-				'selector' => '{{WRAPPER}} .ap-infobox-details a',
+				'name'     => 'ap_button_shadow',
+				'selector' => '{{WRAPPER}} .ap-infobox-button',
 			]
 		);
 
 		$this->add_responsive_control(
-			'ap_infobox_read_more_padding',
+			'ap_button_padding',
 			[
 				'label'      => __( 'Padding', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-infobox-details a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-infobox-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -883,65 +1075,53 @@ class Infobox extends Widget_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
-				'name'     => 'ap_infobox_read_more_typography',
-				'selector' => '{{WRAPPER}} .ap-infobox-details a, {{WRAPPER}} .ap-infobox-details a i',
+				'name'     => 'ap_button_typography',
+				'selector' => '{{WRAPPER}} .ap-infobox .ap-btn-text',
 			]
 		);
 
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
-			'ap_infobox_read_more_hover',
+			'ap_button_hover',
 			[
 				'label' => __( 'Hover', 'addon-pack' ),
 			]
 		);
 
 		$this->add_control(
-			'ap_infobox_read_more_hover_text_color',
+			'ap_button_hover_text_color',
 			[
 				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-details a:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .ap-infobox-details a:hover i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .ap-infobox .ap-infobox-button:hover .ap-btn-text, {{WRAPPER}} .ap-infobox .ap-infobox-button:hover .ap-btn-icon' => 'color: {{VALUE}};',				
 				],
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Background::get_type(),
-			[
-				'name'      => 'ap_infobox_read_more_hover_background',
-				'selector'  => '{{WRAPPER}} .ap-infobox-details a:hover',
-				'separator' => 'before',
 			]
 		);
 
 		$this->add_control(
-			'ap_infobox_read_more_hover_border_color',
+			'ap_button_hover_background',
 			[
-				'label'     => __( 'Border Color', 'addon-pack' ),
-				'type'      => Controls_Manager::COLOR,
+				'label' => __( 'Background Color', 'elementor' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .ap-infobox-details a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .ap-infobox .ap-infobox-button:hover' => 'background-color: {{VALUE}};',
 				],
-				'condition' => [
-					'readmore_border_border!' => ''
-				]
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
-				'name'     => 'ap_infobox_read_more_hover_shadow',
-				'selector' => '{{WRAPPER}} .ap-infobox-details a:hover',
+				'name'     => 'ap_button_hover_shadow',
+				'selector' => '{{WRAPPER}} .ap-infobox-button:hover',
 			]
 		);
 
 		$this->add_control(
-			'ap_infobox_read_more_hover_animation',
+			'ap_button_hover_animation',
 			[
 				'label' => __( 'Hover Animation', 'addon-pack' ),
 				'type' => Controls_Manager::HOVER_ANIMATION,
@@ -971,7 +1151,13 @@ class Infobox extends Widget_Base {
 		$is_icon = ! empty( $settings['ap_infobox_icon'] );
 		$is_image = ! empty( $settings['ap_infobox_image']['url'] );
 
+		$this->add_render_attribute( 'thumb', 'class', 'ap-infobox-thumb' );
+		if ( $settings['ap_infobox_icon_hover_animation'] ) {
+			$this->add_render_attribute( 'thumb', 'class', 'elementor-animation-' . $settings['ap_infobox_icon_hover_animation'] );
+		}
+
 		if ( $is_icon and 'ap_infobox_icon' == $settings['ap_infobox_icon_type'] ) {
+			$this->add_render_attribute( 'i', 'class', 'ap-infobox-icon' );
 			$this->add_render_attribute( 'i', 'class', $settings['ap_infobox_icon'] );
 			$this->add_render_attribute( 'i', 'aria-hidden', 'true' );			
 		} elseif ( $is_image and 'ap_infobox_image' == $settings['ap_infobox_icon_type'] ) {
@@ -981,7 +1167,7 @@ class Infobox extends Widget_Base {
 		
 		if ( $is_icon or $is_image ) : ?>
 
-		<div class="ap-infobox-thumb">
+		<div <?php echo $this->get_render_attribute_string( 'thumb' ); ?>>
 			<?php if ( $is_icon and 'ap_infobox_icon' == $settings['ap_infobox_icon_type'] ) { ?>
 				<i <?php echo $this->get_render_attribute_string( 'i' ); ?>></i>
 				<?php } elseif ( $is_image and 'ap_infobox_image' == $settings['ap_infobox_icon_type'] ) { ?>
@@ -994,16 +1180,36 @@ class Infobox extends Widget_Base {
 	 }
 
 	 protected function infobox_title(){
+
 		$settings = $this->get_settings_for_display();
 
 		$this->add_inline_editing_attributes( 'ap_infobox_title', 'basic' );
 		$this->add_render_attribute( 'ap_infobox_title', 'class', 'ap-infobox-title' );
-		
+		$this->add_render_attribute( 'ap_infobox_title_existing_url_target_blank', 'target', '_blank' );
+
 		$ap_infobox_title_tag = $settings['ap_infobox_tag'];
 
 		$ap_infobox_title = '<' . $ap_infobox_title_tag. ' class="ap-infobox-title" >'. $settings['ap_infobox_title'] . '</' . $ap_infobox_title_tag . '> ';
+		
+		$ap_title_link = '';
+        if( $settings['ap_infobox_title_url_enable'] == 'yes' && $settings['ap_infobox_title_link_selection'] == 'existing_url' ) {
+            $ap_title_link = get_permalink( $settings['ap_infobox_title_existing_url'] );
+        } elseif( $settings['ap_infobox_title_url_enable'] == 'yes' && $settings['ap_infobox_title_link_selection'] == 'custom_url' ) {
+            $ap_title_link = $settings['ap_infobox_title_url']['url'];
+		}
+		
+		?>
 
-		echo $ap_infobox_title;
+		<?php if( ! empty( $ap_title_link ) ) : ?>
+			<a href="<?php echo esc_attr( $ap_title_link ); ?>" <?php if($settings['ap_infobox_title_existing_url_target_blank'] == 'yes'): echo $this->get_render_attribute_string( 'ap_infobox_title_existing_url_target_blank' ); endif; ?> <?php if( ! empty( $settings['ap_infobox_title_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_infobox_title_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+		<?php endif; ?>
+		
+			<?php echo $ap_infobox_title; ?>
+
+		<?php if( ! empty( $ap_title_link ) ) : ?>
+			</a>
+		
+		<?php endif; 
 		
 		?>
 		
@@ -1020,47 +1226,58 @@ class Infobox extends Widget_Base {
 		?>
 
 		<p <?php echo $this->get_render_attribute_string( 'ap_infobox_description' ); ?>><?php echo $settings['ap_infobox_description']; ?></p>
-<?php 
+	<?php 
 
 	}
-	 
-	 protected function infobox_link(){
+
+
+	protected function infobox_link(){
 		$settings = $this->get_settings_for_display();
-		$readmore_icon_alignment = $settings['ap_infobox_read_more_icon_align'];
+		$readmore_icon_alignment = $settings['ap_button_icon_align'];
 
-		$this->add_render_attribute( 'ap_infobox_existing_url_target_blank', 'target', '_blank' );
+		if($settings['ap_button_enable'] == 'yes'){
+			$this->add_render_attribute( 'ap_button_existing_url_target_blank', 'target', '_blank' );
 
-		$infobox_link = '';
-        if( $settings['ap_infobox_url_enable'] == 'yes' && $settings['ap_infobox_read_more_link_selection'] == 'existing_url' ) {
-            $infobox_link = get_permalink( $settings['ap_infobox_read_more_existing_url'] );
-        } elseif( $settings['ap_infobox_url_enable'] == 'yes' && $settings['ap_infobox_read_more_link_selection'] == 'custom_url' ) {
-            $infobox_link = $settings['ap_infobox_read_more_url']['url'];
+			$this->add_render_attribute( 'ap_button_rander', 'class', 'ap-infobox-button');
+			$this->add_render_attribute( 'ap_button_rander', 'class', 'ap-button-' . esc_attr($settings['ap_button_size']) );
+
+			if ( $settings['ap_button_hover_animation'] ) {
+				$this->add_render_attribute( 'ap_button_rander', 'class', 'elementor-animation-' . $settings['ap_button_hover_animation'] );
+			} 
 		}
 
-		if ( $settings['ap_infobox_read_more_hover_animation'] ) {
-			$this->add_render_attribute( 'ap_infobox_hover_animation', 'class', 'elementor-animation-' . $settings['ap_infobox_read_more_hover_animation'] );
-		} ?>
+		$infobox_link = '';
+		if( $settings['ap_button_enable'] == 'yes' && $settings['ap_button_link_selection'] == 'existing_url' ) {
+			$infobox_link = get_permalink( $settings['ap_button_existing_url'] );
+		} elseif( $settings['ap_button_enable'] == 'yes' && $settings['ap_button_link_selection'] == 'custom_url' ) {
+			$infobox_link = $settings['ap_button_url']['url'];
+		}
+
+	?>
 
 		<?php if( ! empty( $infobox_link ) ) : ?>
-			<a href="<?php echo esc_attr( $infobox_link ); ?>" <?php echo $this->get_render_attribute_string( 'ap_infobox_hover_animation' ); ?> <?php echo $this->get_render_attribute_string( 'ap_infobox_existing_url_target_blank' ); ?> <?php if( ! empty( $settings['ap_infobox_read_more_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_infobox_read_more_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+			<a href="<?php echo esc_attr( $infobox_link ); ?>" <?php echo $this->get_render_attribute_string( 'ap_button_existing_url_target_blank' ); ?> <?php if( ! empty( $settings['ap_button_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_button_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
 		<?php endif; ?>
 
-		<?php if($readmore_icon_alignment == 'left'): ?>
-			<i class="<?php echo esc_attr($settings['ap_infobox_read_more_icon'] ); ?> ap-infobox-icon-left" aria-hidden="true"></i> 
-			<?php echo $settings['ap_infobox_read_more_text']; ?>					
-		<?php elseif($readmore_icon_alignment == 'right'): ?>
-			<?php echo $settings['ap_infobox_read_more_text']; ?>					
-			<i class="<?php echo esc_attr($settings['ap_infobox_read_more_icon'] ); ?> ap-infobox-icon-right" aria-hidden="true"></i> 
-		<?php else: ?>	
-			<?php echo $settings['ap_infobox_read_more_text']; ?>					
-		<?php endif; ?>
+			<div <?php echo $this->get_render_attribute_string( 'ap_button_rander' ); ?>>
+
+				<?php if($readmore_icon_alignment == 'left'): ?>
+					<i class="ap-btn-icon <?php echo esc_attr($settings['ap_button_icon'] ); ?> ap-button-icon-left" aria-hidden="true"></i> 
+					<span class="ap-btn-text"><?php echo $settings['ap_button_text']; ?></span>					
+				<?php elseif($readmore_icon_alignment == 'right'): ?>
+					<span class="ap-btn-text"><?php echo $settings['ap_button_text']; ?></span>					
+					<i class="ap-btn-icon <?php echo esc_attr($settings['ap_button_icon'] ); ?> ap-button-icon-right" aria-hidden="true"></i> 
+				<?php else: ?>	
+					<span class="ap-btn-text"><?php echo $settings['ap_button_text']; ?></span>					
+				<?php endif; ?>
+
+			</div>
 
 		<?php if( ! empty( $infobox_link ) ) : ?>
-				</a>
+			</a>
 		<?php endif; ?>
-	
-	 
-	<?php }
+ 
+<?php }
 
 	protected function render() {
 
@@ -1068,13 +1285,12 @@ class Infobox extends Widget_Base {
 
         ?>
 
-        <div class="ap-infobox-wrapper"> 
 
 		<?php if('design-one' == $settings['ap_infobox_style']) { ?>
 			
-		<div class="ap-infobox-design-1"> 
+		<div class="ap-infobox"> 
 
-				<div class="ap-infobox-details">
+				<div class="ap-infobox-design-1">
 			
 					<?php $this->infobox_icon_or_image(); ?>
 					<?php $this->infobox_title(); ?>
@@ -1082,27 +1298,29 @@ class Infobox extends Widget_Base {
 					<?php $this->infobox_link(); ?>
 	
 				</div>
-
 				
 		</div>
 		
         <?php } elseif('design-two' == $settings['ap_infobox_style']) { ?>
-            <div class="ap-infobox-design-2"> 
+            <div class="ap-infobox"> 
                     
-				<div class="ap-infobox-details">
-			
-					<?php $this->infobox_icon_or_image(); ?>
-					<?php $this->infobox_title(); ?>
-					<?php $this->infobox_description(); ?>
-					<?php $this->infobox_link(); ?>
+				<div class="ap-infobox-design-2">
+
+					<div class="ap-infobox-icon-wrapper">
+						<?php $this->infobox_icon_or_image(); ?>
+					</div>
+
+					<div class="ap-infobox-info-wrapper">
+						<?php $this->infobox_title(); ?>
+						<?php $this->infobox_description(); ?>
+						<?php $this->infobox_link(); ?>
+					</div>
 
 				</div>
 
 			</div>
 			
 		<?php } ?>
-
-		</div>
 
         
 

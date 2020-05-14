@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,uDAAuD;AAmBvD,mDAAmD",
+"sources": ["../../sass/widgets/variables.scss"],
+"names": [],
+"file": "variables.css"
+}

@@ -2,9 +2,46 @@
 /* Addon Pack Info Box Styles
 /* -------------------------------- */
 
+.elementor-widget-ap-infobox.ap-infobox-icon-view-framed .ap-infobox-icon, .elementor-widget-ap-infobox.ap-infobox-icon-view-default .ap-infobox-icon{
+    fill: #1abc9c;
+    color: #1abc9c;
+    border-color: #1abc9c;
+}
+.elementor-widget-ap-infobox.ap-infobox-icon-view-stacked .ap-infobox-icon{
+    background-color: #1abc9c;
+}
 
-.ap-infobox-wrapper {
-    .ap-infobox-design-1{
+.elementor-widget-ap-infobox.ap-infobox-icon-view-stacked .ap-infobox-icon{
+    padding: .5em;
+    background-color: #1abc9c;
+    color: #fff;
+    fill: #fff;
+}
+
+.elementor-widget-ap-infobox.ap-infobox-icon-view-classic .ap-infobox-icon{
+    padding: .5em;
+    background-color: #1abc9c;
+    color: #fff;
+    fill: #fff;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.ap-infobox-icon-view-framed .ap-infobox-icon {
+    padding: .5em;
+    color: #1abc9c;
+    border: 3px solid #1abc9c;
+    background-color: transparent;
+}
+
+.ap-infobox-icon-shape-circle .ap-infobox-icon{
+    -webkit-border-radius: 50%; 
+     border-radius: 50%; 
+}
+
+.elementor-widget-ap-infobox{
+    background-color: #fff;
+
+    .ap-infobox {
         display: flex;
         display: -webkit-box;
         display: -webkit-flex;
@@ -12,167 +49,126 @@
         flex-wrap: wrap;
         flex-direction: column;
         position: relative;
-        padding: 25px 15px; 
         -webkit-transition: all .24s ease-in-out;
         transition: all .24s ease-in-out;
-        border-color: #2a384c;
-        border-radius: 15px;
-        background-color: #fff;
-        -webkit-box-shadow: 0 1px 10px 0 rgba(55, 94, 246, .1);
-        box-shadow: 0 1px 10px 0 rgba(55, 94, 246, .1);
-        border-top: 3px solid #1abc9c;
-        
-        .ap-infobox-details{
-            text-align: center;
+        text-align: center;
             h4 {
                 font-size: 24px;
                 font-weight: 700;
                 margin: 0 0  10px; 
                 text-transform: capitalize;
+                font-family: 'butlerbold', sans-serif;
+            }
+            a{
+               color: #111; 
             }
 
             p{
-                font-size: 18px;
-                line-height: 26px; 
+                font-size: 16px;
+                line-height: 1.5; 
                 margin: 0;
                 font-weight: 500;
+                font-family: 'Poppins', sans-serif;
             }
 
-            a{
-                font-size: 18px;
-                color: #4a35f1;
-    
-                i{
-                    font-size: 14px;
+            .ap-infobox-button{
+                display: inline-block;
+                border-radius: 2px;
+                margin-top: 10px;
+                .ap-btn-text{
+                    font-weight: 500;
+                    font-size: 18px;
+                    color: #1abc9c; 
+                }
+                .ap-btn-icon{
+                    margin-left: 5px;
+                    font-size: 16px;
+                    color: #1abc9c; 
                 }
             }
 
-        }
+            .ap-button-xs {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+            
+            .ap-button-sm {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            
+            .ap-button-md {
+                padding: 8px 14px;
+                font-size: 16px;
+            }
+            
+            .ap-button-lg {
+                padding: 10px 16px;
+                font-size: 18px;
+            }
+            
+            .ap-button-xl {
+                padding: 12px 18px;
+                font-size: 24px;
+            }
     
         .ap-infobox-thumb{
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-align: center;
             img{
                 -webkit-animation: pulse 400ms ease-in-out;
                 animation: pulse 400ms ease-in-out;
             }
 
-            i{
+            .ap-infobox-icon{
                 -webkit-animation: pulse 400ms ease-in-out;
                 animation: pulse 400ms ease-in-out;
                 font-size: 40px;
-                color: #4a35f1;
             }
         }
 
-    }
+        .ap-infobox-design-1{
+            border-radius: 0.50rem;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+            border-top: 3px solid #1abc9c;
+            padding: 25px 15px; 
+        }  
+           
+        .ap-infobox-design-1:hover{
+            -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, .4);
+            box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4);
+        }
 
-    .ap-infobox-design-1:hover{
-        -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, .4);
-        box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4);
+        .ap-infobox-design-2{
+            display: flex;
+            align-items: center;
+            border-radius: 0.25rem;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+            padding: 25px 15px; 
+            text-align: left;
+            border-bottom: 2px solid #1abc9c;
+            .ap-infobox-button{
+                padding-left: 0px;
+            }
+        }
+
+        .ap-infobox-design-2 .ap-infobox-icon-wrapper{
+            padding: 0px 20px;
+            text-align: left
+        }
+
+        .ap-infobox-design-2:hover{
+            -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, .4);
+            box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4);
+        }
+        
     }
+}
+
 
    
-    .ap-infobox-design-2{
-        display: flex;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        flex-wrap: wrap;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        padding: 25px 15px; 
-        border-radius: 10px;
-        background-color: #ffffff;
-        -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, .4);
-        box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4);
 
-        .ap-infobox-details{
-            text-align: left;
-            h4 {
-                font-size: 24px;
-                font-weight: 700;
-                margin: 0 0  12px; 
-                text-transform: capitalize;
-            }
-
-            p{
-                font-size: 18px;
-                line-height: 26px; 
-                margin: 0;
-                font-weight: 500;
-            }
-
-            a{
-                font-size: 18px;
-                color: #4a35f1;
-                i{
-                    font-size: 14px;
-                }
-            }
-
-        }
     
-        .ap-infobox-thumb{
-            margin-bottom: 15px;
-            text-align: left;
-            img{
-                -webkit-animation: pulse 400ms ease-in-out;
-                animation: pulse 400ms ease-in-out;
-            }
 
-            i{
-                -webkit-animation: pulse 400ms ease-in-out;
-                animation: pulse 400ms ease-in-out;
-                font-size: 40px;
-                color: #4a35f1;
-            }
-        }
-    
-    }
-
-    .ap-infobox-design-2:before {
-        content: '';
-        position: absolute;
-        right: -65px;
-        width: 95px;
-        height: 95px;
-        top: -55px;
-        border-radius: 50px;
-        background-color: rgba(232, 5, 102, 0.90);
-        -webkit-transition: all .3s;
-        -o-transition: all .3s;
-        transition: all .3s;
-        z-index: -1;
-    }
-
-    .ap-infobox-design-2:hover:before {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        background-color: rgba(232, 5, 102, 0.90);
-    }
-
-    .ap-infobox-design-2:hover{
-        .ap-infobox-thumb i{
-            color: #ffffff;
-        }
-
-        .ap-infobox-details{
-            h4, p, a{
-                color: #ffffff;
-            }
-        }
-    }
- 
-
-    .ap-infobox-disable{
-        display: none;
-    }
-    
-}

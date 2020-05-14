@@ -672,7 +672,7 @@ class Dual_Heading extends Widget_Base {
 		<div class="ap-dual-heading">
 
 			<?php if( ! empty( $heading_link ) ) : ?>
-				<a href="<?php echo esc_attr( $heading_link ); ?>" <?php echo $this->get_render_attribute_string( 'ap_dual_heading_existing_url_target_blank' ); ?> <?php if( ! empty( $settings['ap_dual_heading_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_dual_heading_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
+				<a href="<?php echo esc_attr( $heading_link ); ?>" <?php if($settings['ap_dual_heading_existing_url_target_blank'] == 'yes'): echo $this->get_render_attribute_string( 'ap_dual_heading_existing_url_target_blank' ); endif; ?> <?php if( ! empty( $settings['ap_dual_heading_url']['is_external'] ) ) : ?> <?php endif; ?><?php if( ! empty( $settings['ap_dual_heading_url']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>>
 			<?php endif; ?>
 			
 				<?php echo $main_heading; ?>

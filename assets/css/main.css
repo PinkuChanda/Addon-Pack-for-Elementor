@@ -1,3 +1,29 @@
+/*--------------------------------------------------------------
+# Fonts
+--------------------------------------------------------------*/
+/* ==========================================
+font-family: 'Poppins', sans-serif;
+font-family: 'butlerbold', sans-serif;
+=============================================*/
+/*--------------------------------------------------------------
+# Table of content
+--------------------------------------------------------------*/
+/* ==================================
+
+==================================
+1. ELEMENTS related
+==================================
+  2.1 
+  2.2 
+  2.3 
+  2.4 
+  2.5 
+
+
+========================================*/
+/*--------------------------------------------------------------
+# Elements css
+--------------------------------------------------------------*/
 /* -------------------------------- */
 /* Addon Pack Dual Heading Styles
 /* -------------------------------- */
@@ -77,595 +103,491 @@
 /*--------------------------------*/
 /* Addon Pack Call To Action Styles
 /*--------------------------------*/
-.ap-cta-wrapper {
-  background-color: #353535;
-  width: 100%;
-  height: auto;
-  display: block;
-  padding: 28px;
-  font-size: 16px;
-  color: #4d4d4d;
-  line-height: 27px;
-  margin: 0 auto; }
-  .ap-cta-wrapper .ap-cta-title {
-    color: #fff;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 36px;
-    margin-bottom: 12px;
-    text-transform: capitalize;
-    font-style: normal; }
-  .ap-cta-wrapper .ap-cta-content {
+.elementor-widget-ap-cta {
+  background-color: #353535; }
+  .elementor-widget-ap-cta .ap-cta-wrapper {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 28px;
     font-size: 16px;
-    color: #fff; }
-  .ap-cta-wrapper .ap-cta-button {
-    text-align: center;
-    text-decoration: none !important;
-    text-transform: uppercase;
-    font-weight: 500;
-    border-radius: 2px;
-    position: relative;
-    display: inline-block;
-    background: #f9f9f9;
-    font-size: 16px;
-    margin-right: 10px;
-    margin-top: 10px;
-    z-index: 0;
-    overflow: hidden; }
-    .ap-cta-wrapper .ap-cta-button .ap-cta-button-icon-right {
-      margin-right: 5px; }
-    .ap-cta-wrapper .ap-cta-button .ap-cta-button-text {
-      vertical-align: middle; }
-  .ap-cta-wrapper .ap-cta-button-xs {
-    padding: 4px 8px;
-    font-size: 12px; }
-  .ap-cta-wrapper .ap-cta-button-sm {
-    padding: 6px 10px;
-    font-size: 14px; }
-  .ap-cta-wrapper .ap-cta-button-md {
-    padding: 8px 14px;
-    font-size: 16px; }
-  .ap-cta-wrapper .ap-cta-button-lg {
-    padding: 10px 16px;
-    font-size: 18px; }
-  .ap-cta-wrapper .ap-cta-button-xl {
-    padding: 12px 18px;
-    font-size: 24px; }
+    line-height: 1.5;
+    margin: 0 auto; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-title {
+      color: #fff;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      text-transform: capitalize;
+      font-style: normal;
+      font-family: 'Poppins', sans-serif; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-content {
+      font-size: 16px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button {
+      text-align: center;
+      text-decoration: none !important;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      position: relative;
+      display: inline-block;
+      background: #f9f9f9;
+      font-size: 16px;
+      margin-right: 10px;
+      margin-top: 20px;
+      z-index: 0;
+      overflow: hidden; }
+      .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button .ap-cta-button-icon-right {
+        margin-right: 5px; }
+      .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button .ap-cta-button-text {
+        vertical-align: middle; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button-xs {
+      padding: 4px 8px;
+      font-size: 12px; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button-sm {
+      padding: 6px 10px;
+      font-size: 14px; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button-md {
+      padding: 8px 14px;
+      font-size: 16px; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button-lg {
+      padding: 10px 16px;
+      font-size: 18px; }
+    .elementor-widget-ap-cta .ap-cta-wrapper .ap-cta-button-xl {
+      padding: 12px 18px;
+      font-size: 24px; }
 
 /* -------------------------------- */
 /* Addon Pack Testimonial Styles
 /* -------------------------------- */
-.ap-testimonial-wrapper {
-  display: block; }
-  .ap-testimonial-wrapper .ap-testimonial-main-container {
-    background: #ffffff;
-    -moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    position: relative;
-    -moz-transition: all .5s ease-in-out 0s;
-    -webkit-transition: all .5s ease-in-out 0s;
-    -o-transition: all .5s ease-in-out 0s;
-    -ms-transition: all .5s ease-in-out 0s;
-    transition: all .5s ease-in-out 0s;
-    -webkit-transform: scale(1);
-    -o-transform: scale(1);
-    -ms-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1); }
-  .ap-testimonial-wrapper .ap-testimonial-main-container::after {
-    border-left: 50px solid rgba(0, 0, 0, 0);
-    border-top: 44px solid #1abc9c;
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0; }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-info .ap-testimonial-name {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 15px 0px 5px 0px;
-    color: #1abc9c; }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-info .ap-testimonial-designation {
-    margin: 0px; }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-info .ap-testimonial-designation .ap-testimonial-company {
-    color: #0073aa; }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details {
-    line-height: 1.7;
-    padding: 0px 0px 12px 0px;
-    margin: 5px 0px;
-    border-bottom: 1px solid #1abc9c;
-    position: relative; }
-    .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details .ap-quotation-icon i {
-      color: rgba(0, 0, 0, 0.1);
-      font-size: 20px;
-      padding: 0px 10px; }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details::before {
-    left: 0;
-    bottom: -8px;
-    background: #1abc9c;
-    border: 3px solid #ffffff;
-    -moz-border-radius: 100px;
-    -webkit-border-radius: 100px;
-    border-radius: 100px;
-    content: "";
-    height: 15px;
-    position: absolute;
-    width: 15px; }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-rating {
-    display: inline-block;
-    margin: 1px auto;
-    padding: 0;
-    list-style: none; }
-    .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-rating li {
-      display: inline-block; }
-      .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-rating li i {
-        color: #ff8800;
+.elementor-widget-addon-pack-testimonial {
+  background: #ffffff; }
+  .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper {
+    display: block; }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial {
+      -moz-box-shadow: 2px 4px 8px 1px rgba(0, 0, 0, 0.1);
+      -webkit-box-shadow: 2px 4px 8px 1px rgba(0, 0, 0, 0.1);
+      box-shadow: 2px 4px 8px 1px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      position: relative;
+      -moz-transition: all .5s ease-in-out 0s;
+      -webkit-transition: all .5s ease-in-out 0s;
+      -o-transition: all .5s ease-in-out 0s;
+      -ms-transition: all .5s ease-in-out 0s;
+      transition: all .5s ease-in-out 0s;
+      -webkit-transform: scale(1);
+      -o-transform: scale(1);
+      -ms-transform: scale(1);
+      -moz-transform: scale(1);
+      transform: scale(1); }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-info .ap-testimonial-name {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 15px 0px 5px 0px;
+        color: #1abc9c;
+        font-family: 'Poppins', sans-serif; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-info .ap-testimonial-designation {
+        margin: 0px; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-info .ap-testimonial-designation .ap-testimonial-company {
+        color: #0073aa; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-content .ap-reviewer-content-details {
+        line-height: 1.5;
+        margin: 5px 0px;
+        font-family: 'Poppins', sans-serif;
+        position: relative;
         font-size: 16px; }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-thumbnail {
-    bottom: -40px;
-    position: absolute;
-    right: 20px;
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%; }
-    .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-thumbnail img {
-      line-height: normal;
-      max-width: 100%;
-      vertical-align: middle;
-      width: 100px;
-      height: 100px;
-      border: solid 3px #fff;
-      padding: 2px;
-      -moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-      -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-      box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1); }
-  .ap-testimonial-wrapper .ap-testimonial-default-style .ap-testimonial-image-circle img {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-testimonial-name {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 15px 0px 5px 0px;
-    color: #1abc9c; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-testimonial-designation {
-    margin: 0px; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-testimonial-designation .ap-testimonial-company {
-    color: #0073aa; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-rating {
-    display: inline-block;
-    margin: 1px auto;
-    padding: 0;
-    list-style: none; }
-    .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-rating li {
-      display: inline-block; }
-      .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-rating li i {
-        color: #ff8800;
-        font-size: 16px; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-thumbnail {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%; }
-    .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-thumbnail img {
-      line-height: normal;
-      max-width: 100%;
-      vertical-align: middle;
-      width: 100px;
-      height: 100px;
-      border: solid 3px #fff;
-      padding: 2px;
-      -moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-      -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-      box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1); }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-testimonial-image-circle img {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-thumbnail {
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
-    border-radius: 100%; }
-    .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-thumbnail img {
-      line-height: normal;
-      max-width: 100%;
-      vertical-align: middle;
-      width: 100px;
-      height: 100px;
-      border: solid 3px #fff;
-      padding: 2px;
-      -moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-      -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-      box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1); }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-classic-reviewer-details {
-    display: flex;
-    justify-content: space-around; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-reviewer-content .ap-reviewer-content-details {
-    line-height: 1.7;
-    padding: 7px 0px 0px 0px;
-    margin: 5px 0px;
-    border-top: 1px solid #1abc9c;
-    border-bottom: 0px none;
-    position: relative; }
-    .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-reviewer-content .ap-reviewer-content-details .ap-quotation-icon i {
-      color: rgba(0, 0, 0, 0.1);
-      font-size: 20px;
-      padding: 0px 10px; }
-  .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-reviewer-content .ap-reviewer-content-details::before {
-    left: 0;
-    top: -8px;
-    background: #1abc9c;
-    border: 3px solid #ffffff;
-    -moz-border-radius: 100px;
-    -webkit-border-radius: 100px;
-    border-radius: 100px;
-    content: "";
-    height: 15px;
-    position: absolute;
-    width: 15px; }
+        .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-content .ap-reviewer-content-details .ap-quotation-icon i {
+          color: rgba(0, 0, 0, 0.1);
+          font-size: 20px;
+          padding: 0px 10px; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-rating {
+        display: inline-block;
+        margin: 1px auto;
+        padding: 0;
+        list-style: none; }
+        .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-rating li {
+          display: inline-block; }
+          .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-reviewer-rating li i {
+            color: #ff8800;
+            font-size: 16px; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial .ap-testimonial-image-circle img {
+        -moz-border-radius: 100%;
+        -webkit-border-radius: 100%;
+        border-radius: 100%; }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details {
+      border-bottom: 1px solid #1abc9c;
+      padding: 0px 0px 15px 0px; }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details::before {
+      left: 0;
+      bottom: -8px;
+      background: #1abc9c;
+      border: 3px solid #ffffff;
+      -moz-border-radius: 100px;
+      -webkit-border-radius: 100px;
+      border-radius: 100px;
+      content: "";
+      height: 15px;
+      position: absolute;
+      width: 15px; }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-thumbnail {
+      bottom: -40px;
+      position: absolute;
+      right: 20px;
+      -moz-border-radius: 100%;
+      -webkit-border-radius: 100%;
+      border-radius: 100%; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-default-style .ap-reviewer-thumbnail img {
+        line-height: normal;
+        max-width: 100%;
+        vertical-align: middle;
+        width: 100px;
+        height: 100px;
+        border: solid 3px #fff;
+        padding: 2px;
+        -moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1); }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-thumbnail {
+      -moz-border-radius: 100%;
+      -webkit-border-radius: 100%;
+      border-radius: 100%; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-thumbnail img {
+        line-height: normal;
+        max-width: 100%;
+        vertical-align: middle;
+        width: 100px;
+        height: 100px;
+        border: solid 3px #fff;
+        padding: 2px;
+        -moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1); }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-classic-reviewer-details {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 10px; }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-reviewer-content .ap-reviewer-content-details {
+      padding: 20px 0px 0px 0px;
+      border-top: 1px solid #1abc9c;
+      border-bottom: 0px none; }
+      .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-reviewer-content .ap-reviewer-content-details .ap-quotation-icon i {
+        color: rgba(0, 0, 0, 0.1);
+        font-size: 20px;
+        padding: 0px 10px; }
+    .elementor-widget-addon-pack-testimonial .ap-testimonial-wrapper .ap-testimonial-classic-style .ap-reviewer-info .ap-reviewer-content .ap-reviewer-content-details::before {
+      left: 0;
+      top: -8px;
+      background: #1abc9c;
+      border: 3px solid #ffffff;
+      -moz-border-radius: 100px;
+      -webkit-border-radius: 100px;
+      border-radius: 100px;
+      content: "";
+      height: 15px;
+      position: absolute;
+      width: 15px; }
 
 /* -------------------------------- */
 /* Addon Pack Info Box Styles
 /* -------------------------------- */
-.ap-infobox-wrapper .ap-infobox-design-1 {
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  flex-wrap: wrap;
-  flex-direction: column;
-  position: relative;
-  padding: 25px 15px;
-  -webkit-transition: all .24s ease-in-out;
-  transition: all .24s ease-in-out;
-  border-color: #2a384c;
-  border-radius: 15px;
-  background-color: #fff;
-  -webkit-box-shadow: 0 1px 10px 0 rgba(55, 94, 246, 0.1);
-  box-shadow: 0 1px 10px 0 rgba(55, 94, 246, 0.1);
-  border-top: 3px solid #1abc9c; }
-  .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details {
+.elementor-widget-ap-infobox.ap-infobox-icon-view-framed .ap-infobox-icon, .elementor-widget-ap-infobox.ap-infobox-icon-view-default .ap-infobox-icon {
+  fill: #1abc9c;
+  color: #1abc9c;
+  border-color: #1abc9c; }
+
+.elementor-widget-ap-infobox.ap-infobox-icon-view-stacked .ap-infobox-icon {
+  background-color: #1abc9c; }
+
+.elementor-widget-ap-infobox.ap-infobox-icon-view-stacked .ap-infobox-icon {
+  padding: .5em;
+  background-color: #1abc9c;
+  color: #fff;
+  fill: #fff; }
+
+.elementor-widget-ap-infobox.ap-infobox-icon-view-classic .ap-infobox-icon {
+  padding: .5em;
+  background-color: #1abc9c;
+  color: #fff;
+  fill: #fff;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+
+.ap-infobox-icon-view-framed .ap-infobox-icon {
+  padding: .5em;
+  color: #1abc9c;
+  border: 3px solid #1abc9c;
+  background-color: transparent; }
+
+.ap-infobox-icon-shape-circle .ap-infobox-icon {
+  -webkit-border-radius: 50%;
+  border-radius: 50%; }
+
+.elementor-widget-ap-infobox {
+  background-color: #fff; }
+  .elementor-widget-ap-infobox .ap-infobox {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+    -webkit-transition: all .24s ease-in-out;
+    transition: all .24s ease-in-out;
     text-align: center; }
-    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details h4 {
+    .elementor-widget-ap-infobox .ap-infobox h4 {
       font-size: 24px;
       font-weight: 700;
       margin: 0 0  10px;
-      text-transform: capitalize; }
-    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details p {
-      font-size: 18px;
-      line-height: 26px;
+      text-transform: capitalize;
+      font-family: 'butlerbold', sans-serif; }
+    .elementor-widget-ap-infobox .ap-infobox a {
+      color: #111; }
+    .elementor-widget-ap-infobox .ap-infobox p {
+      font-size: 16px;
+      line-height: 1.5;
       margin: 0;
-      font-weight: 500; }
-    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details a {
-      font-size: 18px;
-      color: #4a35f1; }
-      .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-details a i {
-        font-size: 14px; }
-  .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-thumb {
-    margin-bottom: 15px;
-    text-align: center; }
-    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-thumb img {
-      -webkit-animation: pulse 400ms ease-in-out;
-      animation: pulse 400ms ease-in-out; }
-    .ap-infobox-wrapper .ap-infobox-design-1 .ap-infobox-thumb i {
-      -webkit-animation: pulse 400ms ease-in-out;
-      animation: pulse 400ms ease-in-out;
-      font-size: 40px;
-      color: #4a35f1; }
-.ap-infobox-wrapper .ap-infobox-design-1:hover {
-  -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, 0.4);
-  box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4); }
-.ap-infobox-wrapper .ap-infobox-design-2 {
-  display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  flex-wrap: wrap;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  padding: 25px 15px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, 0.4);
-  box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4); }
-  .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details {
-    text-align: left; }
-    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details h4 {
-      font-size: 24px;
-      font-weight: 700;
-      margin: 0 0  12px;
-      text-transform: capitalize; }
-    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details p {
-      font-size: 18px;
-      line-height: 26px;
-      margin: 0;
-      font-weight: 500; }
-    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details a {
-      font-size: 18px;
-      color: #4a35f1; }
-      .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-details a i {
-        font-size: 14px; }
-  .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-thumb {
-    margin-bottom: 15px;
-    text-align: left; }
-    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-thumb img {
-      -webkit-animation: pulse 400ms ease-in-out;
-      animation: pulse 400ms ease-in-out; }
-    .ap-infobox-wrapper .ap-infobox-design-2 .ap-infobox-thumb i {
-      -webkit-animation: pulse 400ms ease-in-out;
-      animation: pulse 400ms ease-in-out;
-      font-size: 40px;
-      color: #4a35f1; }
-.ap-infobox-wrapper .ap-infobox-design-2:before {
-  content: '';
-  position: absolute;
-  right: -65px;
-  width: 95px;
-  height: 95px;
-  top: -55px;
-  border-radius: 50px;
-  background-color: rgba(232, 5, 102, 0.9);
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
-  z-index: -1; }
-.ap-infobox-wrapper .ap-infobox-design-2:hover:before {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  background-color: rgba(232, 5, 102, 0.9); }
-.ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-thumb i {
-  color: #ffffff; }
-.ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details h4, .ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details p, .ap-infobox-wrapper .ap-infobox-design-2:hover .ap-infobox-details a {
-  color: #ffffff; }
-.ap-infobox-wrapper .ap-infobox-disable {
-  display: none; }
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-infobox-button {
+      display: inline-block;
+      border-radius: 2px;
+      margin-top: 10px; }
+      .elementor-widget-ap-infobox .ap-infobox .ap-infobox-button .ap-btn-text {
+        font-weight: 500;
+        font-size: 18px;
+        color: #1abc9c; }
+      .elementor-widget-ap-infobox .ap-infobox .ap-infobox-button .ap-btn-icon {
+        margin-left: 5px;
+        font-size: 16px;
+        color: #1abc9c; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-button-xs {
+      padding: 4px 8px;
+      font-size: 12px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-button-sm {
+      padding: 6px 10px;
+      font-size: 14px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-button-md {
+      padding: 8px 14px;
+      font-size: 16px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-button-lg {
+      padding: 10px 16px;
+      font-size: 18px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-button-xl {
+      padding: 12px 18px;
+      font-size: 24px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-infobox-thumb {
+      margin-bottom: 10px;
+      text-align: center; }
+      .elementor-widget-ap-infobox .ap-infobox .ap-infobox-thumb img {
+        -webkit-animation: pulse 400ms ease-in-out;
+        animation: pulse 400ms ease-in-out; }
+      .elementor-widget-ap-infobox .ap-infobox .ap-infobox-thumb .ap-infobox-icon {
+        -webkit-animation: pulse 400ms ease-in-out;
+        animation: pulse 400ms ease-in-out;
+        font-size: 40px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-infobox-design-1 {
+      border-radius: 0.50rem;
+      -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      border-top: 3px solid #1abc9c;
+      padding: 25px 15px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-infobox-design-1:hover {
+      -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, 0.4);
+      box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4); }
+    .elementor-widget-ap-infobox .ap-infobox .ap-infobox-design-2 {
+      display: flex;
+      align-items: center;
+      border-radius: 0.25rem;
+      -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      padding: 25px 15px;
+      text-align: left;
+      border-bottom: 2px solid #1abc9c; }
+      .elementor-widget-ap-infobox .ap-infobox .ap-infobox-design-2 .ap-infobox-button {
+        padding-left: 0px; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-infobox-design-2 .ap-infobox-icon-wrapper {
+      padding: 0px 20px;
+      text-align: left; }
+    .elementor-widget-ap-infobox .ap-infobox .ap-infobox-design-2:hover {
+      -webkit-box-shadow: 0 4px 10px 0 rgba(55, 94, 246, 0.4);
+      box-shadow: 0 4px 10px 0 rgba(154, 159, 180, 0.4); }
 
 /*--------------------------------*/
 /* Addon Pack Card Styles
 /*--------------------------------*/
-.ap-card-design-1 .ap-card {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
+.elementor-widget-ap-card {
+  border-radius: .25rem;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: .25rem; }
-  .ap-card-design-1 .ap-card .ap-card-img {
-    position: relative;
-    margin: 0;
-    width: 100%;
-    display: inherit;
-    height: 250px; }
-    .ap-card-design-1 .ap-card .ap-card-img .ap-card-badge {
-      position: absolute;
-      max-width: 100%;
-      border-radius: 50px;
-      background-color: #fff;
-      font-size: 12px;
-      padding: 6px 15px;
-      font-weight: 600; }
-    .ap-card-design-1 .ap-card .ap-card-img .ap-card-badge-top-right {
-      top: 15px;
-      right: 15px; }
-    .ap-card-design-1 .ap-card .ap-card-img .ap-card-badge-top-left {
-      top: 15px;
-      left: 15px; }
-    .ap-card-design-1 .ap-card .ap-card-img .ap-card-badge-bottom-right {
-      bottom: 15px;
-      right: 15px; }
-    .ap-card-design-1 .ap-card .ap-card-img .ap-card-badge-bottom-left {
-      bottom: 15px;
-      left: 15px; }
-    .ap-card-design-1 .ap-card .ap-card-img img {
-      border-top-left-radius: calc(0.25rem - 1px);
-      border-top-right-radius: calc(0.25rem - 1px);
-      flex-shrink: 0;
-      width: 100%;
-      height: 100%; }
-  .ap-card-design-1 .ap-card .ap-card-body {
+  box-shadow: 2px 4px 8px 1px rgba(0, 0, 0, 0.1); }
+
+.ap-card {
+  display: -ms-flexbox;
+  display: flex;
+  word-wrap: break-word; }
+  .ap-card .ap-card-img .ap-card-badge {
+    position: absolute;
+    max-width: 100%;
+    border-radius: 50px;
+    background-color: #fff;
+    font-size: 12px;
+    padding: 6px 15px;
+    font-weight: 600; }
+  .ap-card .ap-card-img .ap-card-badge-top-right {
+    top: 15px;
+    right: 15px; }
+  .ap-card .ap-card-img .ap-card-badge-top-left {
+    top: 15px;
+    left: 15px; }
+  .ap-card .ap-card-img .ap-card-badge-bottom-right {
+    bottom: 15px;
+    right: 15px; }
+  .ap-card .ap-card-img .ap-card-badge-bottom-left {
+    bottom: 15px;
+    left: 15px; }
+  .ap-card .ap-card-body {
     padding: 1.25rem; }
-    .ap-card-design-1 .ap-card .ap-card-body h4 {
+    .ap-card .ap-card-body h4 {
       font-size: 24px;
-      font-weight: 500;
+      font-weight: 700;
       margin: 0px;
-      padding: 0px; }
-    .ap-card-design-1 .ap-card .ap-card-body .ap-card-description {
-      margin: 10px 0px 30px 0px;
+      padding: 0px;
+      font-family: 'Poppins', sans-serif; }
+    .ap-card .ap-card-body .ap-card-description {
+      margin: 10px 0 0 0;
       color: #616161;
-      font-size: 20px;
-      line-height: 1.5; }
-    .ap-card-design-1 .ap-card .ap-card-body .ap-card-button:hover {
-      color: #ffffff;
-      background-color: rgba(232, 5, 102, 0.9); }
-    .ap-card-design-1 .ap-card .ap-card-body .ap-card-button {
-      padding: 6px 25px;
-      background-color: #555555;
-      border-radius: 2px; }
-      .ap-card-design-1 .ap-card .ap-card-body .ap-card-button .ap-card-btn-text {
-        color: #ffffff;
+      font-size: 16px;
+      line-height: 1.5;
+      font-family: 'Poppins', sans-serif; }
+    .ap-card .ap-card-body .ap-card-button {
+      display: inline-block;
+      border-radius: 2px;
+      margin-top: 30px; }
+      .ap-card .ap-card-body .ap-card-button .ap-card-btn-text {
         font-weight: 500;
         font-size: 18px; }
-      .ap-card-design-1 .ap-card .ap-card-body .ap-card-button .ap-card-btn-icon {
+      .ap-card .ap-card-body .ap-card-button .ap-card-btn-icon {
         margin-left: 5px;
-        color: #ffffff;
         font-size: 16px; }
+    .ap-card .ap-card-body .ap-button-xs {
+      padding: 4px 8px;
+      font-size: 12px; }
+    .ap-card .ap-card-body .ap-button-sm {
+      padding: 6px 10px;
+      font-size: 14px; }
+    .ap-card .ap-card-body .ap-button-md {
+      padding: 8px 14px;
+      font-size: 16px; }
+    .ap-card .ap-card-body .ap-button-lg {
+      padding: 10px 16px;
+      font-size: 18px; }
+    .ap-card .ap-card-body .ap-button-xl {
+      padding: 12px 18px;
+      font-size: 24px; }
+
+.ap-card-design-1 .ap-card {
+  -ms-flex-direction: column;
+  flex-direction: column; }
+  .ap-card-design-1 .ap-card .ap-card-img {
+    position: relative;
+    height: 250px; }
+    .ap-card-design-1 .ap-card .ap-card-img img {
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem; }
+  .ap-card-design-1 .ap-card .ap-card-body {
+    padding: 1.25rem; }
+    .ap-card-design-1 .ap-card .ap-card-body .ap-card-button {
+      background-color: #555555; }
+      .ap-card-design-1 .ap-card .ap-card-body .ap-card-button .ap-card-btn-text {
+        color: #ffffff; }
+      .ap-card-design-1 .ap-card .ap-card-body .ap-card-button .ap-card-btn-icon {
+        color: #ffffff; }
     .ap-card-design-1 .ap-card .ap-card-body .ap-card-button:hover {
-      background: rgba(232, 5, 102, 0.9);
-      border: 2px solid rgba(232, 5, 102, 0.9);
-      border: none; }
+      background-color: rgba(232, 5, 102, 0.9); }
       .ap-card-design-1 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-text {
         color: #ffffff; }
       .ap-card-design-1 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-icon {
         color: #ffffff; }
 
 .ap-card-design-2 .ap-card {
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-direction: column;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  border-radius: .25rem;
-  box-shadow: 0 0.2rem 3rem rgba(30, 30, 30, 0.1); }
+  flex-direction: column; }
   .ap-card-design-2 .ap-card .ap-card-img {
     position: relative;
+    height: 250px;
+    max-width: 100%;
     margin-top: -1.25rem;
     margin-right: 4%;
     margin-left: 4%;
-    display: inherit;
-    height: 250px;
     -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
-    .ap-card-design-2 .ap-card .ap-card-img .ap-card-badge {
-      position: absolute;
-      max-width: 100%;
-      border-radius: 50px;
-      background-color: #fff;
-      font-size: 12px;
-      padding: 6px 15px;
-      font-weight: 600; }
-    .ap-card-design-2 .ap-card .ap-card-img .ap-card-badge-top-right {
-      top: 15px;
-      right: 15px; }
-    .ap-card-design-2 .ap-card .ap-card-img .ap-card-badge-top-left {
-      top: 15px;
-      left: 15px; }
-    .ap-card-design-2 .ap-card .ap-card-img .ap-card-badge-bottom-right {
-      bottom: 15px;
-      right: 15px; }
-    .ap-card-design-2 .ap-card .ap-card-img .ap-card-badge-bottom-left {
-      bottom: 15px;
-      left: 15px; }
     .ap-card-design-2 .ap-card .ap-card-img img {
-      border-top-left-radius: calc(0.25rem - 1px);
-      border-top-right-radius: calc(0.25rem - 1px);
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
       flex-shrink: 0;
       width: 100%;
       height: 100%; }
   .ap-card-design-2 .ap-card .ap-card-body {
-    padding: 1.25rem;
     text-align: center; }
-    .ap-card-design-2 .ap-card .ap-card-body h4 {
-      font-size: 24px;
-      font-weight: 500;
-      margin: 0px;
-      padding: 0px; }
-    .ap-card-design-2 .ap-card .ap-card-body .ap-card-description {
-      margin: 10px 0px 30px 0px;
-      color: #616161;
-      font-size: 20px;
-      line-height: 1.5; }
     .ap-card-design-2 .ap-card .ap-card-body .ap-card-button {
-      padding: 6px 25px;
       border: 2px solid #1abc9c;
-      border-color: #1abc9c;
-      border-radius: 2px; }
+      border-color: #1abc9c; }
       .ap-card-design-2 .ap-card .ap-card-body .ap-card-button .ap-card-btn-text {
-        color: #1abc9c;
-        font-weight: 500;
-        font-size: 18px; }
+        color: #1abc9c; }
       .ap-card-design-2 .ap-card .ap-card-body .ap-card-button .ap-card-btn-icon {
-        margin-left: 5px;
-        color: #1abc9c;
-        font-size: 16px; }
+        color: #1abc9c; }
     .ap-card-design-2 .ap-card .ap-card-body .ap-card-button:hover {
-      background: rgba(232, 5, 102, 0.9);
-      border: 2px solid rgba(232, 5, 102, 0.9);
-      border: none; }
+      border: none;
+      background-color: rgba(232, 5, 102, 0.9); }
       .ap-card-design-2 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-text {
         color: #ffffff; }
       .ap-card-design-2 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-icon {
         color: #ffffff; }
 
-.ap-card-design-3 .ap-card {
-  display: -ms-flexbox;
+.ap-card-design-3 .ap-card, .ap-card-design-4 .ap-card {
   display: flex;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  box-shadow: 0 0.2rem 2.8rem rgba(36, 36, 36, 0.1);
-  border-radius: .25rem; }
-  .ap-card-design-3 .ap-card .ap-card-img {
+  -ms-flex-direction: row;
+  flex-direction: row;
+  align-items: center; }
+  .ap-card-design-3 .ap-card .ap-card-img, .ap-card-design-4 .ap-card .ap-card-img {
     position: relative;
-    margin: 0;
-    width: 100%;
-    display: inherit;
     flex: 0 0 40%;
-    max-width: 40%; }
-    .ap-card-design-3 .ap-card .ap-card-img .ap-card-badge {
-      position: absolute;
-      max-width: 100%;
-      border-radius: 50px;
-      background-color: #fff;
-      font-size: 12px;
-      padding: 6px 15px;
-      font-weight: 600; }
-    .ap-card-design-3 .ap-card .ap-card-img .ap-card-badge-top-right {
-      top: 15px;
-      right: 15px; }
-    .ap-card-design-3 .ap-card .ap-card-img .ap-card-badge-top-left {
-      top: 15px;
-      left: 15px; }
-    .ap-card-design-3 .ap-card .ap-card-img .ap-card-badge-bottom-right {
-      bottom: 15px;
-      right: 15px; }
-    .ap-card-design-3 .ap-card .ap-card-img .ap-card-badge-bottom-left {
-      bottom: 15px;
-      left: 15px; }
-    .ap-card-design-3 .ap-card .ap-card-img img {
-      border-top-left-radius: calc(0.25rem - 1px);
-      border-bottom-left-radius: calc(0.25rem - 1px);
+    max-width: 40%;
+    height: 300px; }
+    .ap-card-design-3 .ap-card .ap-card-img img, .ap-card-design-4 .ap-card .ap-card-img img {
       flex-shrink: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover; }
-  .ap-card-design-3 .ap-card .ap-card-body {
+      height: 100%; }
+  .ap-card-design-3 .ap-card .ap-card-body, .ap-card-design-4 .ap-card .ap-card-body {
     padding: 1.25rem;
     flex: 0 0 calc(100% - 40%);
-    max-width: calc(100% - 40%); }
-    .ap-card-design-3 .ap-card .ap-card-body h4 {
-      font-size: 30px;
-      font-weight: 700;
-      margin: 0px;
-      padding: 0px; }
-    .ap-card-design-3 .ap-card .ap-card-body .ap-card-description {
-      margin: 10px 0px 30px 0px;
-      color: #616161;
-      font-size: 20px;
-      line-height: 1.5; }
-    .ap-card-design-3 .ap-card .ap-card-body .ap-card-button:hover {
-      color: #ffffff;
+    max-width: calc(100% - 40%);
+    align-items: center; }
+    .ap-card-design-3 .ap-card .ap-card-body .ap-card-button, .ap-card-design-4 .ap-card .ap-card-body .ap-card-button {
+      background-color: #555555; }
+      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button .ap-card-btn-text, .ap-card-design-4 .ap-card .ap-card-body .ap-card-button .ap-card-btn-text {
+        color: #ffffff; }
+      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button .ap-card-btn-icon, .ap-card-design-4 .ap-card .ap-card-body .ap-card-button .ap-card-btn-icon {
+        color: #ffffff; }
+    .ap-card-design-3 .ap-card .ap-card-body .ap-card-button:hover, .ap-card-design-4 .ap-card .ap-card-body .ap-card-button:hover {
       background-color: rgba(232, 5, 102, 0.9); }
-    .ap-card-design-3 .ap-card .ap-card-body .ap-card-button {
-      padding: 6px 25px;
-      background-color: #555555;
-      border-radius: 2px; }
-      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button .ap-card-btn-text {
-        color: #ffffff;
-        font-weight: 500;
-        font-size: 18px; }
-      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button .ap-card-btn-icon {
-        margin-left: 5px;
-        color: #ffffff;
-        font-size: 16px; }
-    .ap-card-design-3 .ap-card .ap-card-body .ap-card-button:hover {
-      background: rgba(232, 5, 102, 0.9);
-      border: 2px solid rgba(232, 5, 102, 0.9);
-      border: none; }
-      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-text {
+      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-text, .ap-card-design-4 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-text {
         color: #ffffff; }
-      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-icon {
+      .ap-card-design-3 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-icon, .ap-card-design-4 .ap-card .ap-card-body .ap-card-button:hover .ap-card-btn-icon {
         color: #ffffff; }
+
+.ap-card-design-3 .ap-card .ap-card-img img {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem; }
+
+.ap-card-design-4 .ap-card .ap-card-img img {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem; }
 
 /*# sourceMappingURL=main.css.map */

@@ -226,43 +226,23 @@ class Testimonial extends Widget_Base {
 			[
 				'name'      => 'ap_testimonial_bg',
 				'types'     => [ 'classic', 'gradient' ],
-				'selector'  => '{{WRAPPER}} .ap-testimonial-main-container',
+				'selector'  => '{{WRAPPER}} .ap-testimonial',
 			]
 		);
 		
-		$this->add_control(
-			'ap_testimonial_shape_default_color',
-			[
-				'label'     => esc_html__( 'Style Color', 'addon-pack' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .ap-testimonial-main-container::after' => 'border-top: 44px solid {{VALUE}} ;',
-					'{{WRAPPER}} .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details' => 'border-bottom: 1px solid {{VALUE}} ;',
-					'{{WRAPPER}} .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details::before' => 'background: {{VALUE}} ;',
-					'{{WRAPPER}} .ap-testimonial-wrapper .ap-testimonial-main-container' => 'border-left: 3px solid {{VALUE}} ;',
-				],
-				'condition' => [
-					'ap_testimonial_style' => 'default-style'
-				]
-
-			]
-		);
 
 		$this->add_control(
-			'ap_testimonial_shape_classic_color',
+			'ap_testimonial_shape_color',
 			[
-				'label'     => esc_html__( 'Style Color', 'addon-pack' ),
+				'label'     => esc_html__( 'Shape Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .ap-testimonial-main-container::after' => 'border-top: 44px solid {{VALUE}} ;',
 					'{{WRAPPER}} .ap-testimonial-classic-style .ap-reviewer-content .ap-reviewer-content-details' => 'border-top: 1px solid {{VALUE}} ;',
 					'{{WRAPPER}} .ap-testimonial-classic-style .ap-reviewer-content .ap-reviewer-content-details::before' => 'background: {{VALUE}} ;',
-					'{{WRAPPER}} .ap-testimonial-wrapper .ap-testimonial-main-container' => 'border-left: 3px solid {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details' => 'border-bottom: 1px solid {{VALUE}} ;',
+					'{{WRAPPER}} .ap-testimonial-default-style .ap-reviewer-content .ap-reviewer-content-details::before' => 'background: {{VALUE}} ;',
 				],
-				'condition' => [
-					'ap_testimonial_style' => 'classic-style'
-				]
-
+				
 			]
 		);
         
@@ -280,7 +260,7 @@ class Testimonial extends Widget_Base {
 					'groove' => esc_html__( 'Groove', 'addon-pack' ),
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-style: {{VALUE}};',
+					'{{WRAPPER}} .ap-testimonial' => 'border-style: {{VALUE}};',
 				],
 				'separator'  => 'before',
 			]
@@ -299,7 +279,7 @@ class Testimonial extends Widget_Base {
 					'left'   => 3,
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-testimonial' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'ap_testimonial_border_style!' => 'none'
@@ -314,7 +294,7 @@ class Testimonial extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#1abc9c',
 				'selectors' => [
-					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .ap-testimonial' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'ap_testimonial_border_style!' => 'none'
@@ -329,7 +309,7 @@ class Testimonial extends Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
-					'{{WRAPPER}} .ap-testimonial-main-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .ap-testimonial' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -338,7 +318,7 @@ class Testimonial extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'ap_testimonial_shadow',
-				'selector' => '{{WRAPPER}} .ap-testimonial-main-container',
+				'selector' => '{{WRAPPER}} .ap-testimonial',
 			]
 		);
 
@@ -349,7 +329,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-main-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-testimonial' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
 		);
@@ -361,7 +341,7 @@ class Testimonial extends Widget_Base {
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ap-testimonial-main-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ap-testimonial' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -781,7 +761,7 @@ class Testimonial extends Widget_Base {
         <div class="ap-testimonial-wrapper">
 			<?php if('default-style' == $settings['ap_testimonial_style']) { ?>
 				
-				<div class="ap-testimonial-main-container">
+				<div class="ap-testimonial">
 					<div class="ap-testimonial-default-style">
 
 						<div class="ap-reviewer-info">
@@ -806,7 +786,7 @@ class Testimonial extends Widget_Base {
 
 			<?php } elseif('classic-style' == $settings['ap_testimonial_style']) { ?>
 				
-				<div class="ap-testimonial-main-container">
+				<div class="ap-testimonial">
 					<div class="ap-testimonial-classic-style">
 
 						<div class="ap-reviewer-info">
