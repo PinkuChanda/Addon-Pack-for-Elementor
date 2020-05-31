@@ -40,35 +40,9 @@ class Advanced_Accordion extends Widget_Base {
         $this->start_controls_section(
 			'ap_general_settings',
 			[
-				'label' => __( 'General Settings', 'addon-pack' ),
+				'label' => __( 'General', 'addon-pack' ),
 			]
         );
-        
-        $this->add_responsive_control(
-			'ap_accordion_align',
-			[
-				'label'   => __( 'Content Alignment', 'addon-pack' ),
-				'type'    => Controls_Manager::CHOOSE,
-				'options' => [
-					'left'    => [
-						'title' => __( 'Left', 'addon-pack' ),
-						'icon'  => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => __( 'Center', 'addon-pack' ),
-						'icon'  => 'fa fa-align-center',
-					],
-					'right' => [
-						'title' => __( 'Right', 'addon-pack' ),
-						'icon'  => 'fa fa-align-right',
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .ap-accordion .ap-accordion-title'   => 'text-align: {{VALUE}};',
-					'{{WRAPPER}} .ap-accordion .ap-accordion-content' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
 
 		$this->add_control(
 			'ap_accordion_multiple',
@@ -99,14 +73,61 @@ class Advanced_Accordion extends Widget_Base {
 					'ap_accordion_icon!' => '',
 				],
 			]
-        );
+		);
+		
+		$this->add_control(
+            'ap_accordion_icon_position',
+            [
+                'type' => Controls_Manager::CHOOSE,
+                'label' => __( 'Icon Position', 'addon-pack' ),
+                'default' => 'left',
+                'toggle' => false,
+                'options' => [
+                    'left' => [
+                        'title' =>  __( 'Left', 'addon-pack' ),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'right' => [
+                        'title' =>  __( 'Right', 'addon-pack' ),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'prefix_class' => 'ap-accordion-icon-',
+            ]
+		);
+		
+		$this->add_responsive_control(
+			'ap_accordion_align',
+			[
+				'label'   => __( 'Content Alignment', 'addon-pack' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'    => [
+						'title' => __( 'Left', 'addon-pack' ),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => __( 'Center', 'addon-pack' ),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right' => [
+						'title' => __( 'Right', 'addon-pack' ),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .ap-accordion .ap-accordion-title'   => 'text-align: {{VALUE}};',
+					'{{WRAPPER}} .ap-accordion .ap-accordion-content' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
 
         $this->end_controls_section();
 
 		$this->start_controls_section(
 			'ap_accordion_item_settings',
 			[
-				'label' => __( 'Accordion Item Settings', 'addon-pack' ),
+				'label' => __( 'Accordion Item', 'addon-pack' ),
 			]
 		);
 

@@ -257,7 +257,6 @@ class Infobox extends Widget_Base {
             ]
         );
 
-
         $this->add_control(
 			'ap_infobox_tag',
 			[

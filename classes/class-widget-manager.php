@@ -8,6 +8,7 @@ use AddonPack\Elementor\Widget\Call_to_Action;
 use AddonPack\Elementor\Widget\Testimonial;
 use AddonPack\Elementor\Widget\Infobox;
 use AddonPack\Elementor\Widget\Card;
+use AddonPack\Elementor\Widget\Member;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -55,6 +56,11 @@ if( !class_exists( 'Widget_Manager' ) ){
 			if ( file_exists( ADDON_PACK_DIR_PATH.'widgets/card/widget.php' ) ) {
 				require_once ADDON_PACK_DIR_PATH.'widgets/card/widget.php';
 				$widgets_manager->register_widget_type( new Card() );
+			}
+
+			if ( file_exists( ADDON_PACK_DIR_PATH.'widgets/member/widget.php' ) ) {
+				require_once ADDON_PACK_DIR_PATH.'widgets/member/widget.php';
+				$widgets_manager->register_widget_type( new Member() );
 			}
 		}
 

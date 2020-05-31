@@ -1,0 +1,144 @@
+/* -------------------------------- */
+/* Addon Pack Team Member Styles
+/* -------------------------------- */
+
+.elementor-widget-ap-member{
+    background-color: #fff;
+
+    .ap-member{
+        text-align: center;
+        transition: all 0.5s ease 0s;
+        display: flex;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        .ap-image{
+            overflow: hidden;
+            position: relative;
+            transition: .3s ease-out;
+            transition-property: opacity,transform,filter;
+        }
+        .ap-image img{
+            width: 100%;
+            height: auto;
+            transform-origin: 0 0;
+            transition: transform .25s, visibility .25s ease-in;
+        }
+
+        .ap-member-image-transition-zoom-in:hover{
+            transform: scale(1.1);
+        }
+
+        .ap-member-image-transition-zoom-out:hover{
+            transform: scale(0.9);
+        }
+        
+        .ap-member-content{
+            display: flex;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            flex-wrap: wrap;
+            flex-direction: column;
+            padding: 0px 20px 20px 20px;
+
+            .ap-name{
+                font-weight: 700;
+                color: #1abc9c;
+                text-transform: capitalize;
+                margin-bottom: 7px;
+                margin-top: 5px;
+            }
+
+            .ap-job-title{
+                font-weight: 600;
+                color: #707070;
+                text-transform: capitalize;
+                margin: 0;
+            }
+
+            .ap-bio{
+                font-size: 14px;
+                color: #707070;
+                padding-top: 10px;
+            }
+        }
+
+        .ap-social li a:not(:last-child){
+            margin-right: 0px !important;
+        }
+
+        .ap-social li{ 
+            display: inline-block;
+         }
+
+        .ap-social{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .ap-social li a{
+            display: block;
+            margin-right: 10px;
+        }
+
+        .ap-member-design-1{
+            .ap-social{
+                position: absolute;
+                bottom: 45%;
+                left: 0;
+                opacity: 0;
+                z-index: 2;
+                transition: all 0.5s ease 0.3s;
+            }
+        
+            .ap-social li a{
+                font-size: 16px;
+                color: #fff;
+                position: relative;
+                transition: all 0.3s ease 0s;
+                padding: 10px;
+                background-color: #1abc9c;
+                border-radius: 50%;
+                line-height: 0;
+            }
+            
+        }
+
+        .ap-member-design-2{
+            .ap-social{
+                padding-top: 10px;
+            }
+                
+            .ap-social li a{
+                font-size: 20px;
+                transition: all 0.3s ease 0s;
+                color: #1abc9c;
+            }
+
+            .ap-social li a i{
+                color: #1abc9c;
+            }
+            
+
+        }
+        
+       
+    }
+
+    .ap-member:hover .ap-social{ opacity: 1; }
+
+    .ap-member:hover{
+        box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 5px rgba(0, 0, 0, 0.3);
+        .ap-image img{ 
+            opacity: 0.7;
+        }
+    
+    }
+
+}
