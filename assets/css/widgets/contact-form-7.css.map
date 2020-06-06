@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sCAAsC;AACtC;sCACsC;AAI9B,qCAAa;EACT,MAAM,EAAE,CAAC;EACT,KAAK,EAAE,OAAO;AAGlB,2CAAmB;EACf,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,CAAC",
+"sources": ["../../sass/widgets/contact-form-7.scss"],
+"names": [],
+"file": "contact-form-7.css"
+}

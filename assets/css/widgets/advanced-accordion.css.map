@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,oCAAoC;AACpC;oCACoC",
+"sources": ["../../sass/widgets/advanced-accordion.scss"],
 "names": [],
 "file": "advanced-accordion.css"
 }

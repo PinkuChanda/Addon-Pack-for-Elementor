@@ -684,4 +684,18 @@ font-family: 'butlerbold', sans-serif;
     .elementor-widget-ap-member .ap-member:hover .ap-image img {
       opacity: 0.7; }
 
+/* -------------------------------- */
+/* Addon Pack Contact form 7 Styles
+/* -------------------------------- */
+.ap-cf7 .ap-cf7-content .ap-cf7-title {
+  margin: 0;
+  color: #000000; }
+.ap-cf7 .ap-cf7-content .ap-cf7-description {
+  color: #555;
+  margin: 0; }
+
+/*--------------------------------*/
+/* Addon Pack Advanced Accordion Styles
+/*--------------------------------*/
+
 /*# sourceMappingURL=main.css.map */

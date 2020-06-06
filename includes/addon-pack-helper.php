@@ -32,7 +32,29 @@ class AddonPack_Helper {
 		}
 		return $this->options;
 	}
-    
 
-    
+	public static function getCf7FormNames(){
+		$options = array();
+
+        if (function_exists('wpcf7')) {
+            $ap_cf7_form_list = get_posts(array(				
+				'post_type'      => 'wpcf7_contact_form',
+				'post_status'    => 'publish',
+				'posts_per_page' => -1,
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+            ));
+            $options[0] = esc_html__('Select Contact Form', 'addon-pack');
+            if (!empty($ap_cf7_form_list)) {
+                foreach ($ap_cf7_form_list as $post) {
+                    $options[$post->ID] = $post->post_title;
+                }
+            } else {
+                $options[0] = esc_html__('Create a Form First', 'addon-pack');
+            }
+        }
+        return $options;
+
+	}
+
 }
