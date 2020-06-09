@@ -10,6 +10,7 @@ use AddonPack\Elementor\Widget\Infobox;
 use AddonPack\Elementor\Widget\Card;
 use AddonPack\Elementor\Widget\Member;
 use AddonPack\Elementor\Widget\Contact_form_7;
+use AddonPack\Elementor\Widget\Fluent_form;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -67,6 +68,11 @@ if( !class_exists( 'Widget_Manager' ) ){
 			if ( file_exists( ADDON_PACK_DIR_PATH.'widgets/contact-form-7/widget.php' ) ) {
 				require_once ADDON_PACK_DIR_PATH.'widgets/contact-form-7/widget.php';
 				$widgets_manager->register_widget_type( new Contact_form_7() );
+			}
+
+			if ( file_exists( ADDON_PACK_DIR_PATH.'widgets/fluent-form/widget.php' ) ) {
+				require_once ADDON_PACK_DIR_PATH.'widgets/fluent-form/widget.php';
+				$widgets_manager->register_widget_type( new Fluent_form() );
 			}
 		}
 

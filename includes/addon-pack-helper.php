@@ -57,4 +57,35 @@ class AddonPack_Helper {
 
 	}
 
+	public static function getFluentFormNames(){
+
+		if( !defined('FLUENTFORM')){
+			return;
+		}
+
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'fluentform_forms';
+		$fluent_cf_list = $wpdb->get_results(
+			"	
+				SELECT id, title 
+				FROM `$table_name`
+			"
+		);
+
+		$fluent_cf_value = array();
+
+		if( $fluent_cf_list ){
+			$fluent_cf_value[0] = esc_html__( 'Select Contact Form', 'elementor-kits');
+
+			foreach ( $fluent_cf_list as $value ) {
+				$fluent_cf_value[$value->id] = $value->title;
+			}
+		} else {
+			$fluent_cf_value[0] = esc_html__( 'Create a Form First', 'elementor-kits');
+		}
+
+		return $fluent_cf_value;
+
+	}
+
 }

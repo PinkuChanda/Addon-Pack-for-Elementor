@@ -1,0 +1,61 @@
+/* -------------------------------- */
+/* Addon Pack Fluent form Styles
+/* -------------------------------- */
+.ap-fluent-form .ap-fluent-form-content .ap-fluent-form-title {
+  margin: 0;
+  color: #000000; }
+.ap-fluent-form .ap-fluent-form-content .ap-fluent-form-description {
+  color: #555;
+  margin: 0; }
+
+.ap-fluent-form-form-button-center .ff-el-group.ff-text-left .ff-btn-submit,
+.ap-fluent-form-form-button-center .ff-el-group.ff-text-right .ff-btn-submit,
+.ap-fluent-form-form-button-center .ff-el-group .ff-btn-submit {
+  margin: 0 auto;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.ap-fluent-form-button-right .ff-el-group.ff-text-left .ff-btn-submit,
+.ap-fluent-form-button-right .ff-el-group.ff-text-right .ff-btn-submit,
+.ap-fluent-form-button-right .ff-el-group .ff-btn-submit {
+  float: right; }
+
+.ap-fluent-form-button-left .ff-el-group.ff-text-left .ff-btn-submit,
+.ap-fluent-form-button-left .ff-el-group.ff-text-right .ff-btn-submit,
+.ap-fluent-form-button-left .ff-el-group .ff-btn-submit {
+  float: left; }
+
+.ap-fluent-form .ap-fluent-form-labels-hide label, .ap-fluent-form .ff-el-input--label {
+  display: none !important; }
+
+.ap-fluent-form .ap-fluent-form-placeholder-hide input::-webkit-input-placeholder,
+.ap-fluent-form .ap-fluent-form-placeholder-hide textarea::-webkit-input-placeholder {
+  opacity: 0;
+  visibility: hidden; }
+
+.ap-fluent-form .ap-fluent-form-placeholder-hide input::-moz-placeholder,
+.ap-fluent-form .ap-fluent-form-placeholder-hide textarea::-moz-placeholder {
+  opacity: 0;
+  visibility: hidden; }
+
+.ap-fluent-form .ap-fluent-form-placeholder-hide input:-ms-input-placeholder,
+.ap-fluent-form .ap-fluent-form-placeholder-hide textarea:-ms-input-placeholder {
+  opacity: 0;
+  visibility: hidden; }
+
+.ap-fluent-form .ap-fluent-form-placeholder-hide input:-moz-placeholder,
+.ap-fluent-form .ap-fluent-form-placeholder-hide textarea:-moz-placeholder {
+  opacity: 0;
+  visibility: hidden; }
+
+/*# sourceMappingURL=fluent-form.css.map */
