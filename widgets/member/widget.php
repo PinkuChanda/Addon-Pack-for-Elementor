@@ -175,7 +175,6 @@ class Member extends Widget_Base {
             'ap_member_bio',
             [
                 'label' => __( 'Short Bio', 'addon-pack' ),
-                'description' => ha_get_allowed_html_desc( 'intermediate' ),
                 'type' => Controls_Manager::TEXTAREA,
                 'placeholder' => __( 'Write short bio about the team member', 'addon-pack' ),
                 'rows' => 5,
