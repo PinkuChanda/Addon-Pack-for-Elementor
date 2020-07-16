@@ -116,15 +116,15 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_size',
 			[
-				'label'   => esc_html__( 'Button Size', 'addon-pack' ),
+				'label'   => __( 'Button Size', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'md',
 				'options' => [
-					'xs' => esc_html__( 'Extra Small', 'addon-pack' ),
-					'sm' => esc_html__( 'Small', 'addon-pack' ),
-					'md' => esc_html__( 'Medium', 'addon-pack' ),
-					'lg' => esc_html__( 'Large', 'addon-pack' ),
-					'xl' => esc_html__( 'Extra Large', 'addon-pack' ),
+					'xs' => __( 'Extra Small', 'addon-pack' ),
+					'sm' => __( 'Small', 'addon-pack' ),
+					'md' => __( 'Medium', 'addon-pack' ),
+					'lg' => __( 'Large', 'addon-pack' ),
+					'xl' => __( 'Extra Large', 'addon-pack' ),
 				],
 			]
 		);
@@ -132,7 +132,7 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_icon',
 			[
-				'label'       => esc_html__( 'Icon', 'addon-pack' ),
+				'label'       => __( 'Icon', 'addon-pack' ),
 				'type'        => Controls_Manager::ICON,
 				'default' => 'fa fa-heart',
 				'separator'   => 'before',
@@ -143,13 +143,13 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_icon_align',
 			[
-				'label'   => esc_html__( 'Icon Alignment', 'addon-pack' ),
+				'label'   => __( 'Icon Alignment', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'left',
 				'options' => [
-					'left'   => esc_html__( 'Left', 'addon-pack' ),
-					'right'  => esc_html__( 'Right', 'addon-pack' ),
-					'none'   => esc_html__( 'None', 'addon-pack' ),
+					'left'   => __( 'Left', 'addon-pack' ),
+					'right'  => __( 'Right', 'addon-pack' ),
+					'none'   => __( 'None', 'addon-pack' ),
 				],
 				'condition' => [
 					'ap_button_icon!' => '',
@@ -160,7 +160,7 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_icon_spacing',
 			[
-				'label' => esc_html__( 'Icon Spacing', 'addon-pack' ),
+				'label' => __( 'Icon Spacing', 'addon-pack' ),
 				'type'  => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -226,14 +226,14 @@ class Button extends Widget_Base {
 		$this->start_controls_tab(
 			'ap_tab_button_normal',
 			[
-				'label' => esc_html__( 'Normal', 'addon-pack' ),
+				'label' => __( 'Normal', 'addon-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'ap_button_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'addon-pack' ),
+				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-button .ap-button-text' => 'color: {{VALUE}};',
@@ -244,7 +244,7 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_icon_color',
 			[
-				'label'     => esc_html__( 'Icon Color', 'addon-pack' ),
+				'label'     => __( 'Icon Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-button i' => 'color: {{VALUE}};',
@@ -268,15 +268,15 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_border_style',
 			[
-				'label'   => esc_html__( 'Border Style', 'addon-pack' ),
+				'label'   => __( 'Border Style', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'none'   => esc_html__( 'None', 'addon-pack' ),
-					'solid'  => esc_html__( 'Solid', 'addon-pack' ),
-					'dotted' => esc_html__( 'Dotted', 'addon-pack' ),
-					'dashed' => esc_html__( 'Dashed', 'addon-pack' ),
-					'groove' => esc_html__( 'Groove', 'addon-pack' ),
+					'none'   => __( 'None', 'addon-pack' ),
+					'solid'  => __( 'Solid', 'addon-pack' ),
+					'dotted' => __( 'Dotted', 'addon-pack' ),
+					'dashed' => __( 'Dashed', 'addon-pack' ),
+					'groove' => __( 'Groove', 'addon-pack' ),
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .ap-button' => 'border-style: {{VALUE}};',
@@ -288,7 +288,7 @@ class Button extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_button_border_size',
 			[
-				'label' => esc_html__( 'Border Size', 'addon-pack' ),
+				'label' => __( 'Border Size', 'addon-pack' ),
 				'type'  => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -303,7 +303,7 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
+				'label'     => __( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-button' => 'border-color: {{VALUE}};',
@@ -318,7 +318,7 @@ class Button extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_button_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'addon-pack' ),
+				'label'      => __( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -338,7 +338,7 @@ class Button extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_button_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'addon-pack' ),
+				'label'      => __( 'Padding', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [
@@ -361,14 +361,14 @@ class Button extends Widget_Base {
 		$this->start_controls_tab(
 			'ap_tab_button_hover',
 			[
-				'label' => esc_html__( 'Hover', 'addon-pack' ),
+				'label' => __( 'Hover', 'addon-pack' ),
 			]
 		);
 
 		$this->add_control(
 			'ap_button_hover_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'addon-pack' ),
+				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-button:hover .ap-button-text' => 'color: {{VALUE}};',
@@ -379,7 +379,7 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_icon_hover_color',
 			[
-				'label'     => esc_html__( 'Icon Color', 'addon-pack' ),
+				'label'     => __( 'Icon Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-button:hover i' => 'color: {{VALUE}};',
@@ -402,15 +402,15 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_hover_border_style',
 			[
-				'label'   => esc_html__( 'Border Style', 'addon-pack' ),
+				'label'   => __( 'Border Style', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'none'   => esc_html__( 'None', 'addon-pack' ),
-					'solid'  => esc_html__( 'Solid', 'addon-pack' ),
-					'dotted' => esc_html__( 'Dotted', 'addon-pack' ),
-					'dashed' => esc_html__( 'Dashed', 'addon-pack' ),
-					'groove' => esc_html__( 'Groove', 'addon-pack' ),
+					'none'   => __( 'None', 'addon-pack' ),
+					'solid'  => __( 'Solid', 'addon-pack' ),
+					'dotted' => __( 'Dotted', 'addon-pack' ),
+					'dashed' => __( 'Dashed', 'addon-pack' ),
+					'groove' => __( 'Groove', 'addon-pack' ),
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .ap-button:hover' => 'border-style: {{VALUE}};',
@@ -422,7 +422,7 @@ class Button extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_button_hover_border_size',
 			[
-				'label' => esc_html__( 'Border Size', 'addon-pack' ),
+				'label' => __( 'Border Size', 'addon-pack' ),
 				'type'  => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -437,7 +437,7 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_button_hover_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
+				'label'     => __( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-button:hover' => 'border-color: {{VALUE}};',
@@ -451,7 +451,7 @@ class Button extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_button_hover_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'addon-pack' ),
+				'label'      => __( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -471,7 +471,7 @@ class Button extends Widget_Base {
 		$this->add_control(
 			'ap_hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'addon-pack' ),
+				'label' => __( 'Hover Animation', 'addon-pack' ),
 				'type' => Controls_Manager::HOVER_ANIMATION,
 			]
 		);

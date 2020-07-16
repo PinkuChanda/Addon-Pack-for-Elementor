@@ -92,15 +92,15 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_size',
 			[
-				'label'   => esc_html__( 'Button Size', 'addon-pack' ),
+				'label'   => __( 'Button Size', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'md',
 				'options' => [
-					'xs' => esc_html__( 'Extra Small', 'addon-pack' ),
-					'sm' => esc_html__( 'Small', 'addon-pack' ),
-					'md' => esc_html__( 'Medium', 'addon-pack' ),
-					'lg' => esc_html__( 'Large', 'addon-pack' ),
-					'xl' => esc_html__( 'Extra Large', 'addon-pack' ),
+					'xs' => __( 'Extra Small', 'addon-pack' ),
+					'sm' => __( 'Small', 'addon-pack' ),
+					'md' => __( 'Medium', 'addon-pack' ),
+					'lg' => __( 'Large', 'addon-pack' ),
+					'xl' => __( 'Extra Large', 'addon-pack' ),
 				],
 				'label_block' => true,
 			]
@@ -163,7 +163,7 @@ class Call_to_Action extends Widget_Base {
         $this->add_control(
 			'ap_cta_button_icon',
 			[
-				'label'       => esc_html__( 'Icon', 'addon-pack' ),
+				'label'       => __( 'Icon', 'addon-pack' ),
 				'type'        => Controls_Manager::ICON,
 				'label_block' => true,
 				'condition' => [
@@ -176,7 +176,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_icon_spacing',
 			[
-				'label' => esc_html__( 'Icon Spacing', 'addon-pack' ),
+				'label' => __( 'Icon Spacing', 'addon-pack' ),
 				'type'  => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -251,15 +251,15 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_border_style',
 			[
-				'label'   => esc_html__( 'Border Style', 'addon-pack' ),
+				'label'   => __( 'Border Style', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'none'   => esc_html__( 'None', 'addon-pack' ),
-					'solid'  => esc_html__( 'Solid', 'addon-pack' ),
-					'dotted' => esc_html__( 'Dotted', 'addon-pack' ),
-					'dashed' => esc_html__( 'Dashed', 'addon-pack' ),
-					'groove' => esc_html__( 'Groove', 'addon-pack' ),
+					'none'   => __( 'None', 'addon-pack' ),
+					'solid'  => __( 'Solid', 'addon-pack' ),
+					'dotted' => __( 'Dotted', 'addon-pack' ),
+					'dashed' => __( 'Dashed', 'addon-pack' ),
+					'groove' => __( 'Groove', 'addon-pack' ),
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .ap-cta-wrapper' => 'border-style: {{VALUE}};',
@@ -271,7 +271,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_cta_border_size',
 			[
-				'label' => esc_html__( 'Border Size', 'addon-pack' ),
+				'label' => __( 'Border Size', 'addon-pack' ),
 				'type'  => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'default' => [
@@ -292,7 +292,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
+				'label'     => __( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#666',
 				'selectors' => [
@@ -307,7 +307,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_cta_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'addon-pack' ),
+				'label'      => __( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -327,7 +327,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_responsive_control(
             'ap_cta_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -338,7 +338,7 @@ class Call_to_Action extends Widget_Base {
         $this->add_responsive_control(
             'ap_cta_margin',
             [
-                'label' => esc_html__('Margin', 'addon-pack'),
+                'label' => __('Margin', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -360,7 +360,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_title_color',
 			[
-				'label'     => esc_html__( 'Title Color', 'addon-pack' ),
+				'label'     => __( 'Title Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-cta-title' => 'color: {{VALUE}};',
@@ -380,7 +380,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_responsive_control(
             'ap_cta_title_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -392,7 +392,7 @@ class Call_to_Action extends Widget_Base {
         $this->add_responsive_control(
             'ap_cta_title_margin',
             [
-                'label' => esc_html__('Margin', 'addon-pack'),
+                'label' => __('Margin', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -414,7 +414,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_content_color',
 			[
-				'label'     => esc_html__( 'Content Color', 'addon-pack' ),
+				'label'     => __( 'Content Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-cta-content' => 'color: {{VALUE}};',
@@ -434,7 +434,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_responsive_control(
             'ap_cta_content_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -446,7 +446,7 @@ class Call_to_Action extends Widget_Base {
         $this->add_responsive_control(
             'ap_cta_content_margin',
             [
-                'label' => esc_html__('Margin', 'addon-pack'),
+                'label' => __('Margin', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -468,15 +468,15 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_border_style',
 			[
-				'label'   => esc_html__( 'Border Style', 'addon-pack' ),
+				'label'   => __( 'Border Style', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'none',
 				'options' => [
-					'none'   => esc_html__( 'None', 'addon-pack' ),
-					'solid'  => esc_html__( 'Solid', 'addon-pack' ),
-					'dotted' => esc_html__( 'Dotted', 'addon-pack' ),
-					'dashed' => esc_html__( 'Dashed', 'addon-pack' ),
-					'groove' => esc_html__( 'Groove', 'addon-pack' ),
+					'none'   => __( 'None', 'addon-pack' ),
+					'solid'  => __( 'Solid', 'addon-pack' ),
+					'dotted' => __( 'Dotted', 'addon-pack' ),
+					'dashed' => __( 'Dashed', 'addon-pack' ),
+					'groove' => __( 'Groove', 'addon-pack' ),
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .ap-cta-button' => 'border-style: {{VALUE}};',
@@ -488,7 +488,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_cta_button_border_size',
 			[
-				'label' => esc_html__( 'Border Size', 'addon-pack' ),
+				'label' => __( 'Border Size', 'addon-pack' ),
 				'type'  => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'default' => [
@@ -510,7 +510,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_responsive_control(
             'ap_cta_button_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -522,7 +522,7 @@ class Call_to_Action extends Widget_Base {
         $this->add_responsive_control(
             'ap_cta_button_margin',
             [
-                'label' => esc_html__('Margin', 'addon-pack'),
+                'label' => __('Margin', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -536,7 +536,7 @@ class Call_to_Action extends Widget_Base {
 		$this->start_controls_tab(
 			'ap_tab_cta_button_normal',
 			[
-				'label' => esc_html__( 'Normal', 'addon-pack' ),
+				'label' => __( 'Normal', 'addon-pack' ),
 			]
 		);
 
@@ -552,7 +552,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'addon-pack' ),
+				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#4d4d4d',
 				'selectors' => [
@@ -564,7 +564,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_icon_color',
 			[
-				'label'     => esc_html__( 'Icon Color', 'addon-pack' ),
+				'label'     => __( 'Icon Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#4d4d4d',
 				'selectors' => [
@@ -580,7 +580,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
+				'label'     => __( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#666',
 				'selectors' => [
@@ -597,7 +597,7 @@ class Call_to_Action extends Widget_Base {
 		$this->start_controls_tab(
 			'ap_tab_cta_button_hover',
 			[
-				'label' => esc_html__( 'Hover', 'addon-pack' ),
+				'label' => __( 'Hover', 'addon-pack' ),
 			]
 		);
 
@@ -613,7 +613,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_hover_text_color',
 			[
-				'label'     => esc_html__( 'Text Color', 'addon-pack' ),
+				'label'     => __( 'Text Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-cta-button:hover .ap-cta-button-text' => 'color: {{VALUE}};',
@@ -624,7 +624,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_hover_icon_color',
 			[
-				'label'     => esc_html__( 'Icon Hover Color', 'addon-pack' ),
+				'label'     => __( 'Icon Hover Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#4d4d4d',
 				'selectors' => [
@@ -640,7 +640,7 @@ class Call_to_Action extends Widget_Base {
 		$this->add_control(
 			'ap_cta_button_border_hover_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
+				'label'     => __( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#666',
 				'selectors' => [

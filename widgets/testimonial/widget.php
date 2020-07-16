@@ -71,10 +71,10 @@ class Testimonial extends Widget_Base {
         $this->add_control(
 			'ap_testimonial_content',
 			[
-				'label' => esc_html__( 'Testimoial Content', 'addon-pack' ),
+				'label' => __( 'Testimoial Content', 'addon-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.Minim veniam, quis nostrud ullamco laboris nisi .', 'addon-pack'),
+				'default' => __( 'Lorem ipsum dolor sit amet, consectetur elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim.Minim veniam, quis nostrud ullamco laboris nisi .', 'addon-pack'),
 			]
 		);
 
@@ -159,7 +159,7 @@ class Testimonial extends Widget_Base {
         $this->add_control(
 			'ap_testimonial_enable_avatar',
 			[
-				'label' => esc_html__( 'Enable Avatar?', 'addon-pack'),
+				'label' => __( 'Enable Avatar?', 'addon-pack'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 			]
@@ -234,7 +234,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'ap_testimonial_shape_color',
 			[
-				'label'     => esc_html__( 'Shape Color', 'addon-pack' ),
+				'label'     => __( 'Shape Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .ap-testimonial-classic-style .ap-reviewer-content .ap-reviewer-content-details' => 'border-top: 1px solid {{VALUE}} ;',
@@ -249,15 +249,15 @@ class Testimonial extends Widget_Base {
         $this->add_control(
 			'ap_testimonial_border_style',
 			[
-				'label'   => esc_html__( 'Border Style', 'addon-pack' ),
+				'label'   => __( 'Border Style', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'solid',
 				'options' => [
-					'none'   => esc_html__( 'None', 'addon-pack' ),
-					'solid'  => esc_html__( 'Solid', 'addon-pack' ),
-					'dotted' => esc_html__( 'Dotted', 'addon-pack' ),
-					'dashed' => esc_html__( 'Dashed', 'addon-pack' ),
-					'groove' => esc_html__( 'Groove', 'addon-pack' ),
+					'none'   => __( 'None', 'addon-pack' ),
+					'solid'  => __( 'Solid', 'addon-pack' ),
+					'dotted' => __( 'Dotted', 'addon-pack' ),
+					'dashed' => __( 'Dashed', 'addon-pack' ),
+					'groove' => __( 'Groove', 'addon-pack' ),
 				],
 				'selectors'  => [
 					'{{WRAPPER}} .ap-testimonial' => 'border-style: {{VALUE}};',
@@ -269,7 +269,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_testimonial_border_size',
 			[
-				'label' => esc_html__( 'Border Size', 'addon-pack' ),
+				'label' => __( 'Border Size', 'addon-pack' ),
 				'type'  => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'default' => [
@@ -290,7 +290,7 @@ class Testimonial extends Widget_Base {
 		$this->add_control(
 			'ap_testimonial_border_color',
 			[
-				'label'     => esc_html__( 'Border Color', 'addon-pack' ),
+				'label'     => __( 'Border Color', 'addon-pack' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#1abc9c',
 				'selectors' => [
@@ -305,7 +305,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
 			'ap_testimonial_radius',
 			[
-				'label'      => esc_html__( 'Border Radius', 'addon-pack' ),
+				'label'      => __( 'Border Radius', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors'  => [
@@ -325,7 +325,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
             'ap_testimonial_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -337,7 +337,7 @@ class Testimonial extends Widget_Base {
         $this->add_responsive_control(
             'ap_testimonial_margin',
             [
-                'label' => esc_html__('Margin', 'addon-pack'),
+                'label' => __('Margin', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -418,7 +418,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
             'ap_testimonial_content_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -430,7 +430,7 @@ class Testimonial extends Widget_Base {
         $this->add_responsive_control(
             'ap_testimonial_content_margin',
             [
-                'label' => esc_html__('Margin', 'addon-pack'),
+                'label' => __('Margin', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -473,7 +473,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
             'ap_testimonial_name_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -516,7 +516,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
             'ap_testimonial_designation_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -559,7 +559,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
             'ap_testimonial_company_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -651,7 +651,7 @@ class Testimonial extends Widget_Base {
 		$this->add_responsive_control(
             'ap_testimonial_quotation_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [

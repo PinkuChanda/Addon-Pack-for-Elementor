@@ -161,10 +161,10 @@ class Dual_Heading extends Widget_Base {
 		$this->add_control(
 			'ap-sub-heading',
 			[
-				'label' => esc_html__( 'Sub Heading', 'addon-pack' ),
+				'label' => __( 'Sub Heading', 'addon-pack' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default' => esc_html__( 'Insert a meaningful sentence for determining headline', 'addon-pack'),
+				'default' => __( 'Insert a meaningful sentence for determining headline', 'addon-pack'),
 				'placeholder' => __( 'Enter your sub heading', 'addon-pack' ),
 				'separator'     => 'before',
 			]
@@ -272,7 +272,7 @@ class Dual_Heading extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'ap_dual_heading_border',
-				'label' => esc_html__( 'Border', 'addon-pack' ),
+				'label' => __( 'Border', 'addon-pack' ),
 				'selector' => '{{WRAPPER}} .ap-dual-heading-title',
 			]
 		);
@@ -280,7 +280,7 @@ class Dual_Heading extends Widget_Base {
 		$this->add_control(
 			'ap_dual_heading_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'addon-pack' ),
+				'label' => __( 'Border Radius', 'addon-pack' ),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -322,7 +322,7 @@ class Dual_Heading extends Widget_Base {
 		$this->add_control(
 			'ap_first_heading_color',
 			[
-				'label' => esc_html__( 'First Heading Color', 'addon-pack' ),
+				'label' => __( 'First Heading Color', 'addon-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#1abc9c',
 				'selectors' => [
@@ -334,7 +334,7 @@ class Dual_Heading extends Widget_Base {
 		$this->add_control(
 			'ap_second_heading_color',
 			[
-				'label' => esc_html__( 'Second Heading Color', 'addon-pack' ),
+				'label' => __( 'Second Heading Color', 'addon-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#4d4d4d',
 				'selectors' => [
@@ -357,8 +357,8 @@ class Dual_Heading extends Widget_Base {
 				'label'   => __( 'Dual Heading Style', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
-					'none'     => esc_html__('None', 'addon-pack'),
-					'ap-line' => esc_html__('AP Line', 'addon-pack'),
+					'none'     => __('None', 'addon-pack'),
+					'ap-line' => __('AP Line', 'addon-pack'),
 				],
 				'default' => 'none',
 				'separator' => 'before',
@@ -475,7 +475,7 @@ class Dual_Heading extends Widget_Base {
 		$this->add_control(
 			'ap-sub-heading_color',
 			[
-				'label' => esc_html__( 'Text Color', 'addon-pack' ),
+				'label' => __( 'Text Color', 'addon-pack' ),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#4d4d4d',
 				'selectors' => [
@@ -498,8 +498,8 @@ class Dual_Heading extends Widget_Base {
 				'label'   => __( 'Sub Heading', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => [
-					'none'     => esc_html__('None', 'addon-pack'),
-					'ap-line' => esc_html__('AP Line', 'addon-pack'),
+					'none'     => __('None', 'addon-pack'),
+					'ap-line' => __('AP Line', 'addon-pack'),
 				],
 				'default' => 'none',
 				'separator' => 'before',

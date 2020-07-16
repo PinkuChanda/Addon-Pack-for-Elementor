@@ -153,7 +153,7 @@ class Advanced_Accordion extends Widget_Base {
 				'fields' => [
                     [
                         'name' => 'eael_adv_accordion_tab_default_active',
-                        'label' => esc_html__('Active as Default', 'addon-pack'),
+                        'label' => __('Active as Default', 'addon-pack'),
                         'type' => Controls_Manager::SWITCHER,
                         'default' => 'no',
                         'return_value' => 'yes',
@@ -168,12 +168,12 @@ class Advanced_Accordion extends Widget_Base {
 					],
 					[
 						'name'    => 'source',
-						'label'   => esc_html__( 'Select Source', 'addon-pack' ),
+						'label'   => __( 'Select Source', 'addon-pack' ),
 						'type'    => Controls_Manager::SELECT,
 						'default' => 'custom',
 						'options' => [
-							'custom'    => esc_html__( 'Custom', 'addon-pack' ),
-							"elementor" => esc_html__( 'Elementor Template', 'addon-pack' ),
+							'custom'    => __( 'Custom', 'addon-pack' ),
+							"elementor" => __( 'Elementor Template', 'addon-pack' ),
 						],
 					],
 					[
@@ -208,7 +208,7 @@ class Advanced_Accordion extends Widget_Base {
 		$this->add_responsive_control(
             'ap_accordion_padding',
             [
-                'label' => esc_html__('Padding', 'addon-pack'),
+                'label' => __('Padding', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -219,7 +219,7 @@ class Advanced_Accordion extends Widget_Base {
         $this->add_responsive_control(
             'ap_accordion_margin',
             [
-                'label' => esc_html__('Margin', 'addon-pack'),
+                'label' => __('Margin', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -231,14 +231,14 @@ class Advanced_Accordion extends Widget_Base {
             Group_Control_Border::get_type(),
             [
                 'name' => 'ap_accordion_border',
-                'label' => esc_html__('Border', 'addon-pack'),
+                'label' => __('Border', 'addon-pack'),
                 'selector' => '{{WRAPPER}} .ap-accordion',
             ]
         );
         $this->add_responsive_control(
             'ap_accordion_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'addon-pack'),
+                'label' => __('Border Radius', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -348,7 +348,7 @@ class Advanced_Accordion extends Widget_Base {
 		$this->start_controls_tab(
             'ap_accordion_tab_title_hover',
             [
-                'label' => esc_html__('Hover', 'addon-pack'),
+                'label' => __('Hover', 'addon-pack'),
             ]
 		);
 		
@@ -364,7 +364,7 @@ class Advanced_Accordion extends Widget_Base {
 		$this->add_control(
             'ap_accordion_title_color_hover',
             [
-                'label' => esc_html__('Text Color', 'addon-pack'),
+                'label' => __('Text Color', 'addon-pack'),
                 'type' => Controls_Manager::COLOR,
                 'default' => '#fff',
                 'selectors' => [
@@ -385,7 +385,7 @@ class Advanced_Accordion extends Widget_Base {
             Group_Control_Border::get_type(),
             [
                 'name' => 'ap_accordion_title_border_hover',
-                'label' => esc_html__('Border', 'addon-pack'),
+                'label' => __('Border', 'addon-pack'),
                 'selector' => '{{WRAPPER}} .eael-adv-accordion .eael-accordion-list .eael-accordion-header:hover',
             ]
 		);
@@ -393,7 +393,7 @@ class Advanced_Accordion extends Widget_Base {
 		$this->add_responsive_control(
             'ap_accordion_title_radius_hover',
             [
-                'label' => esc_html__('Border Radius', 'addon-pack'),
+                'label' => __('Border Radius', 'addon-pack'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [

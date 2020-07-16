@@ -94,7 +94,7 @@ class Contact_form_7 extends Widget_Base {
 		$this->add_control(
 			'ap_cf7_title',
 			[
-				'label' => esc_html__('Title', 'addon-pack'),
+				'label' => __('Title', 'addon-pack'),
 				'type' => Controls_Manager::TEXT,
 				'label_block' => true,
 				'default' => __('Get in Touch', 'addon-pack'),
@@ -118,7 +118,7 @@ class Contact_form_7 extends Widget_Base {
 		$this->add_control(
 			'ap_cf7_description',
 			[
-				'label' => esc_html__('Description', 'addon-pack'),
+				'label' => __('Description', 'addon-pack'),
 				'type' => Controls_Manager::TEXTAREA,
 				'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.', 'addon-pack'),
 				'condition' => [

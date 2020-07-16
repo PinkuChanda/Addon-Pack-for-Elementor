@@ -680,7 +680,7 @@ class Member extends Widget_Base {
         $this->add_responsive_control(
 			'ap_member_socials_padding',
 			[
-				'label'      => esc_html__( 'Padding', 'addon-pack' ),
+				'label'      => __( 'Padding', 'addon-pack' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors'  => [

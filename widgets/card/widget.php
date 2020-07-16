@@ -374,15 +374,15 @@ class Card extends Widget_Base {
 		$this->add_control(
 			'ap_button_size',
 			[
-				'label'   => esc_html__( 'Button Size', 'addon-pack' ),
+				'label'   => __( 'Button Size', 'addon-pack' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'md',
 				'options' => [
-					'xs' => esc_html__( 'Extra Small', 'addon-pack' ),
-					'sm' => esc_html__( 'Small', 'addon-pack' ),
-					'md' => esc_html__( 'Medium', 'addon-pack' ),
-					'lg' => esc_html__( 'Large', 'addon-pack' ),
-					'xl' => esc_html__( 'Extra Large', 'addon-pack' ),
+					'xs' => __( 'Extra Small', 'addon-pack' ),
+					'sm' => __( 'Small', 'addon-pack' ),
+					'md' => __( 'Medium', 'addon-pack' ),
+					'lg' => __( 'Large', 'addon-pack' ),
+					'xl' => __( 'Extra Large', 'addon-pack' ),
 				],
 				'condition'     => [
 					'ap_button_enable' => 'yes',
@@ -418,7 +418,7 @@ class Card extends Widget_Base {
 		$this->add_control(
 			'ap_button_icon',
 			[
-				'label'       => esc_html__( 'Icon', 'addon-pack' ),
+				'label'       => __( 'Icon', 'addon-pack' ),
 				'type'        => Controls_Manager::ICON,
 				'default' => 'fas fa-atom',
 				'label_block' => true,
@@ -461,7 +461,7 @@ class Card extends Widget_Base {
 		$this->add_control(
 			'ap_button_icon_spacing',
 			[
-				'label' => esc_html__( 'Icon Spacing', 'addon-pack' ),
+				'label' => __( 'Icon Spacing', 'addon-pack' ),
 				'type'  => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
